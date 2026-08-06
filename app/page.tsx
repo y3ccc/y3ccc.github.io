@@ -77,9 +77,8 @@ export default function Home() {
           <div className="hero-copy">
             <p className="kicker">AI 協作生活助理 / 2026—持續運作</p>
             <h1>
-              把零散的日常，
-              <br />
-              <span>收回同一個入口。</span>
+              <span className="headline-line headline-main">把零散的日常，</span>
+              <span className="headline-line headline-accent">收回同一個入口。</span>
             </h1>
             <p className="hero-lede">
               我用 Discord／LINE 作為對話入口，整合行事曆、Gmail、日記、記帳與個人知識庫。
@@ -90,8 +89,13 @@ export default function Home() {
                 看專案怎麼運作 <span>↓</span>
               </a>
               <a className="text-link" href="mailto:andrew920322@gmail.com">
-                Andrew920322@gmail.com <span>↗</span>
+                andrew920322@gmail.com <span>↗</span>
               </a>
+            </div>
+            <div className="hero-facts" aria-label="專案摘要">
+              <div><strong>2</strong><span>對話入口</span></div>
+              <div><strong>6+</strong><span>整合服務</span></div>
+              <div><strong>05.2026</strong><span>開始運作</span></div>
             </div>
           </div>
 
