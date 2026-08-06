@@ -75,7 +75,7 @@ export default function PortfolioHome() {
             <a className="project-tile project-tile-analysis" href="/projects/convenience-store">
               <div className="tile-top"><span>PROJECT 01</span><span>2023—2024</span></div>
               <div className="store-visual" aria-hidden="true">
-                <div className="store-sign"><span>24</span><b>便利商店</b></div>
+                <div className="store-sign"><span>便利商店</span></div>
                 <div className="market-bars">
                   <i><span>7-ELEVEN</span><b /></i>
                   <i><span>全家</span><b /></i>
