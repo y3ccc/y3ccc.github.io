@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "馬彥宸｜AI 協作生活助理",
-  description: "產業研究 × AI 應用企劃作品頁。",
+  title: "馬彥宸｜產業研究 × AI 應用企劃作品集",
+  description: "便利商店產業分析與 AI 協作生活助理作品集。",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
