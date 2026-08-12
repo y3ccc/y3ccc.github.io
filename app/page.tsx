@@ -2,25 +2,25 @@ import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 
 export const metadata: Metadata = {
-  title: "馬彥宸｜產業研究 × AI 應用企劃作品集",
-  description: "馬彥宸的求職作品集：便利商店產業分析與 AI 協作生活助理。",
+  title: "馬彥宸｜財務風險 × 產業研究作品集",
+  description: "馬彥宸的求職作品集：企業破產風險預測、便利商店產業比較與 AI 協作專案。",
 };
 
 const strengths = [
   {
     number: "01",
-    title: "研究與比較",
-    text: "從公開資訊整理產業背景、企業策略與財務資料，建立一致的比較架構。",
+    title: "風險判讀",
+    text: "不被表面 Accuracy 誤導，從資料分布、指標取捨與驗證設計辨識真正的風險訊號。",
   },
   {
     number: "02",
-    title: "整合與表達",
-    text: "把分散內容整理成圖表、簡報與可以討論的結論，並負責成果品質。",
+    title: "產業比較",
+    text: "從公開資訊整理市場、企業策略與財務資料，建立一致且可核對的比較架構。",
   },
   {
     number: "03",
-    title: "AI 應用判斷",
-    text: "先確認需求、風險與維護成本，再透過 AI 協作導入、測試與調整流程。",
+    title: "專案追蹤",
+    text: "把需求拆成可驗收結果，持續追蹤異常、確認修正，並淘汰效益不足的方案。",
   },
 ];
 
@@ -32,14 +32,14 @@ export default function PortfolioHome() {
       <main>
         <section className="portfolio-hero">
           <div className="portfolio-hero-copy">
-            <p className="kicker">INDUSTRY RESEARCH × AI APPLICATION</p>
+            <p className="kicker">FINANCIAL RISK × INDUSTRY RESEARCH × AI APPLICATION</p>
             <h1>
-              把資訊整理成
-              <span>可以做決定的依據。</span>
+              把複雜資料轉成
+              <span>風險與決策依據。</span>
             </h1>
             <p>
-              我是馬彥宸，財務金融系畢業。我的作品一邊從公開資料理解產業與企業，
-              一邊從實際需求評估 AI 工具是否真的值得導入。
+              我是馬彥宸，財務金融系畢業。我的作品從企業風險、產業比較與實際專案出發，
+              練習把資料整理成可以查核、可以討論，也知道限制在哪裡的判斷依據。
             </p>
             <div className="hero-actions">
               <a className="button button-dark" href="#projects">查看專案 <span>↓</span></a>
@@ -49,13 +49,18 @@ export default function PortfolioHome() {
 
           <div className="portfolio-index" aria-label="作品索引">
             <div className="index-head"><span>SELECTED WORK</span><span>2023—2026</span></div>
-            <a href="/projects/convenience-store">
+            <a href="/projects/bankruptcy-risk">
               <span>01</span>
+              <div><strong>企業破產風險預測</strong><small>風險判讀・驗證設計・財務指標</small></div>
+              <b>↗</b>
+            </a>
+            <a href="/projects/convenience-store">
+              <span>02</span>
               <div><strong>便利商店產業與財務分析</strong><small>產業研究・企業比較・團隊整合</small></div>
               <b>↗</b>
             </a>
             <a href="/projects/ai-assistant">
-              <span>02</span>
+              <span>03</span>
               <div><strong>AI 協作生活助理</strong><small>需求盤點・服務整合・測試驗收</small></div>
               <b>↗</b>
             </a>
@@ -65,15 +70,36 @@ export default function PortfolioHome() {
         <section className="selected-projects section-rule" id="projects">
           <div className="section-heading portfolio-section-heading">
             <div>
-              <p className="section-label">SELECTED PROJECTS / 兩個不同問題</p>
-              <h2>研究產業，也研究工具<br /><em>是否真的解決問題。</em></h2>
+              <p className="section-label">SELECTED PROJECTS / 三種決策情境</p>
+              <h2>先辨識風險，再理解產業<br /><em>與實際執行。</em></h2>
             </div>
-            <p>點進專案，查看問題、做法、成果與限制。</p>
+            <p>點進專案，查看問題、方法、決策含義與限制。</p>
           </div>
 
           <div className="project-showcase">
+            <a className="project-tile project-tile-risk" href="/projects/bankruptcy-risk">
+              <div className="tile-top"><span>PROJECT 01</span><span>2026</span></div>
+              <div className="risk-visual" aria-hidden="true">
+                <div className="risk-question">
+                  <span>ACCURACY ≠ RISK DETECTION</span>
+                  <strong>高準確率，<br />仍可能漏掉真正高風險企業。</strong>
+                </div>
+                <div className="risk-mini-metrics">
+                  <div><b>6,819</b><span>企業樣本</span></div>
+                  <div><b>93</b><span>財務變數</span></div>
+                  <div><b>360</b><span>CV 候選／資料版</span></div>
+                  <div><b>59.85%</b><span>Recall 優先平均</span></div>
+                </div>
+              </div>
+              <div className="tile-copy">
+                <p>財務風險 / 模型驗證</p>
+                <h3>如何避免被漂亮的 Accuracy 誤導？</h3>
+                <span>查看專案與完整技術報告 ↗</span>
+              </div>
+            </a>
+
             <a className="project-tile project-tile-analysis" href="/projects/convenience-store">
-              <div className="tile-top"><span>PROJECT 01</span><span>2023—2024</span></div>
+              <div className="tile-top"><span>PROJECT 02</span><span>2023—2024</span></div>
               <div className="store-visual" aria-hidden="true">
                 <div className="store-sign"><span>便利商店</span></div>
                 <div className="market-bars">
@@ -90,7 +116,7 @@ export default function PortfolioHome() {
             </a>
 
             <a className="project-tile project-tile-ai" href="/projects/ai-assistant">
-              <div className="tile-top"><span>PROJECT 02</span><span>2026—持續運作</span></div>
+              <div className="tile-top"><span>PROJECT 03</span><span>2026—持續運作</span></div>
               <div className="assistant-mini-flow" aria-hidden="true">
                 <div>Discord / LINE</div><span>↓</span><div className="flow-accent">AI 協作層</div><span>↓</span>
                 <div className="mini-services"><i>Calendar</i><i>Gmail</i><i>Obsidian</i></div>
@@ -110,8 +136,8 @@ export default function PortfolioHome() {
             <div>
               <h2>不急著裝懂，<br /><em>先把問題弄清楚。</em></h2>
               <p>
-                我目前適合從產業研究、AI 應用企劃或商業分析助理開始。
-                財金背景讓我能理解企業與數字；個人 server 經驗讓我知道，工具導入之後還要面對使用、維護與取捨。
+                我目前適合從企業風險分析、產業研究、策略投資支援或商業分析助理開始。
+                財金背景讓我理解企業與數字；資料與專案作品則讓我練習驗證、追蹤與清楚標示限制。
               </p>
             </div>
             <div className="strength-list">
@@ -126,7 +152,7 @@ export default function PortfolioHome() {
 
         <section className="portfolio-contact">
           <p className="kicker">OPEN TO OPPORTUNITIES</p>
-          <h2>產業研究、AI 應用企劃<br /><em>或需要把資訊理清楚的工作。</em></h2>
+          <h2>財務風險、產業研究<br /><em>或需要把資訊轉成判斷的工作。</em></h2>
           <p>應徵地點可配合新竹、桃園與雙北。</p>
           <a className="button button-light" href="mailto:andrew920322@gmail.com">andrew920322@gmail.com <span>↗</span></a>
         </section>

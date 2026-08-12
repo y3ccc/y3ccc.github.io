@@ -26,11 +26,24 @@ test("server-renders the portfolio home", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>馬彥宸｜產業研究 × AI 應用企劃作品集<\/title>/i);
-  assert.match(html, /把資訊整理成/);
+  assert.match(html, /<title>馬彥宸｜財務風險 × 產業研究作品集<\/title>/i);
+  assert.match(html, /把複雜資料轉成/);
+  assert.match(html, /企業破產風險預測/);
   assert.match(html, /便利商店產業與財務分析/);
   assert.match(html, /AI 協作生活助理/);
+  assert.match(html, /og:image/i);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|SkeletonPreview/);
+});
+
+test("server-renders the bankruptcy-risk project", async () => {
+  const response = await render("/projects/bankruptcy-risk");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /高 Accuracy/);
+  assert.match(html, /測試集只在最後/);
+  assert.match(html, /查看 7 頁技術報告 PDF/);
+  assert.match(html, /ma-yen-chen-bankruptcy-risk-report\.pdf/);
+  await access(new URL("../public/reports/ma-yen-chen-bankruptcy-risk-report.pdf", import.meta.url));
 });
 
 test("server-renders the convenience-store project", async () => {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -16,11 +17,11 @@ const cases = [
 export default function AiAssistantProject() {
   return (
     <div className="site-shell ai-project">
-      <SiteHeader project="PROJECT 02" />
+      <SiteHeader project="PROJECT 03" />
       <main>
         <section className="hero" id="top">
           <div className="hero-copy">
-            <a className="back-link" href="/">← 返回作品集</a>
+            <Link className="back-link" href="/">← 返回作品集</Link>
             <p className="kicker">AI APPLICATION / 2026—持續運作</p>
             <h1><span className="headline-line headline-main">把零散的日常，</span><span className="headline-line headline-accent">收回同一個入口。</span></h1>
             <p className="hero-lede">我用 Discord／LINE 作為對話入口，整合行事曆、Gmail、日記、記帳與個人知識庫。重點不是把工具堆在一起，而是確認它們真的讓生活變簡單。</p>

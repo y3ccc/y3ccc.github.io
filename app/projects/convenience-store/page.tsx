@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -33,11 +34,11 @@ const observations = [
 export default function ConvenienceStoreProject() {
   return (
     <div className="site-shell analysis-project">
-      <SiteHeader project="PROJECT 01" />
+      <SiteHeader project="PROJECT 02" />
       <main>
         <section className="analysis-hero">
           <div className="analysis-hero-copy">
-            <a className="back-link" href="/">← 返回作品集</a>
+            <Link className="back-link" href="/">← 返回作品集</Link>
             <p className="kicker">INDUSTRY RESEARCH / 2023—2024</p>
             <h1>疫情之後，<br /><span>便利商店受到什麼影響？</span></h1>
             <p>
