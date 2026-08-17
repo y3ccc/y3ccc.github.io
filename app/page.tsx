@@ -55,13 +55,13 @@ export default function PortfolioHome() {
             </div>
             <div className="canvas-chat">
               <div className="canvas-message canvas-user"><small>CONTROLLED TEST · 2026.08.17</small><p>建立一筆展示心得，並安排明天下午的檢查提醒。</p></div>
-              <div className="canvas-message canvas-agent"><small>ASSISTANT · ACTUAL RESULT</small><p>筆記已建立；Calendar 因 OAuth 權限不足，未建立。</p></div>
+              <div className="canvas-message canvas-agent"><small>ASSISTANT · VERIFIED RESULT</small><p>筆記已建立；Calendar 完成最小權限授權後，建立並讀回成功。</p></div>
             </div>
             <div className="canvas-route">
               <div><span>01</span><strong>展示筆記</strong><small>Markdown · 已驗證</small><b>✓</b></div>
-              <div className="canvas-route-blocked"><span>02</span><strong>Calendar</strong><small>OAuth scope 不足</small><b>!</b></div>
+              <div><span>02</span><strong>Calendar</strong><small>建立 · 讀回驗證</small><b>✓</b></div>
             </div>
-            <div className="canvas-proof"><span>真實測試</span><i>→</i><span>成功與失敗</span><i>→</i><strong>都被如實記錄</strong></div>
+            <div className="canvas-proof"><span>發現權限問題</span><i>→</i><span>最小權限修正</span><i>→</i><strong>實際寫入驗證</strong></div>
           </div>
         </section>
 
@@ -87,8 +87,8 @@ export default function PortfolioHome() {
               <div className="case-cover case-cover-assistant" aria-hidden="true">
                 <div className="cover-window">
                   <div className="cover-window-head"><i /><i /><i /><span>AI LIFE ASSISTANT</span></div>
-                  <div className="cover-conversation"><span>記錄心得，並建立明日提醒</span><strong>筆記完成；Calendar 權限不足，未建立</strong></div>
-                  <div className="cover-destinations"><b>NOTE · PASS</b><b>CALENDAR · BLOCKED</b><b>REPORT · HONEST</b></div>
+                  <div className="cover-conversation"><span>記錄心得，並建立明日提醒</span><strong>筆記完成；Calendar 重新授權後寫入成功</strong></div>
+                  <div className="cover-destinations"><b>NOTE · PASS</b><b>CALENDAR · PASS</b><b>RETEST · VERIFIED</b></div>
                 </div>
                 <div className="cover-caption"><span>01</span><p>CONTROLLED REQUEST</p><i>→</i><span>02</span><p>VERIFIED OUTCOMES</p></div>
               </div>

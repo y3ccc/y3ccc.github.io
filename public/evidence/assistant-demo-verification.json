@@ -14,7 +14,17 @@
     {
       "action": "建立 Google Calendar 事件",
       "status": "blocked",
-      "verification": "Google OAuth 回傳 insufficient authentication scopes；AI 明確回報未建立"
+      "verification": "首次測試時 Google OAuth 回傳 insufficient authentication scopes；AI 明確回報未建立"
+    },
+    {
+      "action": "修正 Google Calendar 授權",
+      "status": "success",
+      "verification": "確認既有 token 只有 Gmail 唯讀權限；經使用者核准後，重新授權 Gmail 與 Calendar，未要求 Drive、Docs 或 Sheets"
+    },
+    {
+      "action": "重新建立並讀回 Google Calendar 事件",
+      "status": "success",
+      "verification": "作品集 Calendar 功能驗證｜2026-08-18 15:00–15:15（Asia/Taipei）；建立後以 API 讀回，標題與時間一致"
     }
   ],
   "tools_reported": [

@@ -69,7 +69,7 @@ export default function AiAssistantProject() {
 
         <section className="proof-section section-rule" id="evidence">
           <div className="section-heading">
-            <div><p className="section-label">04 / 真實驗證紀錄</p><h2>不是全綠才叫證據，<br /><em>失敗也必須被說清楚。</em></h2></div>
+            <div><p className="section-label">04 / 真實驗證紀錄</p><h2>不是遇到失敗就停下，<br /><em>而是修到能被驗證。</em></h2></div>
             <p>2026.08.17｜獨立展示資料｜未讀取私人內容</p>
           </div>
 
@@ -82,7 +82,7 @@ export default function AiAssistantProject() {
 
             <div className="proof-results">
               <article className="proof-pass"><span>01 / NOTE</span><strong>Markdown 心得已建立</strong><p>實際檢查檔案，日期、心得與狀態欄位皆存在。</p><b>PASS</b></article>
-              <article className="proof-block"><span>02 / CALENDAR</span><strong>事件未建立</strong><p>Google OAuth 回傳權限範圍不足；AI 明確回報失敗，沒有假裝完成。</p><b>BLOCKED</b></article>
+              <article className="proof-pass"><span>02 / CALENDAR</span><strong>事件建立並讀回成功</strong><p>首次因 OAuth scope 不足而受阻；經使用者核准最小權限後，重新寫入並核對標題與時間。</p><b>PASS</b></article>
             </div>
 
             <div className="proof-artifact">
@@ -95,7 +95,7 @@ export default function AiAssistantProject() {
             </div>
           </div>
 
-          <div className="proof-takeaway"><span>WHAT THIS PROVES</span><p>我不只確認成功輸出，也檢查失敗原因與權限邊界。下一步若要恢復 Calendar，必須先由使用者決定是否擴大 OAuth 權限，而不是由 AI 擅自更改憑證。</p></div>
+          <div className="proof-takeaway"><span>WHAT THIS PROVES</span><p>我不只確認成功輸出，也檢查失敗原因與權限邊界。Calendar 首次失敗後，我先確認 token 只有 Gmail 唯讀權限，再由使用者核准 Gmail＋Calendar 的最小授權，最後建立事件並讀回驗證；AI 沒有擅自擴大憑證權限。</p></div>
         </section>
 
         <section className="cases-section section-rule">
