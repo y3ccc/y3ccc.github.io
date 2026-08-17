@@ -54,14 +54,14 @@ export default function PortfolioHome() {
               <span><i /> PERSONAL AI WORKSPACE</span><span>使用情境示意</span>
             </div>
             <div className="canvas-chat">
-              <div className="canvas-message canvas-user"><small>YOU · 22:14</small><p>記下今天的心得，順便提醒我明早十點處理報告。</p></div>
-              <div className="canvas-message canvas-agent"><small>ASSISTANT</small><p>已分成兩個動作，完成後請回到來源確認。</p></div>
+              <div className="canvas-message canvas-user"><small>CONTROLLED TEST · 2026.08.17</small><p>建立一筆展示心得，並安排明天下午的檢查提醒。</p></div>
+              <div className="canvas-message canvas-agent"><small>ASSISTANT · ACTUAL RESULT</small><p>筆記已建立；Calendar 因 OAuth 權限不足，未建立。</p></div>
             </div>
             <div className="canvas-route">
-              <div><span>01</span><strong>寫入知識庫</strong><small>Obsidian · GitHub Sync</small><b>✓</b></div>
-              <div><span>02</span><strong>建立提醒</strong><small>Google Calendar</small><b>✓</b></div>
+              <div><span>01</span><strong>展示筆記</strong><small>Markdown · 已驗證</small><b>✓</b></div>
+              <div className="canvas-route-blocked"><span>02</span><strong>Calendar</strong><small>OAuth scope 不足</small><b>!</b></div>
             </div>
-            <div className="canvas-proof"><span>需求</span><i>→</i><span>服務</span><i>→</i><span>實際結果</span><i>→</i><strong>人工確認</strong></div>
+            <div className="canvas-proof"><span>真實測試</span><i>→</i><span>成功與失敗</span><i>→</i><strong>都被如實記錄</strong></div>
           </div>
         </section>
 
@@ -87,10 +87,10 @@ export default function PortfolioHome() {
               <div className="case-cover case-cover-assistant" aria-hidden="true">
                 <div className="cover-window">
                   <div className="cover-window-head"><i /><i /><i /><span>AI LIFE ASSISTANT</span></div>
-                  <div className="cover-conversation"><span>建立明天 10:00 的行程</span><strong>已建立，請確認 Calendar ↗</strong></div>
-                  <div className="cover-destinations"><b>CALENDAR</b><b>GMAIL</b><b>OBSIDIAN</b></div>
+                  <div className="cover-conversation"><span>記錄心得，並建立明日提醒</span><strong>筆記完成；Calendar 權限不足，未建立</strong></div>
+                  <div className="cover-destinations"><b>NOTE · PASS</b><b>CALENDAR · BLOCKED</b><b>REPORT · HONEST</b></div>
                 </div>
-                <div className="cover-caption"><span>01</span><p>ONE CHAT ENTRY</p><i>→</i><span>03</span><p>REAL DESTINATIONS</p></div>
+                <div className="cover-caption"><span>01</span><p>CONTROLLED REQUEST</p><i>→</i><span>02</span><p>VERIFIED OUTCOMES</p></div>
               </div>
               <div className="tile-copy">
                 <p>AI 協作生活助理 / 需求規劃 / 服務整合 / 產品取捨</p>

@@ -67,19 +67,50 @@ export default function AiAssistantProject() {
           <div className="system-content"><div><h2>一個入口，<br /><em>多個真正會用到的服務。</em></h2><p className="muted-copy">我以個人 Linux／Docker 伺服器承載服務，讓 agent 不必依賴日常電腦持續開機。功能由實際需求決定，不由工具清單決定。</p></div><div className="system-map" aria-label="系統流程示意"><div className="map-entry"><span>INPUT</span><strong>Discord / LINE</strong><small>自然語言需求</small></div><b className="map-arrow">↓</b><div className="map-agent"><span>ORCHESTRATION</span><strong>AI 協作層</strong><small>拆解意圖 · 呼叫服務</small></div><b className="map-arrow">↓</b><div className="map-services">{integrations.map((item, index) => <span key={item}><i>{String(index + 1).padStart(2, "0")}</i>{item}</span>)}</div><div className="map-loop"><b>↺</b><span>回到原始服務確認結果</span></div></div></div>
         </section>
 
+        <section className="proof-section section-rule" id="evidence">
+          <div className="section-heading">
+            <div><p className="section-label">04 / 真實驗證紀錄</p><h2>不是全綠才叫證據，<br /><em>失敗也必須被說清楚。</em></h2></div>
+            <p>2026.08.17｜獨立展示資料｜未讀取私人內容</p>
+          </div>
+
+          <div className="proof-stage">
+            <div className="proof-request">
+              <div className="proof-meta"><span>CONTROLLED TEST</span><span>PORTFOLIO-ASSISTANT-DEMO</span></div>
+              <p>「建立一筆作品集測試心得，並安排明天下午的作品集檢查提醒。」</p>
+              <div className="proof-guard"><span>PRIVACY GUARD</span><strong>只允許使用獨立 lab 展示資料</strong></div>
+            </div>
+
+            <div className="proof-results">
+              <article className="proof-pass"><span>01 / NOTE</span><strong>Markdown 心得已建立</strong><p>實際檢查檔案，日期、心得與狀態欄位皆存在。</p><b>PASS</b></article>
+              <article className="proof-block"><span>02 / CALENDAR</span><strong>事件未建立</strong><p>Google OAuth 回傳權限範圍不足；AI 明確回報失敗，沒有假裝完成。</p><b>BLOCKED</b></article>
+            </div>
+
+            <div className="proof-artifact">
+              <div className="artifact-head"><span>ACTUAL ARTIFACT / 作品集測試.md</span><b>VERIFIED ✓</b></div>
+              <div className="artifact-body"><span># 作品集展示測試</span><p>日期：2026-08-17</p><p>心得：今天完成 AI 產品作品集的證據規劃。</p><p>狀態：待明日檢查</p></div>
+              <div className="artifact-links">
+                <a href="/evidence/assistant-demo-note.md" target="_blank" rel="noreferrer">查看公開測試筆記 ↗</a>
+                <a href="/evidence/assistant-demo-verification.json" target="_blank" rel="noreferrer">查看結構化驗證紀錄 ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="proof-takeaway"><span>WHAT THIS PROVES</span><p>我不只確認成功輸出，也檢查失敗原因與權限邊界。下一步若要恢復 Calendar，必須先由使用者決定是否擴大 OAuth 權限，而不是由 AI 擅自更改憑證。</p></div>
+        </section>
+
         <section className="cases-section section-rule">
-          <div className="section-heading"><div className="section-label">04 / 真實使用案例</div><p>每一個流程都有輸入、輸出與確認方式。</p></div>
+          <div className="section-heading"><div className="section-label">05 / 真實使用案例</div><p>每一個流程都有輸入、輸出與確認方式。</p></div>
           <div className="scenario-list">{cases.map(item => <article className="scenario-row" key={item.number}><div className="scenario-title"><span>{item.number}</span><h3>{item.title}</h3></div><div className="scenario-path"><div><span>INPUT</span><p>{item.input}</p></div><b>→</b><div><span>OUTPUT</span><p>{item.output}</p></div><b>→</b><div className="scenario-verify"><span>VERIFIED</span><p>{item.check}</p></div></div></article>)}</div>
         </section>
 
         <section className="role-section section-rule">
-          <div className="section-label">05 / 我的角色</div>
+          <div className="section-label">06 / 我的角色</div>
           <div className="role-layout"><div className="role-statement"><p className="small-cap">AI 協作，不等於把決定交出去。</p><h2>我負責把問題<br /><em>變成可驗收的流程。</em></h2><p>程式與設定由 AI 協助產生；我負責定義問題、拆解需求、評估工具、核准修改，並用真實情境確認結果。</p></div><div className="role-list"><div><span>01</span><strong>定義需求</strong><p>找出流程卡點與真正要解決的問題。</p></div><div><span>02</span><strong>整合服務</strong><p>決定入口、資料目的地與服務責任。</p></div><div><span>03</span><strong>測試驗收</strong><p>檢查內容、日期、檔案與同步。</p></div><div><span>04</span><strong>取捨調整</strong><p>停用增加維護負擔的方案。</p></div></div></div>
         </section>
 
         <section className="principles-section section-rule">
           <div className="section-heading">
-            <div><p className="section-label">06 / 產品取捨</p><h2>功能不是越多越好，<br /><em>留下來才算有價值。</em></h2></div>
+            <div><p className="section-label">07 / 產品取捨</p><h2>功能不是越多越好，<br /><em>留下來才算有價值。</em></h2></div>
             <p>以實際使用頻率、維護成本與資料風險作為判斷。</p>
           </div>
           <div className="decision-grid">

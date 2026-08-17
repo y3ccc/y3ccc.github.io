@@ -1,0 +1,26 @@
+{
+  "test_id": "portfolio-assistant-demo-20260817",
+  "purpose": "作品集專用測試，不讀取既有私人資料",
+  "request": [
+    "在獨立展示 vault 建立一筆 Markdown 心得",
+    "在 Google Calendar 建立隔日檢查提醒"
+  ],
+  "results": [
+    {
+      "action": "建立 Markdown 心得",
+      "status": "success",
+      "verification": "檔案存在，日期、心得與狀態欄位完整"
+    },
+    {
+      "action": "建立 Google Calendar 事件",
+      "status": "blocked",
+      "verification": "Google OAuth 回傳 insufficient authentication scopes；AI 明確回報未建立"
+    }
+  ],
+  "tools_reported": [
+    "file write",
+    "terminal",
+    "Google Workspace compatibility wrapper"
+  ],
+  "privacy": "使用獨立 lab 展示資料；未讀取私人日記、郵件或既有行程"
+}

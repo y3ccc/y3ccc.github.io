@@ -15,13 +15,13 @@ export const metadata: Metadata = {
       url: "/",
       type: "website",
       locale: "zh_TW",
-      images: [{ url: "/og-v2.png", width: 1536, height: 1024, alt: "馬彥宸 AI 產品應用作品集" }],
+      images: [{ url: "/og-v3.png", width: 1536, height: 1024, alt: "馬彥宸 AI 產品應用作品集：真實測試、筆記成功、日曆受阻" }],
     },
     twitter: {
       card: "summary_large_image",
       title: "馬彥宸｜AI 產品應用作品集",
       description: "把真實需求轉成可驗證的 AI 應用。",
-      images: ["/og-v2.png"],
+      images: ["/og-v3.png"],
     },
 };
 

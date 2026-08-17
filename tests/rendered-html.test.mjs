@@ -30,8 +30,13 @@ test("exports the Hermes public-evidence case", async () => {
 test("exports the AI assistant case", async () => {
   const output = await html("projects/ai-assistant");
   assert.match(output, /把零散的日常/);
+  assert.match(output, /真實驗證紀錄/);
+  assert.match(output, /OAuth 回傳權限範圍不足/);
+  assert.match(output, /AI 明確回報失敗/);
   assert.match(output, /真實使用案例/);
   assert.match(output, /Letta、n8n/);
+  await access(new URL("../public/evidence/assistant-demo-note.md", import.meta.url));
+  await access(new URL("../public/evidence/assistant-demo-verification.json", import.meta.url));
 });
 
 test("keeps the two analysis cases and downloadable reports", async () => {
@@ -55,5 +60,7 @@ test("does not retain starter preview assets", async () => {
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview|codex-preview/);
   assert.doesNotMatch(layout, /Starter Project|codex-preview|_sites-preview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+  assert.match(layout, /og-v3\.png/);
+  await access(new URL("../public/og-v3.png", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview", projectRoot)));
 });
