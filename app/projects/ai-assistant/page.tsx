@@ -17,7 +17,7 @@ const cases = [
 export default function AiAssistantProject() {
   return (
     <div className="site-shell ai-project">
-      <SiteHeader project="PROJECT 03" />
+      <SiteHeader project="PROJECT 01" />
       <main>
         <section className="hero" id="top">
           <div className="hero-copy">
@@ -45,24 +45,41 @@ export default function AiAssistantProject() {
           <div className="intro-content"><h2>我不是缺少工具，<br /><em>是工具太分散。</em></h2><div className="intro-text"><p>行事曆、郵件、日記、消費紀錄與知識庫各自有自己的 App。當 AI agent 需要長時間運作，又遇到電腦休眠、服務衝突與過重工具，問題就從「想自動化」變成「要維護更多東西」。</p><p className="pull-quote">所以我把問題改寫成：<strong>什麼值得整合，什麼應該拿掉？</strong></p></div></div>
         </section>
 
+        <section className="experience-section section-rule">
+          <div className="section-label">02 / 使用體驗前後</div>
+          <div className="experience-compare">
+            <article className="experience-before">
+              <div className="experience-label"><span>BEFORE</span><strong>入口分散</strong></div>
+              <div className="scattered-apps" aria-label="原本需要切換多個應用程式的流程示意"><span>Calendar</span><span>Gmail</span><span>日記</span><span>記帳</span><span>知識庫</span><span>提醒</span></div>
+              <p>每一件小事都要先想起該開哪個 App。</p>
+            </article>
+            <div className="compare-pivot"><span>產品判斷</span><b>→</b><small>整合入口，<br />不取代最終確認</small></div>
+            <article className="experience-after">
+              <div className="experience-label"><span>AFTER</span><strong>一個對話入口</strong></div>
+              <div className="assistant-screen" aria-label="對話操作示意"><small>Discord / LINE</small><p>「記下這筆消費，明天提醒我確認。」</p><div><i /> 已分流到正確服務</div></div>
+              <p>操作變簡單，但結果仍回到原始服務驗證。</p>
+            </article>
+          </div>
+        </section>
+
         <section className="system-section section-rule">
-          <div className="section-label">02 / 系統骨架</div>
-          <div className="system-content"><div><h2>一個入口，<br /><em>多個真正會用到的服務。</em></h2><p className="muted-copy">我以個人 Linux／Docker 伺服器承載服務，讓 agent 不必依賴日常電腦持續開機。功能由實際需求決定，不由工具清單決定。</p></div><div className="integration-list">{integrations.map((item, index) => <div className="integration-item" key={item}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong><b>↗</b></div>)}</div></div>
+          <div className="section-label">03 / 系統骨架</div>
+          <div className="system-content"><div><h2>一個入口，<br /><em>多個真正會用到的服務。</em></h2><p className="muted-copy">我以個人 Linux／Docker 伺服器承載服務，讓 agent 不必依賴日常電腦持續開機。功能由實際需求決定，不由工具清單決定。</p></div><div className="system-map" aria-label="系統流程示意"><div className="map-entry"><span>INPUT</span><strong>Discord / LINE</strong><small>自然語言需求</small></div><b className="map-arrow">↓</b><div className="map-agent"><span>ORCHESTRATION</span><strong>AI 協作層</strong><small>拆解意圖 · 呼叫服務</small></div><b className="map-arrow">↓</b><div className="map-services">{integrations.map((item, index) => <span key={item}><i>{String(index + 1).padStart(2, "0")}</i>{item}</span>)}</div><div className="map-loop"><b>↺</b><span>回到原始服務確認結果</span></div></div></div>
         </section>
 
         <section className="cases-section section-rule">
-          <div className="section-heading"><div className="section-label">03 / 真實使用案例</div><p>每一個流程都有輸入、輸出與確認方式。</p></div>
-          <div className="case-grid">{cases.map(item => <article className="case-card" key={item.number}><div className="case-number">{item.number}</div><h3>{item.title}</h3><div className="case-detail"><span>輸入</span><p>{item.input}</p></div><div className="case-detail"><span>輸出</span><p>{item.output}</p></div><div className="case-check"><span>✓ 驗證</span><p>{item.check}</p></div></article>)}</div>
+          <div className="section-heading"><div className="section-label">04 / 真實使用案例</div><p>每一個流程都有輸入、輸出與確認方式。</p></div>
+          <div className="scenario-list">{cases.map(item => <article className="scenario-row" key={item.number}><div className="scenario-title"><span>{item.number}</span><h3>{item.title}</h3></div><div className="scenario-path"><div><span>INPUT</span><p>{item.input}</p></div><b>→</b><div><span>OUTPUT</span><p>{item.output}</p></div><b>→</b><div className="scenario-verify"><span>VERIFIED</span><p>{item.check}</p></div></div></article>)}</div>
         </section>
 
         <section className="role-section section-rule">
-          <div className="section-label">04 / 我的角色</div>
+          <div className="section-label">05 / 我的角色</div>
           <div className="role-layout"><div className="role-statement"><p className="small-cap">AI 協作，不等於把決定交出去。</p><h2>我負責把問題<br /><em>變成可驗收的流程。</em></h2><p>程式與設定由 AI 協助產生；我負責定義問題、拆解需求、評估工具、核准修改，並用真實情境確認結果。</p></div><div className="role-list"><div><span>01</span><strong>定義需求</strong><p>找出流程卡點與真正要解決的問題。</p></div><div><span>02</span><strong>整合服務</strong><p>決定入口、資料目的地與服務責任。</p></div><div><span>03</span><strong>測試驗收</strong><p>檢查內容、日期、檔案與同步。</p></div><div><span>04</span><strong>取捨調整</strong><p>停用增加維護負擔的方案。</p></div></div></div>
         </section>
 
         <section className="principles-section section-rule">
           <div className="section-heading">
-            <div><p className="section-label">05 / 產品取捨</p><h2>功能不是越多越好，<br /><em>留下來才算有價值。</em></h2></div>
+            <div><p className="section-label">06 / 產品取捨</p><h2>功能不是越多越好，<br /><em>留下來才算有價值。</em></h2></div>
             <p>以實際使用頻率、維護成本與資料風險作為判斷。</p>
           </div>
           <div className="decision-grid">

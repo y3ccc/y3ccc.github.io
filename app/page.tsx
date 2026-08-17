@@ -49,29 +49,27 @@ export default function PortfolioHome() {
             </div>
           </div>
 
-          <div className="portfolio-index" aria-label="作品索引">
-            <div className="index-head"><span>SELECTED WORK</span><span>2023—2026</span></div>
-            <a href="/projects/ai-assistant/">
-              <span>01</span>
-              <div><strong>AI 協作生活助理</strong><small>需求盤點・工具取捨・持續驗證</small></div>
-              <b>↗</b>
-            </a>
-            <a href="/projects/hermes-line-media/">
-              <span>02</span>
-              <div><strong>Hermes LINE 媒體改善</strong><small>問題重現・回歸測試・公開回饋</small></div>
-              <b>↗</b>
-            </a>
-            <a href="/projects/convenience-store/">
-              <span>03</span>
-              <div><strong>便利商店產業分析</strong><small>公開資料・企業比較・團隊整合</small></div>
-              <b>↗</b>
-            </a>
-            <a href="/projects/bankruptcy-risk/">
-              <span>04</span>
-              <div><strong>企業破產風險預測</strong><small>風險判讀・模型指標・研究限制</small></div>
-              <b>↗</b>
-            </a>
+          <div className="hero-product-canvas" aria-label="AI 生活助理使用情境示意">
+            <div className="canvas-toolbar">
+              <span><i /> PERSONAL AI WORKSPACE</span><span>使用情境示意</span>
+            </div>
+            <div className="canvas-chat">
+              <div className="canvas-message canvas-user"><small>YOU · 22:14</small><p>記下今天的心得，順便提醒我明早十點處理報告。</p></div>
+              <div className="canvas-message canvas-agent"><small>ASSISTANT</small><p>已分成兩個動作，完成後請回到來源確認。</p></div>
+            </div>
+            <div className="canvas-route">
+              <div><span>01</span><strong>寫入知識庫</strong><small>Obsidian · GitHub Sync</small><b>✓</b></div>
+              <div><span>02</span><strong>建立提醒</strong><small>Google Calendar</small><b>✓</b></div>
+            </div>
+            <div className="canvas-proof"><span>需求</span><i>→</i><span>服務</span><i>→</i><span>實際結果</span><i>→</i><strong>人工確認</strong></div>
           </div>
+        </section>
+
+        <section className="quick-scan" aria-label="作品集三十秒摘要">
+          <div><span>MY ROLE</span><strong>需求定義與驗收</strong><p>AI 協助技術實作，我負責情境、取捨與結果確認。</p></div>
+          <div><span>WORKING METHOD</span><strong>從真實使用找問題</strong><p>先重現，再縮小範圍，最後用原始操作做回歸測試。</p></div>
+          <div><span>PUBLIC PROOF</span><strong>Issue + Pull Request</strong><p>Hermes 改善案例附公開問題與修改紀錄。</p></div>
+          <div><span>RESEARCH BASE</span><strong>財金 × 資料判讀</strong><p>以公開資料、模型指標與限制說明支撐分析。</p></div>
         </section>
 
         <section className="selected-projects section-rule" id="projects">
@@ -86,12 +84,16 @@ export default function PortfolioHome() {
           <div className="project-showcase">
             <a className="project-tile project-tile-ai project-tile-featured" href="/projects/ai-assistant/">
               <div className="tile-top"><span>PROJECT 01 / AI PRODUCT</span><span>2026—持續運作</span></div>
-              <div className="assistant-mini-flow assistant-feature-flow" aria-hidden="true">
-                <div>Discord / LINE</div><span>↓</span><div className="flow-accent">AI 協作層</div><span>↓</span>
-                <div className="mini-services"><i>Calendar</i><i>Gmail</i><i>Obsidian</i></div>
+              <div className="case-cover case-cover-assistant" aria-hidden="true">
+                <div className="cover-window">
+                  <div className="cover-window-head"><i /><i /><i /><span>AI LIFE ASSISTANT</span></div>
+                  <div className="cover-conversation"><span>建立明天 10:00 的行程</span><strong>已建立，請確認 Calendar ↗</strong></div>
+                  <div className="cover-destinations"><b>CALENDAR</b><b>GMAIL</b><b>OBSIDIAN</b></div>
+                </div>
+                <div className="cover-caption"><span>01</span><p>ONE CHAT ENTRY</p><i>→</i><span>03</span><p>REAL DESTINATIONS</p></div>
               </div>
               <div className="tile-copy">
-                <p>需求規劃 / 服務整合 / 產品取捨</p>
+                <p>AI 協作生活助理 / 需求規劃 / 服務整合 / 產品取捨</p>
                 <h3>把零散App收回一個聊天室，也把沒價值的工具拿掉。</h3>
                 <span>查看完整產品案例 ↗</span>
               </div>
@@ -99,13 +101,13 @@ export default function PortfolioHome() {
 
             <a className="project-tile project-tile-hermes" href="/projects/hermes-line-media/">
               <div className="tile-top"><span>PROJECT 02 / PRODUCT IMPROVEMENT</span><span>PUBLIC EVIDENCE</span></div>
-              <div className="hermes-mini-visual" aria-hidden="true">
-                <div className="message-ok"><span>IMAGE</span><strong>✓ 可處理</strong></div>
-                <div className="message-bug"><span>VOICE / FILE</span><strong>× 被略過</strong></div>
-                <div className="message-fixed"><span>FIX + TEST</span><strong>→ 正確分流</strong></div>
+              <div className="case-cover case-cover-hermes" aria-hidden="true">
+                <div className="media-pipeline"><div><span>IMAGE</span><b className="dot-pass" /> <strong>PASS</strong></div><div><span>VOICE</span><b className="dot-fail" /> <strong>DROP</strong></div><div><span>FILE</span><b className="dot-fail" /> <strong>DROP</strong></div></div>
+                <div className="pipeline-arrow">↓ <small>重現 · 定位 · 修正 · 回歸測試</small></div>
+                <div className="pipeline-result"><span>VOICE</span><strong>STT FLOW</strong><b>✓</b></div>
               </div>
               <div className="tile-copy">
-                <p>問題重現 / 修正驗證 / Issue &amp; PR</p>
+                <p>Hermes LINE 媒體改善 / 問題重現 / 修正驗證 / Issue &amp; PR</p>
                 <h3>從「語音不見了」走到可查核的產品回饋。</h3>
                 <span>查看公開證據 ↗</span>
               </div>

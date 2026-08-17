@@ -37,12 +37,12 @@ export default function HermesLineMediaProject() {
             </div>
           </div>
 
-          <div className="bug-board" aria-label="問題前後流程示意">
-            <div className="board-head"><span>LINE MEDIA ROUTING</span><span>REPRODUCED</span></div>
-            <div className="bug-flow-row"><span>IMAGE</span><strong>圖片快取</strong><b className="status-pass">PASS</b></div>
-            <div className="bug-flow-row"><span>VOICE</span><strong>錯誤分流／被略過</strong><b className="status-fail">DROP</b></div>
-            <div className="bug-flow-row"><span>VIDEO / FILE</span><strong>錯誤分流／被略過</strong><b className="status-fail">DROP</b></div>
-            <div className="bug-fix-note"><small>PROPOSED FIX</small><p>依媒體類型分流到正確的處理路徑，再用語音與圖片做回歸驗證。</p></div>
+          <div className="bug-board bug-board-visual" aria-label="問題前後流程示意">
+            <div className="board-head"><span>LINE MEDIA ROUTING</span><span>去識別化流程示意</span></div>
+            <div className="routing-stage"><span className="routing-source">LINE EVENT</span><b>↓</b><div className="routing-split"><span>IMAGE <i className="status-pass">PASS</i></span><span>VOICE <i className="status-fail">DROP</i></span><span>FILE <i className="status-fail">DROP</i></span></div></div>
+            <div className="routing-divider"><span>問題定位後</span></div>
+            <div className="routing-fixed"><span>MEDIA TYPE</span><b>→</b><strong>正確快取路徑</strong><b>→</b><span>STT / FILE FLOW</span><i>✓</i></div>
+            <div className="bug-fix-note"><small>SUCCESS CONDITION</small><p>語音可進入 STT；原本可用的圖片流程仍正常。</p></div>
           </div>
         </section>
 
