@@ -60,9 +60,21 @@ export default function AiAssistantProject() {
           <div className="role-layout"><div className="role-statement"><p className="small-cap">AI 協作，不等於把決定交出去。</p><h2>我負責把問題<br /><em>變成可驗收的流程。</em></h2><p>程式與設定由 AI 協助產生；我負責定義問題、拆解需求、評估工具、核准修改，並用真實情境確認結果。</p></div><div className="role-list"><div><span>01</span><strong>定義需求</strong><p>找出流程卡點與真正要解決的問題。</p></div><div><span>02</span><strong>整合服務</strong><p>決定入口、資料目的地與服務責任。</p></div><div><span>03</span><strong>測試驗收</strong><p>檢查內容、日期、檔案與同步。</p></div><div><span>04</span><strong>取捨調整</strong><p>停用增加維護負擔的方案。</p></div></div></div>
         </section>
 
+        <section className="principles-section section-rule">
+          <div className="section-heading">
+            <div><p className="section-label">05 / 產品取捨</p><h2>功能不是越多越好，<br /><em>留下來才算有價值。</em></h2></div>
+            <p>以實際使用頻率、維護成本與資料風險作為判斷。</p>
+          </div>
+          <div className="decision-grid">
+            <article><span>保留</span><h3>對話入口與知識庫同步</h3><p>Discord／LINE、Calendar、Gmail與Obsidian持續被使用，能直接減少切換App的步驟。</p></article>
+            <article><span>調整</span><h3>媒體訊息處理</h3><p>發現LINE語音與檔案無法正確進入流程後，重現問題、驗證修正並回饋上游專案。</p></article>
+            <article><span>停用</span><h3>過重的工具組合</h3><p>Letta、n8n等工具並非不好，而是當時需求不足以抵銷學習與維護成本，因此不繼續堆疊。</p></article>
+          </div>
+        </section>
+
         <section className="closing-section">
           <p className="kicker">PROJECT TAKEAWAY</p><h2>好的 AI 應用，<br /><em>應該讓人少操心一點。</em></h2><p>這個專案讓我確認，自己想做的不只是工具整合，而是從問題出發，判斷什麼值得導入、如何驗收，以及什麼時候該停下來重新想。</p>
-          <a className="button button-light" href="/projects/convenience-store">查看產業分析專案 <span>↗</span></a>
+          <a className="button button-light" href="/projects/hermes-line-media/">查看 Hermes 產品改善案例 <span>↗</span></a>
         </section>
       </main>
       <SiteFooter />

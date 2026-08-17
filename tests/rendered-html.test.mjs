@@ -4,64 +4,45 @@ import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
 
-async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
+async function html(path = "") {
+  const suffix = path ? `${path.replace(/^\//, "")}/index.html` : "index.html";
+  return readFile(new URL(`../out/${suffix}`, import.meta.url), "utf8");
 }
 
-test("server-renders the portfolio home", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
-  assert.match(html, /<title>馬彥宸｜財務風險 × 產業研究作品集<\/title>/i);
-  assert.match(html, /把複雜資料轉成/);
-  assert.match(html, /企業破產風險預測/);
-  assert.match(html, /便利商店產業與財務分析/);
-  assert.match(html, /AI 協作生活助理/);
-  assert.match(html, /og:image/i);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|SkeletonPreview/);
+test("exports the AI product portfolio home", async () => {
+  const output = await html();
+  assert.match(output, /<title>馬彥宸｜AI 產品應用作品集<\/title>/i);
+  assert.match(output, /把真實需求轉成/);
+  assert.match(output, /AI 協作生活助理/);
+  assert.match(output, /Hermes LINE 媒體改善/);
+  assert.match(output, /ma-yen-chen-ai-product-portfolio\.pdf/);
+  assert.doesNotMatch(output, /codex-preview|Your site is taking shape|SkeletonPreview/);
 });
 
-test("server-renders the bankruptcy-risk project", async () => {
-  const response = await render("/projects/bankruptcy-risk");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /高 Accuracy/);
-  assert.match(html, /測試集只在最後/);
-  assert.match(html, /查看 7 頁技術報告 PDF/);
-  assert.match(html, /ma-yen-chen-bankruptcy-risk-report\.pdf/);
+test("exports the Hermes public-evidence case", async () => {
+  const output = await html("projects/hermes-line-media");
+  assert.match(output, /Issue #57882/);
+  assert.match(output, /PR #57884/);
+  assert.match(output, /語音可進入STT/);
+  assert.match(output, /不把AI產生的程式碼包裝成獨立工程開發/);
+});
+
+test("exports the AI assistant case", async () => {
+  const output = await html("projects/ai-assistant");
+  assert.match(output, /把零散的日常/);
+  assert.match(output, /真實使用案例/);
+  assert.match(output, /Letta、n8n/);
+});
+
+test("keeps the two analysis cases and downloadable reports", async () => {
+  const [risk, store] = await Promise.all([
+    html("projects/bankruptcy-risk"),
+    html("projects/convenience-store"),
+  ]);
+  assert.match(risk, /高 Accuracy/);
+  assert.match(store, /不能直接證明疫情因果/);
   await access(new URL("../public/reports/ma-yen-chen-bankruptcy-risk-report.pdf", import.meta.url));
-});
-
-test("server-renders the convenience-store project", async () => {
-  const response = await render("/projects/convenience-store");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /疫情之後/);
-  assert.match(html, /我負責讓五個人的內容/);
-  assert.match(html, /不能直接證明疫情因果/);
-});
-
-test("server-renders the AI assistant project", async () => {
-  const response = await render("/projects/ai-assistant");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /把零散的日常/);
-  assert.match(html, /真實使用案例/);
-  assert.match(html, /AI 協作，不等於把決定交出去/);
+  await access(new URL("../public/reports/ma-yen-chen-ai-product-portfolio.pdf", import.meta.url));
 });
 
 test("does not retain starter preview assets", async () => {
