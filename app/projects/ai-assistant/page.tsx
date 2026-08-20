@@ -76,6 +76,7 @@ export default function AiAssistantProject() {
           </div>
 
           <figure className="flow">
+            <div className="flow-scroll">
             <svg viewBox="0 0 720 250" role="img" aria-label="從六個分散入口，收斂成一個對話入口，但結果仍回原始服務確認">
               <title>入口收斂前後對照</title>
 
@@ -108,6 +109,7 @@ export default function AiAssistantProject() {
                 結果回到原始服務確認
               </text>
             </svg>
+            </div>
             <figcaption>
               操作變簡單了，但<strong>驗證沒有被簡化掉</strong>——寫進去對不對，還是回 Calendar 和筆記本身去看。
               整合入口不等於接管判斷，這是刻意留的界線。

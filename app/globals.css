@@ -293,14 +293,19 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .chart figcaption {
   font-size: 14px; color: var(--ink-3); margin-top: 12px; max-width: var(--measure);
 }
-.chart svg { display: block; width: 100%; height: auto; }
+.chart-scroll, .flow-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.chart svg, .flow svg {
+  display: block; width: 100%; height: auto;
+  /* 小螢幕不縮小圖、改為橫向捲動——縮到 330px 時字會掉到 6px */
+  min-width: 640px;
+}
 .legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 0; }
 .legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--ink-2); }
 .legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
 
 /* ---------- 流程圖 ---------- */
 .flow { margin: 24px 0 0; }
-.flow svg { display: block; width: 100%; height: auto; }
+
 
 /* SVG 內文字：一律用文字色，不用資料色 */
 .ax { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; fill: var(--ink-3); }

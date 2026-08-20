@@ -107,6 +107,7 @@ export default function ConvenienceStoreProject() {
           </p>
 
           <figure className="chart">
+            <div className="chart-scroll">
             <svg viewBox="0 0 720 200" role="img" aria-label="超商市占率組成，2021 與 2022 兩年比較">
               <title>超商市占率組成：2021 與 2022</title>
               {SHARE.map((row, r) => {
@@ -138,6 +139,7 @@ export default function ConvenienceStoreProject() {
                 );
               })}
             </svg>
+            </div>
             <div className="legend">
               {LEGEND.map((l) => (
                 <span key={l.k}>
