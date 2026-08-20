@@ -221,7 +221,7 @@ export default function ConvenienceStoreProject() {
                   ["2020", "283", "9.85", "28.7"],
                   ["2021", "274", "8.52", "32.1"],
                   ["2022", "270", "8.93", "30.2"]].map(([y, p, e, pe]) => (
-                    <tr key={y} className={y === "2022" ? "mark" : undefined}>
+                    <tr key={y}>
                       <td>{y}</td><td>{p}</td><td>{e}</td><td>{pe}</td>
                     </tr>
                   ))}

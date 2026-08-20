@@ -343,7 +343,6 @@ p { margin: 0 0 16px; max-width: var(--measure); }
   text-align: right; font-variant-numeric: tabular-nums;
 }
 .dtable tr:last-child td { border-bottom: none; }
-.dtable tr.mark td { background: var(--verified-bg); font-weight: 700; }
 
 /* ---------- 驗收紀錄 ---------- */
 .vlog { border: 1px solid var(--rule); border-radius: 5px; background: var(--panel); overflow: hidden; margin: 22px 0 0; }
