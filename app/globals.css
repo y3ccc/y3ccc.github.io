@@ -90,7 +90,7 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 
 /* 唯一允許的小標:必須帶資訊,不得是裝飾英文 */
 .rowlabel {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 12px; letter-spacing: .04em; color: var(--ink-3);
 }
 
@@ -143,7 +143,7 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 
 /* ---------- 證據標記 ---------- */
 .tag {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 11.5px; padding: 2px 9px; border-radius: 99px;
   border: 1px solid currentColor; white-space: nowrap;
 }
@@ -221,13 +221,13 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .card-body { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule-soft); font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
 .card-body p { margin: 0 0 8px; max-width: none; }
 .card-body p:last-child { margin: 0; }
-.state { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; padding: 1px 7px; border-radius: 99px; border: 1px solid currentColor; }
+.state { font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace; font-size: 10.5px; padding: 1px 7px; border-radius: 99px; border: 1px solid currentColor; }
 .state-on { color: var(--verified); background: var(--verified-bg); }
 .state-off { color: var(--dead); }
 .redacted {
   display: block; margin-top: 8px; padding: 6px 10px;
   background: var(--sunk); border-left: 2px solid var(--rule);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 11.5px; color: var(--ink-3); border-radius: 0 3px 3px 0;
 }
 .demo-foot { padding: 18px 24px; background: var(--sunk); border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-3); }
@@ -245,7 +245,7 @@ p { margin: 0 0 16px; max-width: var(--measure); }
   padding: 12px 20px; background: var(--sunk); border-bottom: 1px solid var(--rule-soft);
 }
 .summary-head strong {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 12px; letter-spacing: .1em; color: var(--verified);
 }
 .summary-head .tag { margin-left: auto; }
@@ -256,7 +256,7 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 }
 .summary-row:last-child { border-bottom: none; }
 .summary-row dt {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 12px; color: var(--ink-3); padding-top: 2px;
 }
 .summary-row dd { margin: 0; font-size: 15px; line-height: 1.7; }
@@ -266,7 +266,7 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 
 /* ---------- 首頁核心／其他分層 ---------- */
 .tier-label {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 12px; letter-spacing: .08em; color: var(--ink-3);
   margin: 34px 0 12px; display: block;
 }
@@ -308,8 +308,8 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 
 
 /* SVG 內文字：一律用文字色，不用資料色 */
-.ax { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; fill: var(--ink-3); }
-.val { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; fill: var(--ink); font-weight: 500; }
+.ax { font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace; font-size: 13px; fill: var(--ink-3); }
+.val { font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace; font-size: 12.5px; fill: var(--ink); font-weight: 500; }
 .note { font-size: 12.5px; fill: var(--ink-3); }
 .flow-box { fill: var(--panel); stroke: var(--rule); stroke-width: 1; }
 .flow-box-on { fill: var(--verified-bg); stroke: var(--verified); stroke-width: 1.5; }
@@ -318,3 +318,12 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .flow-arrow { stroke: var(--ink-3); stroke-width: 1.2; fill: none; }
 
 .grid { stroke: var(--rule-soft); stroke-width: 1; }
+
+/* 證據連結：帶完整 Issue／PR 標題，必須能換行，不能用 .tag 的 nowrap */
+.evlink {
+  display: inline-block; color: var(--verified);
+  text-decoration: underline; text-underline-offset: 3px;
+  font-size: 14.5px; line-height: 1.7; max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.evlink:hover { opacity: .8; }

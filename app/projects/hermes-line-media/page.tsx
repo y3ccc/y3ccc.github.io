@@ -158,8 +158,8 @@ export default function HermesLineMediaProject() {
         <section className="band">
           <div className="band-head"><h2>修正沒有被合併，問題仍然是有效的。</h2></div>
           <p>Issue與PR皆已關閉。PR不是因為問題不存在而被否定，而是維護者已透過範圍更廣的既有修正處理同一類問題。因此這個案例的成果不是「我的程式被採用」，而是問題被清楚描述、公開查核，並完成實際修正驗證。</p>
-          <p><a className="tag tag-3rd" href={issueUrl} target="_blank" rel="noreferrer">LINE adapter drops inbound voice/video/file messages ↗</a></p>
-          <p><a className="tag tag-3rd" href={pullRequestUrl} target="_blank" rel="noreferrer">Route audio/video/file payloads to the proper cache path ↗</a></p>
+          <p><a className="evlink" href={issueUrl} target="_blank" rel="noreferrer">Issue #57882　LINE adapter drops inbound voice/video/file messages ↗</a></p>
+          <p><a className="evlink" href={pullRequestUrl} target="_blank" rel="noreferrer">PR #57884　Route audio/video/file payloads to the proper cache path ↗</a></p>
           <p><strong>語音可進入STT；圖片功能未受影響</strong></p>
         </section>
 
