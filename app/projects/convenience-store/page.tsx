@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "疫情背景下，以全家與統一超商為對象的產業、策略與財務比較課程專題。",
   openGraph: {
     title: "馬彥宸｜便利商店產業及財務分析",
-    description: "5 人專題組長，26 頁簡報原檔可下載。競爭已從店數延伸到會員生態圈與 OMO 整合。",
+    description: "5 人專題組長，簡報公開版 25 頁可下載（原始 26 頁，封面含組員姓名已移除）。競爭已從店數延伸到會員生態圈與 OMO 整合。",
     url: "/projects/convenience-store/",
     type: "article",
     images: [{ url: "/og/convenience-store.png", width: 1200, height: 630, alt: "馬彥宸｜便利商店產業及財務分析" }],

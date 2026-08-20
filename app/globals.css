@@ -344,3 +344,39 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 }
 .dtable tr:last-child td { border-bottom: none; }
 .dtable tr.mark td { background: var(--verified-bg); font-weight: 700; }
+
+/* ---------- 驗收紀錄 ---------- */
+.vlog { border: 1px solid var(--rule); border-radius: 5px; background: var(--panel); overflow: hidden; margin: 22px 0 0; }
+.vlog-head {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 12px 20px; background: var(--sunk); border-bottom: 1px solid var(--rule);
+}
+.vlog-head strong { font-size: 14px; }
+.vlog-head .rowlabel { margin-left: auto; }
+.vlog-in { padding: 16px 20px; border-bottom: 1px solid var(--rule-soft); }
+.vlog-in q { font-size: 16px; font-style: normal; color: var(--ink); }
+.vlog-step {
+  display: grid; grid-template-columns: 26px 128px 1fr; gap: 12px;
+  padding: 14px 20px; border-bottom: 1px solid var(--rule-soft); align-items: start;
+}
+.vlog-step .ok { color: var(--verified); font-weight: 700; }
+.vlog-step dt { font-weight: 700; font-size: 15px; }
+.vlog-step dd { margin: 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.7; }
+.vlog-art { padding: 16px 20px; background: var(--sunk); }
+.vlog-art pre {
+  margin: 10px 0 0; padding: 14px 16px; background: var(--panel);
+  border: 1px solid var(--rule); border-radius: 4px;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", monospace;
+  font-size: 13px; line-height: 1.8; white-space: pre-wrap; overflow-x: auto;
+}
+
+/* ---------- 兩欄／三欄對照 ---------- */
+.cols { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+        border-radius: 5px; overflow: hidden; margin: 22px 0 0;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.col { background: var(--panel); padding: 18px 20px; }
+.col > strong { display: block; font-size: 15px; margin-bottom: 8px; }
+.col p { margin: 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.75; max-width: none; }
+.col-keep > strong { color: var(--verified); }
+.col-flag > strong { color: var(--flag); }
+.col-dead > strong { color: var(--dead); }

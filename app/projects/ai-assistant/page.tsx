@@ -126,20 +126,64 @@ export default function AiAssistantProject() {
             <h2>不是遇到失敗就停下，而是修到能被驗證。</h2>
             <span className="rowlabel">2026.08.17｜獨立展示資料｜未讀取私人內容</span>
           </div>
-          <p>「建立一筆作品集測試心得，並安排明天下午的作品集檢查提醒。」</p>
-          <p><strong>只允許使用獨立 lab 展示資料</strong></p>
-          <h3>Markdown 心得已建立</h3>
-          <p>實際檢查檔案，日期、心得與狀態欄位皆存在。</p>
-          <h3>事件建立並讀回成功</h3>
-          <p>首次因 OAuth scope 不足而受阻；經使用者核准最小權限後，重新寫入並核對標題與時間。</p>
-          <h3>作品集測試.md</h3>
-          <p># 作品集展示測試</p>
-          <p>日期：2026-08-17</p>
-          <p>心得：今天完成 AI 產品作品集的證據規劃。</p>
-          <p>狀態：待明日檢查</p>
-          <a className="cta cta-ghost" href="/evidence/assistant-demo-note.md" target="_blank" rel="noreferrer">查看公開測試筆記 ↗</a>
-          <a className="cta cta-ghost" href="/evidence/assistant-demo-verification.json" target="_blank" rel="noreferrer">查看結構化驗證紀錄 ↗</a>
-          <p>我不只確認成功輸出，也檢查失敗原因與權限邊界。Calendar 首次失敗後，我先確認 token 只有 Gmail 唯讀權限，再由使用者核准 Gmail＋Calendar 的最小授權，最後建立事件並讀回驗證；AI 沒有擅自擴大憑證權限。</p>
+          <p>
+            這是一次完整的驗收紀錄：一句話丟進去，然後<strong>逐項回原本的服務核對</strong>。
+            其中一項第一次是失敗的——那才是這份紀錄的重點。
+          </p>
+
+          <div className="vlog">
+            <div className="vlog-head">
+              <strong>驗收紀錄</strong>
+              <span className="tag tag-self">獨立 lab 展示資料 · 未讀取私人內容</span>
+              <span className="rowlabel">2026-08-17</span>
+            </div>
+
+            <div className="vlog-in">
+              <span className="rowlabel">我輸入的一句話</span>
+              <p style={{ margin: "6px 0 0" }}>
+                <q>建立一筆作品集測試心得，並安排明天下午的作品集檢查提醒。</q>
+              </p>
+            </div>
+
+            <dl className="vlog-step">
+              <span className="ok">✓</span>
+              <dt>筆記寫入</dt>
+              <dd>打開檔案本身核對：日期、心得、狀態三個欄位都在，內容與我輸入的一致。</dd>
+            </dl>
+
+            <dl className="vlog-step">
+              <span className="ok">✓</span>
+              <dt>行事曆事件</dt>
+              <dd>
+                <strong>第一次失敗。</strong>查出來是 OAuth 權限不足——當時的 token 只有 Gmail 唯讀。
+                我沒有讓它自己擴權，而是回頭核准 Gmail ＋ Calendar 的最小授權，
+                再重新寫入、並讀回核對標題與時間。
+              </dd>
+            </dl>
+
+            <div className="vlog-art">
+              <span className="rowlabel">實際產出的檔案</span>
+              <pre>{`# 作品集展示測試
+
+日期：2026-08-17
+心得：今天完成 AI 產品作品集的證據規劃。
+狀態：待明日檢查`}</pre>
+              <div style={{ marginTop: 12 }}>
+                <a className="cta cta-ghost" href="/evidence/assistant-demo-note.md" target="_blank" rel="noreferrer">
+                  查看這個檔案 ↗
+                </a>
+                <a className="cta cta-ghost" href="/evidence/assistant-demo-verification.json" target="_blank" rel="noreferrer">
+                  查看結構化驗證紀錄 ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p style={{ marginTop: 18 }}>
+            我留這份紀錄不是為了證明它會動，而是為了說明
+            <strong>失敗發生的時候我做了什麼</strong>——查原因、界定權限範圍、由人核准、再驗一次。
+            AI 沒有擅自擴大憑證權限，這條界線是我守的。
+          </p>
         </section>
 
         <section className="band">
@@ -158,22 +202,28 @@ export default function AiAssistantProject() {
 
         <section className="band">
           <div className="band-head"><h2>我負責把問題變成可驗收的流程。</h2></div>
-          <p>AI 協作，不等於把決定交出去。</p>
-          <p>程式與設定由 AI 協助產生；我負責定義問題、拆解需求、評估工具、核准修改，並用真實情境確認結果。</p>
-          <h3>定義需求</h3><p>找出流程卡點與真正要解決的問題。</p>
-          <h3>整合服務</h3><p>決定入口、資料目的地與服務責任。</p>
-          <h3>測試驗收</h3><p>檢查內容、日期、檔案與同步。</p>
-          <h3>取捨調整</h3><p>停用增加維護負擔的方案。</p>
+          <p>程式與設定由 AI 協助產生。這四件事沒有交出去：</p>
+          <div className="cols">
+            <div className="col"><strong>定義需求</strong><p>找出流程卡在哪，以及真正要解決的是什麼問題。</p></div>
+            <div className="col"><strong>整合服務</strong><p>決定入口在哪、資料寫去哪、哪個服務負責什麼。</p></div>
+            <div className="col"><strong>測試驗收</strong><p>回原本的服務核對內容、日期、檔案與同步狀態。</p></div>
+            <div className="col"><strong>取捨調整</strong><p>維護成本高過效益的，停用。</p></div>
+          </div>
         </section>
 
         <section className="band">
           <div className="band-head"><h2>功能不是越多越好，留下來才算有價值。</h2><p>以實際使用頻率、維護成本與資料風險作為判斷。</p></div>
-          <h3>保留｜對話入口與知識庫同步</h3>
-          <p>Discord／LINE、Calendar、Gmail與Obsidian持續被使用，能直接減少切換App的步驟。</p>
-          <h3>調整｜媒體訊息處理</h3>
-          <p>發現LINE語音與檔案無法正確進入流程後，重現問題、驗證修正並回饋上游專案。</p>
-          <h3>停用｜過重的工具組合</h3>
-          <p>Letta、n8n等工具並非不好，而是當時需求不足以抵銷學習與維護成本，因此不繼續堆疊。</p>
+          <div className="cols">
+            <div className="col col-keep"><strong>保留</strong>
+              <p>對話入口與知識庫同步。Discord／LINE、Calendar、Gmail 與 Obsidian 到現在都還在用，
+                 因為它們直接少掉切換 App 的步驟。</p></div>
+            <div className="col col-flag"><strong>調整</strong>
+              <p>媒體訊息處理。發現 LINE 語音與檔案沒進到流程後，重現問題、驗證修正，
+                 並把結果回饋給上游專案。</p></div>
+            <div className="col col-dead"><strong>停用</strong>
+              <p>過重的工具組合。Letta、n8n 並非不好，是當時的需求不足以抵銷學習與維護成本，
+                 所以不繼續堆。</p></div>
+          </div>
         </section>
 
         <section className="band">

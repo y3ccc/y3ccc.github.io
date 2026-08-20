@@ -105,10 +105,14 @@ export default function BankruptcyRiskProject() {
 
         <section className="band">
           <div className="band-head"><h2>題目指定方法，我自行補上可信度。</h2><p>獨立完成的課堂專案，誠實區分指定範圍與自主設計。</p></div>
-          <h3>課堂指定</h3>
-          <p>PCA、MI、RF、XGB 四種特徵方法；SVM、DNN、CNN 三模型；Original、RUS、ADASYN 三情境；5-fold CV 與四項分類指標。</p>
-          <h3>自行加入</h3>
-          <p>共同 untouched test、fold 內資料處理、每個資料版本 360 組候選、事前鎖定雙選模規則、完整資料比較、泛化與因果邊界。</p>
+          <div className="cols">
+            <div className="col"><strong>課堂指定的範圍</strong>
+              <p>PCA、MI、RF、XGB 四種特徵方法；SVM、DNN、CNN 三個模型；
+                 Original、RUS、ADASYN 三種資料情境；5-fold 交叉驗證與四項分類指標。</p></div>
+            <div className="col col-keep"><strong>我自己加上去的</strong>
+              <p>共同 untouched test、抽樣與特徵選擇限制在 fold 內、每個資料版本 360 組候選、
+                 開測試集前事前鎖定雙選模規則、完整資料版比較，以及泛化與因果邊界的說明。</p></div>
+          </div>
         </section>
 
         <section className="band" id="design">

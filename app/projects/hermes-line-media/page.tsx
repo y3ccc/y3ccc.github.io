@@ -163,10 +163,14 @@ export default function HermesLineMediaProject() {
 
         <section className="band">
           <div className="band-head"><h2>誠實標示AI協作，也清楚說明我負責什麼。</h2><p>不把AI產生的程式碼包裝成獨立工程開發。</p></div>
-          <h3>問題與驗證</h3>
-          <p>發現異常、重現差異、定義預期結果、確認修改範圍、執行語音與圖片回歸測試，並整理成公開回饋。</p>
-          <h3>技術閱讀與修改</h3>
-          <p>協助閱讀LINE adapter程式、定位媒體分流問題、產生修改內容與測試建議；最終是否採用由我依實測結果判斷。</p>
+          <div className="cols">
+            <div className="col col-keep"><strong>我做的</strong>
+              <p>發現異常、重現差異、定義預期結果、確認修改範圍、執行語音與圖片的回歸測試，
+                 最後整理成公開回饋。</p></div>
+            <div className="col"><strong>AI 做的</strong>
+              <p>閱讀 LINE adapter 程式、定位媒體分流問題、產生修改內容與測試建議。
+                 <strong>最終是否採用，由我依實測結果判斷。</strong></p></div>
+          </div>
         </section>
 
         <section className="band">
