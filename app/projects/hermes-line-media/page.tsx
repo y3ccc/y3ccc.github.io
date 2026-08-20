@@ -37,7 +37,7 @@ function MediaRouting() {
   return (
     <figure className="flow">
       <Scroll>
-        <svg viewBox="0 0 720 262" role="img"
+        <svg viewBox="0 0 720 412" role="img"
              aria-label="修正前四種媒體全部被導向圖片快取，只有圖片可用；修正後依類型分流，語音進入語音轉文字">
           <title>媒體分流：修正前後</title>
           <defs>
@@ -46,36 +46,50 @@ function MediaRouting() {
             </marker>
           </defs>
 
-          {/* 修正前 */}
+          {/* ── 修正前 ── */}
           <text x="0" y="14" className="note">修正前</text>
-          {MEDIA.map((m, i) => box(i * 106, 22, 96, m))}
+          {MEDIA.map((m, i) => box(i * 182, 22, 172, m))}
           {MEDIA.map((_, i) => (
-            <path key={i} className="flow-arrow" d={`M${i * 106 + 48} 58 L${i * 106 + 48} 74 L212 74 L212 84`}
-                  markerEnd={i === 0 ? "url(#ma)" : undefined} />
+            <path key={i} className="flow-arrow"
+                  d={`M${i * 182 + 86} 58 L${i * 182 + 86} 70 L360 70 L360 82`}
+                  markerEnd={i === 3 ? "url(#ma)" : undefined} />
           ))}
-          {box(120, 84, 184, "一律進圖片快取")}
-          <path className="flow-arrow" d="M212 120 L212 134" markerEnd="url(#ma)" />
-          <g>
-            {box(0, 134, 96, "圖片 ✓", true)}
-            {MEDIA.slice(1).map((m, i) => (
-              <g key={m}>
-                <rect className="flow-box" x={(i + 1) * 106} y="134" width="96" height="34" rx="4"
-                      opacity="0.45" />
-                <text x={(i + 1) * 106 + 48} y="156" className="flow-s" textAnchor="middle">{m} ✗</text>
-              </g>
-            ))}
-          </g>
-          <text x="0" y="186" className="note">
+          {box(268, 82, 184, "一律進圖片快取")}
+          <path className="flow-arrow" d="M360 118 L360 130" markerEnd="url(#ma)" />
+          {box(0, 130, 172, "圖片 ✓", true)}
+          {MEDIA.slice(1).map((m, i) => (
+            <g key={m}>
+              <rect className="flow-box" x={(i + 1) * 182} y="130" width="172" height="34" rx="4" opacity="0.4" />
+              <text x={(i + 1) * 182 + 86} y="152" className="flow-s" textAnchor="middle">{m} ✗</text>
+            </g>
+          ))}
+          <text x="0" y="182" className="note">
             三種輸入沒有報錯，只是安靜消失——這是最難被發現的失敗。
           </text>
 
-          {/* 修正後 */}
+          {/* ── 修正後：同樣結構，才看得出差在哪 ── */}
           <line x1="0" y1="200" x2="720" y2="200" className="grid" />
-          <text x="440" y="228" className="note">修正後</text>
-          {box(440, 236, 130, "依類型分流")}
-          <path className="flow-arrow" d="M574 253 L592 253" markerEnd="url(#ma)" />
-          {box(596, 236, 124, "語音 → STT", true)}
-          <text x="0" y="252" className="val">驗收條件：語音進得去，而且圖片不能退化</text>
+          <text x="0" y="224" className="note">修正後</text>
+          {MEDIA.map((m, i) => box(i * 182, 232, 172, m))}
+          {MEDIA.map((_, i) => (
+            <path key={i} className="flow-arrow"
+                  d={`M${i * 182 + 86} 268 L${i * 182 + 86} 280 L360 280 L360 292`}
+                  markerEnd={i === 3 ? "url(#ma)" : undefined} />
+          ))}
+          {box(268, 292, 184, "依類型分流", true)}
+          <path className="flow-arrow" d="M360 328 L360 340" markerEnd="url(#ma)" />
+          {[["圖片 ✓", "原本的路徑"], ["語音 ✓", "進入 STT"], ["影片 ✓", "正確快取"], ["檔案 ✓", "正確快取"]].map(
+            ([t, s], i) => (
+              <g key={t}>
+                <rect className="flow-box-on" x={i * 182} y="340" width="172" height="42" rx="4" />
+                <text x={i * 182 + 86} y="359" className="flow-t" textAnchor="middle">{t}</text>
+                <text x={i * 182 + 86} y="375" className="flow-s" textAnchor="middle">{s}</text>
+              </g>
+            ),
+          )}
+          <text x="0" y="400" className="val">
+            驗收條件：語音進得去，而且圖片不能退化——兩者同時成立才算修好。
+          </text>
         </svg>
       </Scroll>
       <figcaption>

@@ -177,6 +177,41 @@ export default function ConvenienceStoreProject() {
         </section>
 
         <section className="band">
+          <div className="band-head">
+            <h2>營收一路成長，股價卻一路走低</h2>
+            <span className="rowlabel">統一超商 · 原報告估值資料 · 2018–2022</span>
+          </div>
+          <p>
+            這是整份報告裡我事後覺得最值得追的一組數字。
+            十年營收成長約 45%，但<strong>年均股價五年間從 315 元掉到 270 元</strong>，
+            本益比始終在 29–32 之間盤整——市場沒有因為它變大而給它更高的評價。
+          </p>
+          <div className="dtable scroller">
+            <table>
+              <thead>
+                <tr><th>年度</th><th>年均股價（元）</th><th>EPS（元）</th><th>本益比</th></tr>
+              </thead>
+              <tbody>
+                {[["2018", "315", "9.82", "32.0"],
+                  ["2019", "301", "10.14", "29.7"],
+                  ["2020", "283", "9.85", "28.7"],
+                  ["2021", "274", "8.52", "32.1"],
+                  ["2022", "270", "8.93", "30.2"]].map(([y, p, e, pe]) => (
+                    <tr key={y} className={y === "2022" ? "mark" : undefined}>
+                      <td>{y}</td><td>{p}</td><td>{e}</td><td>{pe}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="figure-s" style={{ marginTop: 14 }}>
+            當時的報告沒有追問這件事，我是後來才注意到的。
+            一家營收持續成長、EPS 大致持平的公司，市場評價五年沒有提升——
+            這個落差本身就是一個值得研究的題目，而我當時錯過了。
+          </p>
+        </section>
+
+        <section className="band">
           <div className="band-head"><h2>不只問有沒有衰退，而是看營運模式如何吸收變化。</h2></div>
           <p>便利商店是高頻、低客單價且門市密集的產業。疫情可能改變來客、消費時間與服務需求，但公司表現也同時受到展店、鮮食、會員經營與支付生態圈影響。</p>
           <ul>

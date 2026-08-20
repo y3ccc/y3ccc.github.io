@@ -327,3 +327,20 @@ p { margin: 0 0 16px; max-width: var(--measure); }
   overflow-wrap: anywhere;
 }
 .evlink:hover { opacity: .8; }
+
+/* ---------- 資料表 ---------- */
+.dtable { border: 1px solid var(--rule); border-radius: 5px; overflow: hidden; background: var(--panel); margin: 22px 0 0; }
+.dtable table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 420px; }
+.dtable th {
+  text-align: right; padding: 11px 18px; background: var(--sunk);
+  border-bottom: 1px solid var(--rule); color: var(--ink-3);
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", monospace;
+  font-size: 12px; letter-spacing: .06em; font-weight: 500; white-space: nowrap;
+}
+.dtable th:first-child, .dtable td:first-child { text-align: left; }
+.dtable td {
+  padding: 11px 18px; border-bottom: 1px solid var(--rule-soft);
+  text-align: right; font-variant-numeric: tabular-nums;
+}
+.dtable tr:last-child td { border-bottom: none; }
+.dtable tr.mark td { background: var(--verified-bg); font-weight: 700; }

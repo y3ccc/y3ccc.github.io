@@ -104,15 +104,19 @@ export default function AiAssistantProject() {
 
               <path className="flow-arrow" d="M360 182 L360 206" markerEnd="url(#ar)" />
 
-              <rect className="flow-box" x="140" y="210" width="440" height="36" rx="4" />
-              <text x="360" y="233" className="flow-t" textAnchor="middle">
-                結果回到原始服務確認
+              <rect className="flow-box" x="110" y="206" width="500" height="44" rx="4" />
+              <text x="360" y="226" className="flow-t" textAnchor="middle">
+                不信它說「好了」，回原本的 App 自己看
+              </text>
+              <text x="360" y="243" className="flow-s" textAnchor="middle">
+                日期對不對、內容有沒有寫進去、同步狀態正不正常
               </text>
             </svg>
             </div>
             <figcaption>
-              操作變簡單了，但<strong>驗證沒有被簡化掉</strong>——寫進去對不對，還是回 Calendar 和筆記本身去看。
-              整合入口不等於接管判斷，這是刻意留的界線。
+              操作變簡單了，但<strong>驗證沒有被簡化掉</strong>。
+              它回報「已完成」不算數——我回 Calendar 和筆記本身去看，日期與內容對得上才算。
+              整合入口不等於接管判斷，這條界線是刻意留的。
             </figcaption>
           </figure>
         </section>

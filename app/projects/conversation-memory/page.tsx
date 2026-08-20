@@ -40,6 +40,9 @@ const manual = [
   "成本每次都付，而且對話越長越貴",
 ];
 
+// 這些狀態一律用灰色；漏掉「已退役」曾讓一張退役卡片顯示成綠色的「在跑」
+const DEAD = ["停用", "已移除", "已退役", "已封鎖", "從沒上線"];
+
 const atlas = [
   {
     g: "我會自己去用的",
@@ -285,7 +288,7 @@ export default function ConversationMemory() {
                         <span className="card-name">{c.name}</span>
                         <span
                           className={`state ${
-                            c.state === "停用" || c.state === "已移除" ? "state-off" : "state-on"
+                            DEAD.includes(c.state) ? "state-off" : "state-on"
                           }`}
                         >
                           {c.state}
