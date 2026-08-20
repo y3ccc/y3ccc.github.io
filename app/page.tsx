@@ -45,7 +45,7 @@ const entries = [
     title: "企業破產風險預測",
     q: "高 Accuracy，不代表抓得到高風險企業。",
     role: "驗證設計 · 指標取捨 · 限制說明",
-    tags: [["7 頁技術報告", "tag-self"], ["已標明限制", "tag-open"]],
+    tags: [["9 頁技術報告", "tag-self"], ["已標明限制", "tag-open"]],
   },
   {
     href: "/projects/conversation-memory/",

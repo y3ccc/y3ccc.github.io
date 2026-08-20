@@ -146,8 +146,7 @@ export default function BankruptcyRiskProject() {
             <h3>如果深入研究</h3>
             <p>優先加入異期／外部驗證、機率校準與誤判成本，再延伸為產業分層模型與盡職調查問題清單。</p>
           </div>
-          <a className="cta" href={reportUrl} target="_blank" rel="noreferrer">查看完整技術報告 PDF ↗</a>
-          <a className="cta cta-ghost" href={reportUrl} target="_blank" rel="noreferrer">完整證據與數據表　查看 7 頁技術報告 PDF ↗</a>
+          <a className="cta" href={reportUrl} target="_blank" rel="noreferrer">查看 9 頁完整技術報告 PDF ↗</a>
         </section>
 
         <section className="band">
