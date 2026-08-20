@@ -31,34 +31,46 @@ const atlas = [
     n: "6 項",
     note: "想到才開，平常安靜待著",
     cards: [
-      { name: "存照片", state: "在跑", hook: "自己的相簿雲",
-        body: ["自己架的照片雲端服務，取代商用相簿。由數個容器組成：伺服器、影像辨識、資料庫。",
-               "服務算實驗性質，但內容是正式資料，已有自動備份且完整性驗證通過。"] },
-      { name: "存密碼", state: "在跑", hook: "最敏感的東西都在這",
-        body: ["密碼庫，存放帳號密碼等機敏資料。",
-               "是全機器裡機敏程度最高的服務，要特別小心。"] },
-      { name: "用瀏覽器翻檔案", state: "在跑", hook: "",
-        body: ["對外開放存取，不限本機才能連。",
-               "曾經有一份舊複本被誤認是正牌，兩份內容不一樣——注意別搞混。"] },
-      { name: "隨手記筆記", state: "在跑", hook: "判定不夠好用",
-        body: ["兩人各自帳號的筆記時間軸。",
-               "2026-07-27 判定還不夠好用，退回實驗狀態，目前沒有備份保證。"] },
-      { name: "盯網頁有沒有變", state: "在跑", hook: "降價、補貨就通知我",
-        body: ["網頁變化監控，有變化就推播提醒。",
-               "還在實驗階段，資料目前不在備份範圍內，轉正時才會納入。"] },
-      { name: "在自己機器上跑 AI 模型", state: "在跑", hook: "不用上雲",
-        body: ["本機跑大語言模型，有 GPU 加速。",
-               "簡單任務用本地模型省成本，也預留給之後的語意搜尋。"] },
+      { name: "Immich", state: "在跑", hook: "自己的 Google 相簿",
+        body: ["自架照片雲，取代 Google Photos。由 4 個容器組成：伺服器、AI 影像辨識、資料庫、快取。",
+               "服務算實驗性質，但內容是正式資料——已納入自動備份，且完整性驗證通過。"],
+        cmd: "docker ps --filter name=immich_server" },
+      { name: "Vaultwarden", state: "在跑", hook: "最敏感的東西都在這",
+        body: ["密碼庫。全機器機敏程度最高的服務，任何變更都要特別小心。"],
+        cmd: "docker ps --filter name=vaultwarden" },
+      { name: "FileBrowser", state: "在跑", hook: "用瀏覽器翻檔案",
+        body: ["2026-06-29 重新啟用，對外開放存取，不限本機才能連。",
+               "曾經有一份舊複本被誤認是正牌，兩份內容不一樣——這種錯最難發現。"],
+        cmd: "docker ps --filter name=filebrowser" },
+      { name: "Memos", state: "在跑", hook: "判定不夠好用",
+        body: ["兩人各自帳號的筆記時間軸，類似 flomo。手機都已登入在用。",
+               "2026-07-27 判定還不夠好用，退回實驗狀態，目前沒有備份保證。"],
+        cmd: "docker ps --filter name=memos" },
+      { name: "changedetection.io", state: "在跑", hook: "機票降價、補貨就通知我",
+        body: ["網頁變化監控，有變化就透過 ntfy 推播。",
+               "還在實驗階段，資料不在備份範圍內——轉正時才會納入。"],
+        cmd: "docker ps --filter name=changedetection" },
+      { name: "Ollama", state: "在跑", hook: "本機跑模型，不用上雲",
+        body: ["本機跑 LLM，容器化，GPU 加速（GTX 1060）。",
+               "簡單任務走本地模型省成本，也預留給之後的語意搜尋。"],
+        cmd: "docker ps --filter name=ollama" },
     ],
   },
   {
     g: "會主動跟我講話的",
     n: "3 個入口",
-    note: "同一套程式，三個分身。設定各自獨立，記憶各自獨立",
+    note: "同一套 Hermes，三個 profile。設定各自獨立，記憶各自獨立",
     cards: [
-      { name: "我最常用的那個", state: "在跑", hook: "", body: ["三個入口共用同一套框架，但彼此看不到對方的記憶。"] },
-      { name: "我幾乎不用了的那個", state: "在跑", hook: "", body: ["保留著，因為停用的成本比留著高。"] },
-      { name: "另一位使用者專用的那個", state: "在跑", hook: "", body: ["不同使用者、不同設定、不同記憶邊界。"] },
+      { name: "Lark（飛書）", state: "在跑", hook: "我最常用",
+        body: ["shared profile。框架本身已 git 化，升級要 rebase 不能覆蓋。"],
+        cmd: "systemctl --user is-active <gateway>" },
+      { name: "Discord / Telegram", state: "在跑", hook: "幾乎不用了",
+        body: ["保留著，因為停用的成本比留著高。"],
+        cmd: "systemctl --user is-active <gateway>" },
+      { name: "LINE", state: "在跑", hook: "另一位使用者專用",
+        body: ["不同使用者、不同設定、不同記憶邊界。",
+               "語音／影片／檔案曾全被導向圖片快取而遺失，我把它追到上游成了 Issue 與 PR。"],
+        cmd: "systemctl --user is-active <gateway>" },
     ],
   },
   {
@@ -66,12 +78,28 @@ const atlas = [
     n: "6 項",
     note: "平常不用開，有事才出聲",
     cards: [
-      { name: "東西掛了通知我", state: "在跑", hook: "", body: ["能直接讀取容器的即時狀態。", "但它自己是否正常，也要用查證方式現場確認，不能只看文件。"] },
-      { name: "看機器累不累", state: "在跑", hook: "CPU、溫度、硬碟", body: ["監控面板，可看多台機器。"] },
-      { name: "一頁列出全部", state: "在跑", hook: "從清冊自動長出來的", body: ["設定從服務清冊自動產生，不用手動維護——所以它不會跟現實脫節。"] },
-      { name: "開關容器的介面", state: "在跑", hook: "", body: ["容器編排的操作介面。是「收斂」計畫第一個誕生的服務。"] },
-      { name: "有新版本通知我", state: "在跑", hook: "只通知，不自動更新", body: ["版本鎖定，每 6 小時掃一次正在跑的容器。", "刻意不自動更新——自動更新會在我沒看著的時候改變現實。"] },
-      { name: "把連線轉給正確的服務", state: "在跑", hook: "沒有它我進不去", body: ["多數服務只聽本機，得靠它才連得進來。牽一髮動全身。"] },
+      { name: "Uptime Kuma", state: "在跑", hook: "東西掛了通知我",
+        body: ["能直接讀取 Docker 容器即時狀態。",
+               "坑：容器監控必須設 docker_host，留空會安靜失敗——看起來在監控，其實沒有。"],
+        cmd: "docker ps --filter name=uptime-kuma" },
+      { name: "Beszel", state: "在跑", hook: "CPU、溫度、硬碟",
+        body: ["伺服器監控面板，可看多台機器。2026-06-29 上線。"],
+        cmd: "docker ps --filter name=beszel" },
+      { name: "Homepage", state: "在跑", hook: "從清冊自動長出來的",
+        body: ["所有服務的總覽入口，設定由 inventory 自動產生，不用手動維護——所以它不會跟現實脫節。",
+               "2026-06-29 上線，取代舊的 Homer。"],
+        cmd: "docker ps --filter name=homepage" },
+      { name: "Dockge", state: "在跑", hook: "開關容器的介面",
+        body: ["Docker Compose 操作介面。是「收斂」計畫第一個誕生的服務。"],
+        cmd: "docker ps --filter name=dockge" },
+      { name: "Diun", state: "在跑", hook: "只通知，不自動更新",
+        body: ["映像檔更新通知器。版本鎖定，每 6 小時掃一次正在跑的容器。",
+               "刻意不自動更新——自動更新會在我沒看著的時候改變現實。"],
+        cmd: "docker ps --filter name=diun" },
+      { name: "Caddy", state: "在跑", hook: "沒有它我進不去",
+        body: ["反向代理。多數服務只聽本機，得靠它才連得進來。牽一髮動全身。",
+               "設定檔由 inventory 產生，禁止手改。"],
+        cmd: "docker ps --filter name=caddy" },
     ],
   },
   {
@@ -80,13 +108,16 @@ const atlas = [
     note: "我沒下令它也會跑",
     cards: [
       { name: "00–08　我在睡覺", state: "每天", hook: "備份與整理",
-        body: ["設定存檔、筆記備份、記憶漂移檢查、異地備份、舊報告歸檔，最後跑一次「寫的還是真的嗎」。"] },
+        body: ["Hermes 設定存檔、筆記備份到 GitHub、記憶漂移檢查、異地備份送去 R2、舊報告歸檔，最後跑一次「寫的還是真的嗎」。"],
+        cmd: "systemctl --user list-timers" },
       { name: "08–12　我起床", state: "每天", hook: "把結果交給我",
-        body: ["每日健康報告、宣告與現實對帳、異地備份夠不夠新。"] },
+        body: ["每日健康報告、宣告與現實對帳、異地備份夠不夠新。"],
+        cmd: "systemctl --user list-timers" },
       { name: "中午之後", state: "無排程", hook: "白天它不吵我",
-        body: ["刻意留白。工具在我工作的時候應該安靜。"] },
+        body: ["刻意留白。工具在我工作的時候應該安靜。"], cmd: "" },
       { name: "不分時段", state: "一直跑", hook: "",
-        body: ["磁碟快滿了沒（每 2 小時）、心跳（每 5 分鐘）、筆記自動同步（每分鐘）。"] },
+        body: ["磁碟快滿了沒（每 2 小時）、死人開關心跳（每 5 分鐘）、筆記自動同步（每分鐘）。"],
+        cmd: "systemctl --user list-timers" },
     ],
   },
   {
@@ -94,9 +125,14 @@ const atlas = [
     n: "agent 這一層",
     note: "沒有容器也沒有服務，但用得最兇",
     cards: [
-      { name: "技能", state: "約一百項", hook: "教它做特定類型的事", body: ["跨多個 agent，共用的規則放一處，特有的才分開。"] },
-      { name: "自動掛鉤", state: "5 個", hook: "每次操作自動觸發", body: ["改寫指令、擋寫入、省 token。"] },
-      { name: "外掛查詢工具", state: "1 個", hook: "", body: ["公開資料庫查詢。"] },
+      { name: "Hermes 技能", state: "44 + 49", hook: "兩個使用者各自的",
+        body: ["教它怎麼處理某一類事情。"], cmd: "" },
+      { name: "Claude Code / Codex 技能", state: "5 + 6", hook: "",
+        body: ["共用的規則放一處讓所有 agent 都讀，只有各自特有的才分開——換一個 agent 不用從頭教一次。"], cmd: "" },
+      { name: "自動掛鉤", state: "5 個", hook: "每次操作自動觸發",
+        body: ["改寫指令、擋寫入、省 token。"], cmd: "" },
+      { name: "MCP 外掛", state: "1 個", hook: "台灣法律判決查詢",
+        body: ["讓 agent 直接查判決資料。"], cmd: "" },
     ],
   },
   {
@@ -104,13 +140,22 @@ const atlas = [
     n: "13 項",
     note: "留在這頁，是因為只看還活著的東西會誤判",
     cards: [
-      { name: "一個是我自己關的", state: "停用", hook: "產出達不到我要的",
-        body: ["功能都正常，是產出品質不合格。這種死法最難被監控抓到。"] },
-      { name: "一個空轉了一個月", state: "停用", hook: "在跑，但講不出話",
-        body: ["探針說它活著，可是它兌現不了任何一件它該做的事。",
-               "這是整張地圖最重要的一格：健康檢查問「它有沒有活著」，我的分類問「它對我有沒有用」。"] },
-      { name: "其餘 11 項", state: "已移除", hook: "死因都留著",
-        body: ["移除、退役、被取代、從沒上線過的都算。死因比功能更能說明判斷。"] },
+      { name: "coach", state: "停用", hook: "空轉一個月才被發現",
+        body: ["2026-08-19 停用。停用前主引擎路徑寫死失效、Telegram 又發不出訊息（403），表現就是「教練不理你了」。",
+               "探針說它活著，可是它兌現不了任何一件該做的事。這是整張圖最重要的一格：健康檢查問「它有沒有活著」，我的分類問「它對我有沒有用」。"],
+        cmd: "" },
+      { name: "fish-tank-hud", state: "停用", hook: "我自己關的",
+        body: ["魚缸觀察介面。功能都正常，是產出達不到我要的——這種死法最難被監控抓到。"], cmd: "" },
+      { name: "n8n", state: "已移除", hook: "2026-06-29",
+        body: ["視覺化自動流程。移除前唯一還在用的只剩一個停用的測試流程。",
+               "清掉 2.1G 容器與映像檔，也讓 butler-broker 解除依賴。"], cmd: "" },
+      { name: "qdrant / couchdb", state: "已移除", hook: "2026-06-27",
+        body: ["向量資料庫與文件資料庫，容器、網路、映像檔都清掉。",
+               "資料目錄留著，當作刪除審核流程的證據。"], cmd: "" },
+      { name: "butler-broker", state: "已退役", hook: "權限大但幾乎沒被呼叫",
+        body: ["透過 MCP 連到 Docker 的中介服務。閒置風險太高就先關了，備份還留著。"], cmd: "" },
+      { name: "其餘 8 項", state: "已移除", hook: "Homer、CasaOS、langfuse、whisper、opencode-go…",
+        body: ["退役、被取代、或從沒真的上線過。死因比功能更能說明判斷。"], cmd: "" },
     ],
   },
 ];
@@ -191,8 +236,9 @@ export default function ConversationMemory() {
         <section className="band">
           <h2>我用「它對我有什麼用」分類，不用技術層級分類</h2>
           <p>
-            下面是那張地圖的去識別化展示版。點任何一張卡可以展開。
-            服務名稱、路徑與查證指令都已移除，保留的是分類方式與判斷理由。
+            下面是那張地圖的展示版，點任何一張卡可以展開。
+            每張卡背面都有一行查證指令——這頁只是快照，可能已經不對了，
+            要相信的是機器，不是這頁。主機名稱、網域與絕對路徑不在展示範圍內。
           </p>
 
           <div className="demo">
@@ -226,7 +272,7 @@ export default function ConversationMemory() {
                         {c.body.map((b) => (
                           <p key={b}>{b}</p>
                         ))}
-                        <span className="redacted">查證指令　·　展示版已移除</span>
+                        {c.cmd ? <span className="redacted">{c.cmd}</span> : null}
                       </div>
                     </details>
                   ))}
@@ -244,22 +290,6 @@ export default function ConversationMemory() {
                 因為這頁只是一張快照，它可能已經不對了——不是權威的是機器本身。
               </p>
             </div>
-          </div>
-        </section>
-
-        <section className="band">
-          <h2>成效：行為變了，但我沒量過</h2>
-          <p>
-            以前遇到類似主題會重新討論一次，現在會先查有沒有討論過，
-            再自己選要「接著做 / 重新想 / 忽略」。行為確實變了。
-          </p>
-          <div className="honest">
-            <h2>但我不能宣稱這是成效</h2>
-            <ul>
-              <li>我沒有量過實際省多少時間，也沒做前後對照。</li>
-              <li>而且現在感覺還好，也可能是最近事比較少，我不是很敢確定。</li>
-              <li>要真的驗證，我會量「重複討論的次數」和「回來接上進度所需的時間」。</li>
-            </ul>
           </div>
         </section>
 
