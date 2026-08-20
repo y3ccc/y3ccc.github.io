@@ -1,171 +1,158 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 
-export const metadata: Metadata = {
-  title: "馬彥宸｜AI 產品應用作品集",
-  description: "AI 生活助理、Hermes 產品改善，以及產業與風險分析作品。",
-};
-
-const strengths = [
+const figures = [
   {
-    number: "01",
-    title: "需求判斷",
-    text: "先確認使用者真正卡在哪裡，再決定是否需要 AI、需要哪種工具，以及什麼不該做。",
+    n: "6,819",
+    t: "筆企業財務資料",
+    s: "93 項變數、360 組候選模型。重點不是分數高,是不讓自己作弊。",
   },
   {
-    number: "02",
-    title: "測試驗收",
-    text: "把模糊問題拆成可重現情境，檢查輸入、輸出與回歸影響，不把 AI 產出直接當答案。",
+    n: "#57882",
+    t: "公開 Issue 與 PR",
+    s: "GitHub 上任何人都能點開查證。PR 最終未被合併,我照實寫。",
   },
   {
-    number: "03",
-    title: "產品取捨",
-    text: "依實際使用、風險與維護成本保留有效功能；工具若讓流程更重，就停止投入並換方向。",
+    n: "13",
+    t: "個服務被我關掉",
+    s: "死因全部記下來。只看還活著的東西會誤判。",
   },
 ];
 
-export default function PortfolioHome() {
+const entries = [
+  {
+    href: "/projects/hermes-line-media/",
+    title: "Hermes LINE 媒體改善",
+    q: "圖片能用,為什麼語音卻消失?",
+    role: "問題重現 · 驗收條件 · 回歸測試",
+    tags: [["第三方可查核 · Issue + PR", "tag-3rd"]],
+  },
+  {
+    href: "/projects/ai-assistant/",
+    title: "AI 協作生活助理",
+    q: "把零散的日常,收回同一個入口。",
+    role: "需求定義 · 工具取捨 · 測試驗收",
+    tags: [["自我驗收", "tag-self"], ["持續運作中", "tag-self"]],
+  },
+  {
+    href: "/projects/bankruptcy-risk/",
+    title: "企業破產風險預測",
+    q: "高 Accuracy,不代表抓得到高風險企業。",
+    role: "驗證設計 · 指標取捨 · 限制說明",
+    tags: [["7 頁技術報告", "tag-self"], ["已標明限制", "tag-open"]],
+  },
+  {
+    href: "/projects/conversation-memory/",
+    title: "每次開新對話,都在考我",
+    q: "我不想再靠記憶找回自己的進度。",
+    role: "問題定義 · 判準設計 · 缺口認定",
+    tags: [["仍有未解問題", "tag-open"]],
+  },
+  {
+    href: "/projects/equity-research/",
+    title: "一次個股研究,以及它教我的事",
+    q: "我用接近淨值的價格,買一家一直在賺錢的公司。",
+    role: "論述推導 · 取捨說明 · 事後檢討",
+    tags: [["已了結部位 · 2021–2025", "tag-self"], ["含自我檢討", "tag-open"]],
+  },
+  {
+    href: "/projects/convenience-store/",
+    title: "便利商店產業及財務分析",
+    q: "疫情之後,便利商店受到什麼影響?",
+    role: "5 人組長 · 資料整合 · 簡報定稿",
+    tags: [["課程專題 · 2023", "tag-self"]],
+  },
+];
+
+const limits = [
+  "實作是 AI 協作產生的。我沒辦法宣稱自己能獨立寫出這些程式。",
+  "破產風險模型只做過一次 holdout,沒有外部驗證,不能推論因果。",
+  "Hermes 那個 PR 最終沒有被合併——維護者已有涵蓋更廣的修正。",
+  "記憶那套我沒有量過省下多少時間,也可能只是最近事情比較少。",
+  "每個專案我都只走過一遍。要從零重做,我需要回去看自己的紀錄。",
+];
+
+export default function Home() {
   return (
-    <div className="site-shell portfolio-home">
+    <>
       <SiteHeader />
+      <main className="shell">
+        <section className="hero">
+          <span className="role">應徵 AI 產品應用 / 產品企劃</span>
+          <h1>
+            我做的不是寫出程式,
+            <br />
+            是確認它真的有用。
+          </h1>
+          <p className="lede">
+            財務金融系畢業,陽明交大 AI 與商業數據分析 300 小時結訓。
+            實作透過 AI 協作完成;我負責發現問題、判斷根因、決定取捨、驗收結果,
+            以及認出哪裡還不夠好。
+          </p>
 
-      <main>
-        <section className="portfolio-hero">
-          <div className="portfolio-hero-copy">
-            <p className="kicker">AI PRODUCT APPLICATION × PROBLEM VALIDATION</p>
-            <h1>
-              把真實需求轉成
-              <span>可驗證的 AI 應用。</span>
-            </h1>
-            <p>
-              我是馬彥宸，財務金融系畢業。我不把自己包裝成獨立工程師；我的價值是發現問題、
-              定義使用情境、透過 AI 協作推進實作，並用真實操作確認結果是否真的改善流程。
-            </p>
-            <div className="hero-actions">
-              <a className="button button-dark" href="#projects">查看產品案例 <span>↓</span></a>
-              <a className="text-link" href="/reports/ma-yen-chen-ai-product-portfolio.pdf" target="_blank" rel="noreferrer">
-                下載面試簡報 <span>↗</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="hero-product-canvas" aria-label="AI 生活助理使用情境示意">
-            <div className="canvas-toolbar">
-              <span><i /> PERSONAL AI WORKSPACE</span><span>使用情境示意</span>
-            </div>
-            <div className="canvas-chat">
-              <div className="canvas-message canvas-user"><small>CONTROLLED TEST · 2026.08.17</small><p>建立一筆展示心得，並安排明天下午的檢查提醒。</p></div>
-              <div className="canvas-message canvas-agent"><small>ASSISTANT · VERIFIED RESULT</small><p>筆記已建立；Calendar 完成最小權限授權後，建立並讀回成功。</p></div>
-            </div>
-            <div className="canvas-route">
-              <div><span>01</span><strong>展示筆記</strong><small>Markdown · 已驗證</small><b>✓</b></div>
-              <div><span>02</span><strong>Calendar</strong><small>建立 · 讀回驗證</small><b>✓</b></div>
-            </div>
-            <div className="canvas-proof"><span>發現權限問題</span><i>→</i><span>最小權限修正</span><i>→</i><strong>實際寫入驗證</strong></div>
+          <div className="figures">
+            {figures.map((f) => (
+              <div className="figure" key={f.n}>
+                <span className="figure-n">{f.n}</span>
+                <span className="figure-t">{f.t}</span>
+                <span className="figure-s">{f.s}</span>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section className="quick-scan" aria-label="作品集三十秒摘要">
-          <div><span>MY ROLE</span><strong>需求定義與驗收</strong><p>AI 協助技術實作，我負責情境、取捨與結果確認。</p></div>
-          <div><span>WORKING METHOD</span><strong>從真實使用找問題</strong><p>先重現，再縮小範圍，最後用原始操作做回歸測試。</p></div>
-          <div><span>PUBLIC PROOF</span><strong>Issue + Pull Request</strong><p>Hermes 改善案例附公開問題與修改紀錄。</p></div>
-          <div><span>RESEARCH BASE</span><strong>財金 × 資料判讀</strong><p>以公開資料、模型指標與限制說明支撐分析。</p></div>
-        </section>
-
-        <section className="selected-projects section-rule" id="projects">
-          <div className="section-heading portfolio-section-heading">
-            <div>
-              <p className="section-label">SELECTED PROJECTS / 從使用問題到產品證據</p>
-              <h2>不從工具名稱開始，<br /><em>從使用者為什麼卡住開始。</em></h2>
-            </div>
-            <p>每個案例都標示我的角色、AI協作邊界、驗證方式與限制。</p>
+        <section className="band" id="projects">
+          <div className="band-head">
+            <h2>六個專案,各自附上可查核的證據</h2>
           </div>
-
-          <div className="project-showcase">
-            <a className="project-tile project-tile-ai project-tile-featured" href="/projects/ai-assistant/">
-              <div className="tile-top"><span>PROJECT 01 / AI PRODUCT</span><span>2026—持續運作</span></div>
-              <div className="case-cover case-cover-assistant" aria-hidden="true">
-                <div className="cover-window">
-                  <div className="cover-window-head"><i /><i /><i /><span>AI LIFE ASSISTANT</span></div>
-                  <div className="cover-conversation"><span>記錄心得，並建立明日提醒</span><strong>筆記完成；Calendar 重新授權後寫入成功</strong></div>
-                  <div className="cover-destinations"><b>NOTE · PASS</b><b>CALENDAR · PASS</b><b>RETEST · VERIFIED</b></div>
+          <div className="ledger">
+            {entries.map((e) => (
+              <Link className="entry" href={e.href} key={e.href}>
+                <div className="entry-top">
+                  <span className="entry-title">{e.title}</span>
+                  <span className="rowlabel">{e.role}</span>
                 </div>
-                <div className="cover-caption"><span>01</span><p>CONTROLLED REQUEST</p><i>→</i><span>02</span><p>VERIFIED OUTCOMES</p></div>
-              </div>
-              <div className="tile-copy">
-                <p>AI 協作生活助理 / 需求規劃 / 服務整合 / 產品取捨</p>
-                <h3>把零散App收回一個聊天室，也把沒價值的工具拿掉。</h3>
-                <span>查看完整產品案例 ↗</span>
-              </div>
-            </a>
-
-            <a className="project-tile project-tile-hermes" href="/projects/hermes-line-media/">
-              <div className="tile-top"><span>PROJECT 02 / PRODUCT IMPROVEMENT</span><span>PUBLIC EVIDENCE</span></div>
-              <div className="case-cover case-cover-hermes" aria-hidden="true">
-                <div className="media-pipeline"><div><span>IMAGE</span><b className="dot-pass" /> <strong>PASS</strong></div><div><span>VOICE</span><b className="dot-fail" /> <strong>DROP</strong></div><div><span>FILE</span><b className="dot-fail" /> <strong>DROP</strong></div></div>
-                <div className="pipeline-arrow">↓ <small>重現 · 定位 · 修正 · 回歸測試</small></div>
-                <div className="pipeline-result"><span>VOICE</span><strong>STT FLOW</strong><b>✓</b></div>
-              </div>
-              <div className="tile-copy">
-                <p>Hermes LINE 媒體改善 / 問題重現 / 修正驗證 / Issue &amp; PR</p>
-                <h3>從「語音不見了」走到可查核的產品回饋。</h3>
-                <span>查看公開證據 ↗</span>
-              </div>
-            </a>
-
-            <a className="project-tile project-tile-analysis" href="/projects/convenience-store/">
-              <div className="tile-top"><span>PROJECT 03 / INDUSTRY RESEARCH</span><span>2023—2024</span></div>
-              <div className="store-visual" aria-hidden="true">
-                <div className="store-sign"><span>便利商店</span></div>
-                <div className="market-bars">
-                  <i><span>7-ELEVEN</span><b /></i><i><span>全家</span><b /></i><i><span>其他</span><b /></i>
+                <p className="entry-q">{e.q}</p>
+                <div className="entry-meta">
+                  {e.tags.map(([label, cls]) => (
+                    <span className={`tag ${cls}`} key={label}>
+                      {label}
+                    </span>
+                  ))}
                 </div>
-              </div>
-              <div className="tile-copy">
-                <p>產業研究 / 企業比較</p>
-                <h3>疫情背景下，便利商店的營運模式如何吸收變化？</h3>
-                <span>查看研究案例 ↗</span>
-              </div>
-            </a>
-
-            <a className="project-tile project-tile-risk" href="/projects/bankruptcy-risk/">
-              <div className="tile-top"><span>PROJECT 04 / RISK ANALYSIS</span><span>2026</span></div>
-              <div className="risk-visual" aria-hidden="true">
-                <div className="risk-question"><span>ACCURACY ≠ RISK DETECTION</span><strong>高準確率，<br />仍可能漏掉真正高風險企業。</strong></div>
-                <div className="risk-mini-metrics"><div><b>6,819</b><span>企業樣本</span></div><div><b>93</b><span>財務變數</span></div><div><b>59.85%</b><span>Test Recall</span></div><div><b>45.18%</b><span>Test F1</span></div></div>
-              </div>
-              <div className="tile-copy"><p>財務風險 / 指標取捨</p><h3>如何避免被漂亮的Accuracy誤導？</h3><span>查看研究限制與完整報告 ↗</span></div>
-            </a>
+              </Link>
+            ))}
           </div>
         </section>
 
-        <section className="about-section section-rule" id="about">
-          <div className="section-label">ABOUT / 我能帶來什麼</div>
-          <div className="about-layout">
-            <div>
-              <h2>不是替AI背書，<br /><em>而是替結果負責。</em></h2>
-              <p>
-                我希望從AI產品應用、產品企劃或使用成效分析切入。現階段不主張獨立開發能力，
-                但能把模糊需求變成可測試情境，清楚說明判斷、證據與還沒解決的限制。
-              </p>
-            </div>
-            <div className="strength-list">
-              {strengths.map((item) => (
-                <article key={item.number}><span>{item.number}</span><strong>{item.title}</strong><p>{item.text}</p></article>
+        <section className="band" id="limits">
+          <div className="honest">
+            <h2>我不能宣稱的事</h2>
+            <ul>
+              {limits.map((l) => (
+                <li key={l}>{l}</li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
-        <section className="portfolio-contact">
-          <p className="kicker">OPEN TO AI PRODUCT OPPORTUNITIES</p>
-          <h2>AI產品應用、產品企劃<br /><em>或需要把問題轉成改善方案的工作。</em></h2>
-          <p>新竹、桃園與雙北皆可｜電話 0900-187-817</p>
-          <a className="button button-light" href="mailto:andrew920322@gmail.com">andrew920322@gmail.com <span>↗</span></a>
+        <section className="band" id="contact">
+          <h2>聯絡</h2>
+          <p>新竹、桃園與雙北皆可,對遠端工作有意願。</p>
+          <a className="cta" href="mailto:andrew920322@gmail.com">
+            andrew920322@gmail.com
+          </a>
+          <a
+            className="cta cta-ghost"
+            href="/reports/ma-yen-chen-ai-product-portfolio.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            下載面試簡報 PDF
+          </a>
         </section>
       </main>
-
       <SiteFooter />
-    </div>
+    </>
   );
 }
