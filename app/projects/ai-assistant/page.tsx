@@ -202,16 +202,33 @@ export default function AiAssistantProject() {
 
         <section className="band">
           <div className="band-head"><h2>我負責把問題變成可驗收的流程。</h2></div>
-          <p>程式與設定由 AI 協助產生。這四件事沒有交出去：</p>
-          <div className="cols">
-            <div className="col"><strong>定義需求</strong><p>找出流程卡在哪，以及真正要解決的是什麼問題。</p></div>
-            <div className="col"><strong>整合服務</strong><p>決定入口在哪、資料寫去哪、哪個服務負責什麼。</p></div>
-            <div className="col"><strong>測試驗收</strong><p>回原本的服務核對內容、日期、檔案與同步狀態。</p></div>
-            <div className="col"><strong>取捨調整</strong><p>維護成本高過效益的，停用。</p></div>
+          <p>
+            程式與設定由 AI 協助產生。下面四件事沒有交出去——
+            <strong>而且不是我說了算，這一頁上面每一件都有對應的證據</strong>：
+          </p>
+          <div className="ledger">
+            {[
+              ["把問題改寫掉", "原本想的是「哪些工具可以自動化」，改成「什麼該拿掉」——這個轉向決定了後面所有取捨。",
+               "#system", "看那一段"],
+              ["決定資料寫去哪", "入口收斂成一個，但最終確認留在原本的服務，不由助理接管。",
+               "#system", "看流程圖"],
+              ["用真實情境驗收", "行事曆那次第一步就失敗；我查出是權限不足，核准最小授權後重驗一次。",
+               "#evidence", "看驗收紀錄"],
+              ["決定什麼該死", "Letta、n8n 不是不好，是當時需求撐不起維護成本。",
+               "#tradeoff", "看取捨"],
+            ].map(([t, s, href, cta]) => (
+              <a className="entry" href={href} key={t}>
+                <div className="entry-top">
+                  <span className="entry-title">{t}</span>
+                  <span className="rowlabel">{cta} ↓</span>
+                </div>
+                <p className="entry-q">{s}</p>
+              </a>
+            ))}
           </div>
         </section>
 
-        <section className="band">
+        <section className="band" id="tradeoff">
           <div className="band-head"><h2>功能不是越多越好，留下來才算有價值。</h2><p>以實際使用頻率、維護成本與資料風險作為判斷。</p></div>
           <div className="cols">
             <div className="col col-keep"><strong>保留</strong>

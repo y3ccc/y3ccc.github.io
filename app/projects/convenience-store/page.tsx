@@ -48,18 +48,6 @@ const SHARE = [
 
 const LEGEND = SHARE[0].parts;
 
-const lenses = [
-  { title: "產業結構", text: "市場位置、門市密度、服務範圍與產業競爭。" },
-  { title: "策略與 OMO", text: "會員 App、支付、生態圈與線上線下整合。" },
-  { title: "財務與評價", text: "營收、獲利、EPS、本益比、股利與股價。" },
-];
-
-const observations = [
-  { tag: "市場", title: "高度集中，但第二名仍有清楚位置", text: "原始資料將 7-ELEVEN 列為市場領先者、全家緊隨其後。比較不只看店數，也延伸到服務內容與生態圈。" },
-  { tag: "策略", title: "競爭從門市走向會員與生活服務", text: "報告觀察到會員 App、點數、支付與 OMO 成為提高黏著度和累積消費資料的重要方法。" },
-  { tag: "財務", title: "穩定毛利背後，仍是低營業利益率產業", text: "門市租賃使使用權資產與租賃負債偏高；毛利率相對穩定，但營業利益率低，規模與營運效率很重要。" },
-];
-
 export default function ConvenienceStoreProject() {
   return (
     <>
@@ -96,6 +84,42 @@ export default function ConvenienceStoreProject() {
             <span className="figure-s">非即時市場排名</span>
           </div>
         </div>
+
+        <section className="band">
+          <div className="band-head">
+            <h2>我要問的不是「有沒有衰退」，是它靠什麼吸收衝擊</h2>
+            <span className="rowlabel">研究設計 · 資料以公司官網與公開資訊為主</span>
+          </div>
+          <p>
+            便利商店是高頻、低客單價、門市極密集的產業。疫情會改變來客與消費時間，
+            但同一段期間它還同時受到展店、鮮食、會員經營與支付生態圈影響——
+            <strong>把營收變動直接歸給疫情，是把好幾件事混在一起。</strong>
+          </p>
+          <p>所以我把題目拆成三層，一層一層往下問：</p>
+          <div className="ledger">
+            <article className="entry">
+              <div className="entry-top">
+                <span className="entry-title">產業這一層</span>
+                <span className="rowlabel">市占、門市密度、服務範圍</span>
+              </div>
+              <p className="entry-q">競爭結構有沒有變？集中度往哪個方向走？</p>
+            </article>
+            <article className="entry">
+              <div className="entry-top">
+                <span className="entry-title">企業這一層</span>
+                <span className="rowlabel">會員 App、支付、OMO</span>
+              </div>
+              <p className="entry-q">兩家用什麼方式留住人？誰的生態圈接得比較起來？</p>
+            </article>
+            <article className="entry">
+              <div className="entry-top">
+                <span className="entry-title">財務這一層</span>
+                <span className="rowlabel">營收、獲利、EPS、本益比</span>
+              </div>
+              <p className="entry-q">上面兩層的差異，最後有沒有落在數字上？市場給了什麼評價？</p>
+            </article>
+          </div>
+        </section>
 
         <section className="band">
           <div className="band-head">
@@ -212,48 +236,60 @@ export default function ConvenienceStoreProject() {
         </section>
 
         <section className="band">
-          <div className="band-head"><h2>不只問有沒有衰退，而是看營運模式如何吸收變化。</h2></div>
-          <p>便利商店是高頻、低客單價且門市密集的產業。疫情可能改變來客、消費時間與服務需求，但公司表現也同時受到展店、鮮食、會員經營與支付生態圈影響。</p>
-          <ul>
-            <li>產業競爭結構與服務內容如何變化？</li>
-            <li>兩家公司在營收、獲利與股東回報上有何差異？</li>
-            <li>數位會員與 OMO 如何成為下一階段競爭重點？</li>
-          </ul>
-        </section>
-
-        <section className="band">
-          <div className="band-head"><h2>從產業，走到企業，再回到財務表現。</h2><p>資料來源以公司官網、公開資訊與市場資料為主。</p></div>
+          <div className="band-head">
+            <h2>圖表沒說、但值得留下來的兩件事</h2>
+            <span className="rowlabel">當時報告的整理，不代表目前市場現況</span>
+          </div>
+          <p>
+            市場集中度前面的圖已經講完了，這裡不重複。剩下兩件是數字看不出來的：
+          </p>
           <div className="ledger">
-            {lenses.map((item) => (
-              <article className="entry" key={item.title}>
-                <h3>{item.title}</h3><p>{item.text}</p>
-              </article>
-            ))}
+            <article className="entry">
+              <div className="entry-top">
+                <span className="entry-title">競爭已經不在門市裡了</span>
+                <span className="rowlabel">策略</span>
+              </div>
+              <p className="entry-q">
+                會員 App、點數、支付與 OMO 才是提高黏著度的手段，而且它們同時在累積消費資料。
+                <strong>比店數只會得到一個過期的答案。</strong>
+              </p>
+            </article>
+            <article className="entry">
+              <div className="entry-top">
+                <span className="entry-title">毛利穩定，不代表賺得輕鬆</span>
+                <span className="rowlabel">財務</span>
+              </div>
+              <p className="entry-q">
+                門市租賃讓使用權資產與租賃負債都偏高；毛利率相對穩定，但營業利益率低。
+                <strong>規模與營運效率才是這個產業真正的勝負點。</strong>
+              </p>
+            </article>
           </div>
         </section>
 
         <section className="band">
-          <div className="band-head"><h2>三個值得留下來的產業判讀。</h2></div>
-          <div className="honest"><p>以下為當時報告內容的重新整理，不代表目前市場現況。</p></div>
-          <div className="ledger">
-            {observations.map((item) => (
-              <article className="entry" key={item.tag}>
-                <span className="rowlabel">{item.tag}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
+          <div className="band-head">
+            <h2>當組長最有價值的一次，是交件前把東西擋下來</h2>
+            <span className="rowlabel">5 人小組 · 我負責定稿</span>
           </div>
-        </section>
-
-        <section className="band">
-          <div className="band-head"><h2>我負責讓五個人的內容，成為同一份報告。</h2></div>
-          <p>我主導工作分配、公開資料蒐集、比較架構、簡報整合、最終定稿與口頭報告。組員資料有錯誤時，我會重新核對來源並修正，確保圖表與敘事一致。</p>
-          <div className="ledger">
-            <div className="entry"><strong>拆分題目與分配內容</strong></div>
-            <div className="entry"><strong>蒐集公開資料並製作圖表</strong></div>
-            <div className="entry"><strong>核對錯誤與統一比較架構</strong></div>
-            <div className="entry"><strong>完成簡報定稿與口頭報告</strong></div>
+          <p>
+            工作分配、資料蒐集、比較架構、簡報整合、上台報告——這些都做了，
+            但它們不太能說明什麼，因為每個組長都會寫這幾項。
+          </p>
+          <p>
+            真正值得講的是這件事：<strong>交件前我發現組員引用的資料跟事實對不上。</strong>
+            時間已經很緊，最省事的做法是照著交出去——那份報告是要給老師看的，
+            不見得會有人去查那一筆數字。
+          </p>
+          <p>
+            我選擇重新查證來源、修正內容，然後把圖表與敘述一起改到一致才送出。
+            <strong>這是整個專題裡唯一一次，我的判斷改變了最後交出去的東西。</strong>
+          </p>
+          <div className="honest">
+            <p>
+              寫得出「我發現錯誤並修正」的人很多，寫得出「我當時大可不修」的人比較少。
+              那個誘因是真的存在，而我在時間壓力下選了比較麻煩的那條。
+            </p>
           </div>
         </section>
 
