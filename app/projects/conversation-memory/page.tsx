@@ -156,7 +156,7 @@ export default function ConversationMemory() {
         <section className="band">
           <h2>轉念：問題不是它會忘，是負擔被丟回給我</h2>
           <p>
-            換一個 agent,又要從頭教一次。
+            換一個 agent，又要從頭教一次。
             前者只能等模型變好，後者可以動手。
           </p>
         </section>
