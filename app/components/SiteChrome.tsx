@@ -9,9 +9,6 @@ export function SiteHeader({ project }: { project?: string }) {
       <nav className="topnav" aria-label="主要導覽">
         <Link href="/#projects">專案</Link>
         <Link href="/#limits">我不能宣稱的事</Link>
-        <a href="/reports/ma-yen-chen-ai-product-portfolio.pdf" target="_blank" rel="noreferrer">
-          面試簡報
-        </a>
         <a href="mailto:andrew920322@gmail.com">andrew920322@gmail.com</a>
       </nav>
     </header>
