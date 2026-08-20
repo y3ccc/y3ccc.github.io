@@ -22,6 +22,31 @@ export const metadata: Metadata = {
   },
 };
 
+const SHARE = [
+  {
+    year: "2021",
+    parts: [
+      { k: "統一超商", v: 46.5, c: 1 },
+      { k: "全家", v: 22.5, c: 2 },
+      { k: "萊爾富", v: 6.5, c: 3 },
+      { k: "OK 超商", v: 2.5, c: 4 },
+      { k: "其他", v: 22.0, c: 0 },
+    ],
+  },
+  {
+    year: "2022",
+    parts: [
+      { k: "統一超商", v: 47.9, c: 1 },
+      { k: "全家", v: 22.5, c: 2 },
+      { k: "萊爾富", v: 6.4, c: 3 },
+      { k: "OK 超商", v: 2.6, c: 4 },
+      { k: "其他", v: 20.8, c: 0 },
+    ],
+  },
+];
+
+const LEGEND = SHARE[0].parts;
+
 const lenses = [
   { title: "產業結構", text: "市場位置、門市密度、服務範圍與產業競爭。" },
   { title: "策略與 OMO", text: "會員 App、支付、生態圈與線上線下整合。" },
@@ -72,11 +97,59 @@ export default function ConvenienceStoreProject() {
         </div>
 
         <section className="band">
-          <div className="band-head"><h2>便利商店不只是零售點，也逐漸成為生活服務入口。</h2></div>
-          <h3>7-ELEVEN</h3><p>市場領先</p>
-          <h3>全家便利商店</h3><p>緊隨其後</p>
-          <h3>其他品牌</h3><p>利基競爭</p>
-          <div className="honest"><p>分析期間：原課程專題資料｜非即時市場排名</p></div>
+          <div className="band-head">
+            <h2>前兩名合計約七成，而且還在往上</h2>
+            <span className="rowlabel">原報告市占率資料 · 2021 → 2022</span>
+          </div>
+          <p>
+            這不是一個「誰是第一」的市場，是一個<strong>已經高度集中、而且集中度還在上升</strong>的市場。
+            統一超商一年多拿 1.4 個百分點，全家守住，被稀釋的是後段班與其他品牌。
+          </p>
+
+          <figure className="chart">
+            <svg viewBox="0 0 720 200" role="img" aria-label="超商市占率組成，2021 與 2022 兩年比較">
+              <title>超商市占率組成：2021 與 2022</title>
+              {SHARE.map((row, r) => {
+                const y = r * 96 + 36;
+                let x = 56;
+                return (
+                  <g key={row.year}>
+                    <text x="0" y={y + 23} className="ax">{row.year}</text>
+                    {row.parts.map((p) => {
+                      const w = (p.v / 100) * 660;
+                      const seg = (
+                        <g key={p.k}>
+                          <rect x={x} y={y} width={Math.max(w - 2, 1)} height="34" rx="2" fill={`var(--c${p.c})`} />
+                          {/* 值標在長條上方的紙面，避開色塊上的低對比 */}
+                          {p.c === 1 || p.c === 2 ? (
+                            <text x={x} y={y - 8} className="val">
+                              {p.k} {p.v.toFixed(1)}%
+                            </text>
+                          ) : null}
+                        </g>
+                      );
+                      x += w;
+                      return seg;
+                    })}
+                    <text x="56" y={y + 52} className="note">
+                      前兩名合計 {(row.parts[0].v + row.parts[1].v).toFixed(1)}%
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+            <div className="legend">
+              {LEGEND.map((l) => (
+                <span key={l.k}>
+                  <i style={{ background: `var(--c${l.c})` }} />
+                  {l.k}
+                </span>
+              ))}
+            </div>
+            <figcaption>
+              資料為原課程專題整理的市占率，非即時排名。「其他」是餘額，不是單一品牌，所以用中性色。
+            </figcaption>
+          </figure>
         </section>
 
         <section className="band">

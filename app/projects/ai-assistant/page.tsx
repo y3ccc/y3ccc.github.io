@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   },
 };
 
-const integrations = ["Google Calendar", "Gmail", "Obsidian", "GitHub Sync", "提醒", "法律判決 MCP"];
 
 const cases = [
   { title: "日記與消費，不再散落", input: "在 Discord／LINE 輸入心得、日記或消費。", output: "寫入 Obsidian，再由 GitHub 持續同步。", check: "檢查檔案、內容、日期與同步狀態。" },
@@ -71,30 +70,49 @@ export default function AiAssistantProject() {
         </section>
 
         <section className="band">
-          <div className="band-head"><h2>使用體驗前後</h2></div>
-          <h3>入口分散</h3>
-          <p>Calendar　Gmail　日記　記帳　知識庫　提醒</p>
-          <p>每一件小事都要先想起該開哪個 App。</p>
-          <h3>產品判斷</h3>
-          <p>整合入口，不取代最終確認</p>
-          <h3>一個對話入口</h3>
-          <p>Discord / LINE</p>
-          <p>「記下這筆消費，明天提醒我確認。」</p>
-          <p>已分流到正確服務</p>
-          <p>操作變簡單，但結果仍回到原始服務驗證。</p>
-        </section>
-
-        <section className="band">
-          <div className="band-head"><h2>一個入口，多個真正會用到的服務。</h2></div>
-          <p>我以個人 Linux／Docker 伺服器承載服務，讓 agent 不必依賴日常電腦持續開機。功能由實際需求決定，不由工具清單決定。</p>
-          <h3>Discord / LINE</h3>
-          <p>自然語言需求</p>
-          <h3>AI 協作層</h3>
-          <p>拆解意圖 · 呼叫服務</p>
-          <div className="ledger">
-            {integrations.map((item) => <div className="entry" key={item}><span className="entry-title">{item}</span></div>)}
+          <div className="band-head">
+            <h2>改變的是入口，不是最終確認</h2>
+            <span className="rowlabel">這是產品判斷，不是技術架構</span>
           </div>
-          <p>回到原始服務確認結果</p>
+
+          <figure className="flow">
+            <svg viewBox="0 0 720 250" role="img" aria-label="從六個分散入口，收斂成一個對話入口，但結果仍回原始服務確認">
+              <title>入口收斂前後對照</title>
+
+              <text x="0" y="16" className="flow-s">之前</text>
+              {["行事曆", "信箱", "日記", "記帳", "知識庫", "提醒"].map((s, i) => (
+                <g key={s}>
+                  <rect className="flow-box" x={i * 120} y="26" width="108" height="38" rx="4" />
+                  <text x={i * 120 + 54} y="50" className="flow-t" textAnchor="middle">{s}</text>
+                </g>
+              ))}
+              <text x="0" y="84" className="flow-s">每一件小事，都要先想起該開哪一個。</text>
+
+              <path className="flow-arrow" d="M360 96 L360 122" markerEnd="url(#ar)" />
+              <defs>
+                <marker id="ar" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                  <path d="M0 0 L7 3.5 L0 7 z" fill="var(--ink-3)" />
+                </marker>
+              </defs>
+
+              <rect className="flow-box-on" x="196" y="130" width="328" height="46" rx="4" />
+              <text x="360" y="150" className="flow-t" textAnchor="middle">一個對話入口</text>
+              <text x="360" y="167" className="flow-s" textAnchor="middle">
+                「記下這筆消費，明天提醒我確認。」
+              </text>
+
+              <path className="flow-arrow" d="M360 182 L360 206" markerEnd="url(#ar)" />
+
+              <rect className="flow-box" x="140" y="210" width="440" height="36" rx="4" />
+              <text x="360" y="233" className="flow-t" textAnchor="middle">
+                結果回到原始服務確認
+              </text>
+            </svg>
+            <figcaption>
+              操作變簡單了，但<strong>驗證沒有被簡化掉</strong>——寫進去對不對，還是回 Calendar 和筆記本身去看。
+              整合入口不等於接管判斷，這是刻意留的界線。
+            </figcaption>
+          </figure>
         </section>
 
         <section className="band" id="evidence">

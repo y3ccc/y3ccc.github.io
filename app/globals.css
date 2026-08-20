@@ -271,3 +271,43 @@ p { margin: 0 0 16px; max-width: var(--measure); }
   margin: 34px 0 12px; display: block;
 }
 .tier-label:first-of-type { margin-top: 0; }
+
+/* ---------- 圖表色（已通過 CVD／對比驗證，深淺模式各自取階） ---------- */
+:root {
+  --c1: #0E8F63;  /* 統一超商 */
+  --c2: #3F72CE;  /* 全家 */
+  --c3: #D98A00;  /* 萊爾富 */
+  --c4: #B14FBC;  /* OK 超商 */
+  --c0: #A8ADB5;  /* 其他（餘額，中性） */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c1: #1B9169; --c2: #4F7DCC; --c3: #AF7318; --c4: #AC5BBA; --c0: #6D747D;
+  }
+}
+:root[data-theme="dark"] {
+  --c1: #1B9169; --c2: #4F7DCC; --c3: #AF7318; --c4: #AC5BBA; --c0: #6D747D;
+}
+
+.chart { margin: 24px 0 0; }
+.chart figcaption {
+  font-size: 14px; color: var(--ink-3); margin-top: 12px; max-width: var(--measure);
+}
+.chart svg { display: block; width: 100%; height: auto; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 0; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--ink-2); }
+.legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+
+/* ---------- 流程圖 ---------- */
+.flow { margin: 24px 0 0; }
+.flow svg { display: block; width: 100%; height: auto; }
+
+/* SVG 內文字：一律用文字色，不用資料色 */
+.ax { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; fill: var(--ink-3); }
+.val { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; fill: var(--ink); font-weight: 500; }
+.note { font-size: 12.5px; fill: var(--ink-3); }
+.flow-box { fill: var(--panel); stroke: var(--rule); stroke-width: 1; }
+.flow-box-on { fill: var(--verified-bg); stroke: var(--verified); stroke-width: 1.5; }
+.flow-t { font-size: 13px; fill: var(--ink); font-weight: 700; }
+.flow-s { font-size: 11.5px; fill: var(--ink-3); }
+.flow-arrow { stroke: var(--ink-3); stroke-width: 1.2; fill: none; }

@@ -317,13 +317,40 @@ export default function ConversationMemory() {
         </section>
 
         <section className="band">
-          <h2>還沒解決的</h2>
+          <div className="band-head">
+            <h2>還沒解決的：我找得到那個對話，找不到那句話</h2>
+            <span className="tag tag-open">未解</span>
+          </div>
           <p>
             因為額度有限，沿用原本的對話比開新的省，所以我會先找原對話。
-            但我的搜尋單位是「對話」，而對話的標題不等於它的內容——
-            聊太多會忘記標題，聊著聊著會跑去別的方向，標題早就不代表內容了。
+            但我的<strong>搜尋單位是「對話」，而索引記的是「主題 + 我最後怎麼處置」</strong>。
+            這中間漏掉了一整層。
           </p>
-          <p>終點的限制和起點是同一個。這個問題還沒解。</p>
+
+          <div className="honest">
+            <h2>具體卡在哪</h2>
+            <ul>
+              <li>
+                我搜「破產預測」找得到那個對話，
+                <strong>但找不到「我當時為什麼決定用 Recall 優先」</strong>——
+                那個判斷埋在第四十幾則訊息裡，索引沒有記，標題也不會寫。
+              </li>
+              <li>
+                對話會漂移。開頭在談 A，聊到後來變成 B，
+                <strong>標題停在 A</strong>。聊得越久，標題越不代表內容。
+              </li>
+              <li>
+                要真的解，得做到<strong>訊息層級的語意檢索</strong>——嵌入加向量檢索。
+                而我為了別的需求裝過向量資料庫，後來因為用不到而移除了。
+                所以這不是「還沒想到怎麼做」，是<strong>我判斷過那個成本，當時決定不付</strong>。
+              </li>
+            </ul>
+            <p>
+              終點的限制和起點是同一個：額度。省 token 所以要找舊對話，
+              找舊對話需要更好的索引，更好的索引要跑嵌入——而那也要成本。
+              <strong>這個故事是閉環的，我還沒找到出口。</strong>
+            </p>
+          </div>
         </section>
 
         <section className="band">
