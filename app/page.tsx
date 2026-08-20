@@ -76,6 +76,11 @@ const entries = [
   },
 ];
 
+const tiers: [boolean, string][] = [
+  [true, "先看這三個 · 第三方可查核、方法完整、真金白銀驗證過"],
+  [false, "其餘三個"],
+];
+
 const limits = [
   "實作是 AI 協作產生的。我沒辦法宣稱自己能獨立寫出這些程式——我負責的是問題定義、工具取捨、驗收設計，以及結果責任。",
   "破產風險模型只做過一次 holdout，沒有外部驗證，不能推論因果。",
@@ -115,45 +120,29 @@ export default function Home() {
             <h2>六個專案，各自附上可查核的證據</h2>
           </div>
 
-          <span className="tier-label">先看這三個 · 第三方可查核、方法完整、真金白銀驗證過</span>
-          <div className="ledger">
-            {entries.filter((e) => e.core).map((e) => (
-              <Link className="entry" href={e.href} key={e.href}>
-                <div className="entry-top">
-                  <span className="entry-title">{e.title}</span>
-                  <span className="rowlabel">{e.role}</span>
-                </div>
-                <p className="entry-q">{e.q}</p>
-                <div className="entry-meta">
-                  {e.tags.map(([label, cls]) => (
-                    <span className={`tag ${cls}`} key={label}>
-                      {label}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <span className="tier-label">其餘三個</span>
-          <div className="ledger">
-            {entries.filter((e) => !e.core).map((e) => (
-              <Link className="entry" href={e.href} key={e.href}>
-                <div className="entry-top">
-                  <span className="entry-title">{e.title}</span>
-                  <span className="rowlabel">{e.role}</span>
-                </div>
-                <p className="entry-q">{e.q}</p>
-                <div className="entry-meta">
-                  {e.tags.map(([label, cls]) => (
-                    <span className={`tag ${cls}`} key={label}>
-                      {label}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
-          </div>
+          {tiers.map(([core, label]) => (
+            <div key={label}>
+              <span className="tier-label">{label}</span>
+              <div className="ledger">
+                {entries.filter((e) => e.core === core).map((e) => (
+                  <Link className="entry" href={e.href} key={e.href}>
+                    <div className="entry-top">
+                      <span className="entry-title">{e.title}</span>
+                      <span className="rowlabel">{e.role}</span>
+                    </div>
+                    <p className="entry-q">{e.q}</p>
+                    <div className="entry-meta">
+                      {e.tags.map(([tag, cls]) => (
+                        <span className={`tag ${cls}`} key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </section>
 
         <section className="band" id="limits">

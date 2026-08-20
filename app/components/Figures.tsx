@@ -11,9 +11,11 @@ export function Scroll({ children }: { children: React.ReactNode }) {
 /** 比例條：顯示一個高度不平衡的組成，例如 97% / 3% */
 export function Split({
   parts,
+  note,
   caption,
 }: {
   parts: { k: string; v: number; c: number }[];
+  note?: string;
   caption?: string;
 }) {
   // 先算好每段的起點，避免在 render 期間累加變數
@@ -38,9 +40,7 @@ export function Split({
               </g>
             );
           })}
-          <text x="0" y="84" className="note">
-            {parts[parts.length - 1].k}只有這麼寬——全部猜「不是」，準確率照樣好看。
-          </text>
+          {note ? <text x="0" y="84" className="note">{note}</text> : null}
         </svg>
       </Scroll>
       {caption ? <figcaption>{caption}</figcaption> : null}

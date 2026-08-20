@@ -336,7 +336,7 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .dtable th {
   text-align: right; padding: 11px 18px; background: var(--sunk);
   border-bottom: 1px solid var(--rule); color: var(--ink-3);
-  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 12px; letter-spacing: .06em; font-weight: 500; white-space: nowrap;
 }
 .dtable th:first-child, .dtable td:first-child { text-align: left; }
@@ -367,7 +367,7 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .vlog-art pre {
   margin: 10px 0 0; padding: 14px 16px; background: var(--panel);
   border: 1px solid var(--rule); border-radius: 4px;
-  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", monospace;
+  font-family: "IBM Plex Mono", ui-monospace, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace;
   font-size: 13px; line-height: 1.8; white-space: pre-wrap; overflow-x: auto;
 }
 

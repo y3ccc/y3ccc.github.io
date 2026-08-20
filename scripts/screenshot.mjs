@@ -2,9 +2,11 @@ import { chromium } from "playwright";
 import { createServer } from "node:http";
 import { readFile, mkdir } from "node:fs/promises";
 import { extname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = "/home/y3c/portfolio-site/out";
-const OUT = "/home/y3c/.claude/jobs/1468a02c/tmp/shots";
+// 相對於這支腳本，不要寫死任何人的家目錄
+const ROOT = fileURLToPath(new URL("../out", import.meta.url));
+const OUT = process.env.SHOTS_DIR ?? fileURLToPath(new URL("../.shots", import.meta.url));
 const MIME = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript",
                ".png": "image/png", ".svg": "image/svg+xml", ".json": "application/json",
                ".pdf": "application/pdf", ".woff2": "font/woff2", ".txt": "text/plain",

@@ -23,14 +23,42 @@ test("exports the portfolio home with the current positioning", async () => {
 
 test("leads the home page with the three figures, each linking to its case", async () => {
   const output = await html();
-  for (const [figure, target] of [
-    ["6,819", "/projects/bankruptcy-risk/"],
-    ["#57882", "/projects/hermes-line-media/"],
-    ["13", "/projects/conversation-memory/"],
+  // 比對 figure-n 的實際內容，不是「頁面某處出現這串字」——
+  // 先前寫成 /13/ 時，任何 13px、13.5px 都能讓它通過。
+  const shown = [...output.matchAll(/class="figure-n">([^<]+)</g)].map((m) => m[1]);
+  assert.deepEqual(shown, ["6,819", "#57882", "13"], "首屏三個數字或順序被改動了");
+  for (const target of [
+    "/projects/bankruptcy-risk/",
+    "/projects/hermes-line-media/",
+    "/projects/conversation-memory/",
   ]) {
-    assert.match(output, new RegExp(figure.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     assert.match(output, new RegExp(`href="${target}"`));
   }
+});
+
+// 這一組守的是這個站踩過三次的坑：頁面上寫的數量，跟實際檔案／實際渲染對不上。
+// 卡片數 25 vs 29、簡報 26 vs 25 頁、技術報告 7 vs 9 頁，都是這樣漏掉的。
+test("every count stated on a page matches what is actually there", async () => {
+  const pdfPages = async (name) =>
+    (await readFile(new URL(`../public/reports/${name}`, import.meta.url), "latin1"))
+      .match(/\/Type\s*\/Page[^s]/g)?.length ?? 0;
+
+  assert.equal(await pdfPages("ma-yen-chen-bankruptcy-risk-report.pdf"), 9);
+  assert.equal(await pdfPages("ma-yen-chen-convenience-store-deck.pdf"), 25);
+  assert.equal(await pdfPages("ma-yen-chen-onepager.pdf"), 1);
+
+  const risk = await html("projects/bankruptcy-risk");
+  assert.match(risk, /9 頁完整技術報告/, "技術報告頁數與 PDF 對不上");
+
+  const store = await html("projects/convenience-store");
+  assert.match(store, /下載原始簡報 25 頁/, "簡報頁數與 PDF 對不上");
+  assert.match(store, /公開版 25 頁可下載/);
+
+  // 地圖卡片數必須與分享描述一致（分享卡曾寫 25，實際渲染 29）
+  const memory = await html("projects/conversation-memory");
+  const cards = (memory.match(/<details class="card"/g) ?? []).length;
+  const claimed = Number(memory.match(/含 (\d+) 張可展開的伺服器地圖/)?.[1]);
+  assert.equal(cards, claimed, `實際 ${cards} 張卡，分享描述寫 ${claimed} 張`);
 });
 
 test("keeps the limitations scoped to the work, not to the person", async () => {

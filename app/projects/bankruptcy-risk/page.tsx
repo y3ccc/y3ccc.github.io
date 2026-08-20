@@ -89,6 +89,7 @@ export default function BankruptcyRiskProject() {
               { k: "健康企業", v: 97, c: 0 },
               { k: "破產企業", v: 3, c: 3 },
             ]}
+            note="破產企業只有這麼寬——全部猜「健康」，準確率照樣好看。"
             caption="一個什麼都不做、全部猜「健康」的模型，準確率就有 97%。所以第一個要問的不是準確率，是：真正破產的那 3%，抓到了多少？"
           />
         </section>
