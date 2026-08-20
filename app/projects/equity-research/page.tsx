@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
-  title: "一次個股研究，以及它教我的事",
+  title: "一次個股研究，以及它教我的事｜馬彥宸作品集",
   description:
     "我用接近淨值的價格買一家一直在賺錢的公司。論述成立，但我漏看了產業那一層。",
+  openGraph: {
+    title: "馬彥宸｜一次個股研究，以及它教我的事",
+    description: "鴻海 2021–2025，含息報酬約 72%、年化約 16%，優於同期大盤。但這頁真正在講的是我漏看的那一層。",
+    url: "/projects/equity-research/",
+    type: "article",
+    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜一次個股研究" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "馬彥宸｜一次個股研究，以及它教我的事",
+    description: "一筆賺錢的投資，價值不在報酬率，在於它指出我的分析框架缺了哪一塊。",
+    images: ["/og-v5.png"],
+  },
 };
 
 const figures = [
@@ -58,7 +72,7 @@ export default function EquityResearch() {
     <>
       <SiteHeader project="個股研究" />
       <main className="shell">
-        <a className="backlink" href="/">← 回作品集</a>
+        <Link className="backlink" href="/">← 回作品集</Link>
         <span className="rowlabel">電子產業 · 2021 – 2025 · 已了結部位</span>
         <h1>我用接近淨值的價格，<br />買一家一直在賺錢的公司。</h1>
         <p className="lede">
@@ -208,9 +222,9 @@ export default function EquityResearch() {
             報酬為近似值：分批投入的資金，精確報酬應以 XIRR(資金加權)計算。
             大盤基準採同期加權指數含息估算。
           </p>
-          <a className="cta" href="/projects/bankruptcy-risk/">
-            看我怎麼處理財務資料 ↗
-          </a>
+          <Link className="cta" href="/projects/bankruptcy-risk/">
+            看我怎麼處理財務資料 →
+          </Link>
         </section>
       </main>
       <SiteFooter />

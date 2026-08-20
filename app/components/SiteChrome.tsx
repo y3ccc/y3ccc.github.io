@@ -8,8 +8,8 @@ export function SiteHeader({ project }: { project?: string }) {
       </Link>
       <nav className="topnav" aria-label="主要導覽">
         <Link href="/#projects">專案</Link>
-        <Link href="/#limits">我不能宣稱的事</Link>
-        <a href="mailto:andrew920322@gmail.com">andrew920322@gmail.com</a>
+        <Link href="/#limits">工作邊界</Link>
+        <a href="mailto:andrew920322@gmail.com">聯絡我</a>
       </nav>
     </header>
   );

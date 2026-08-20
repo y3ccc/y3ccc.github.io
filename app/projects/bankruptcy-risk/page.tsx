@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 const reportUrl = "/reports/ma-yen-chen-bankruptcy-risk-report.pdf";
@@ -9,15 +10,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "馬彥宸｜企業破產風險預測",
     description: "把複雜資料轉成風險決策依據：6,819 筆企業、93 項財務變數與防資料洩漏驗證。",
-    url: "/projects/bankruptcy-risk",
-    type: "website",
-    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "馬彥宸企業破產風險預測作品集" }],
+    url: "/projects/bankruptcy-risk/",
+    type: "article",
+    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜企業破產風險預測" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜企業破產風險預測",
     description: "6,819 筆企業資料 × 風險判讀 × 防資料洩漏驗證",
-    images: ["/og.png"],
+    images: ["/og-v5.png"],
   },
 };
 
@@ -47,7 +48,7 @@ export default function BankruptcyRiskProject() {
     <>
       <SiteHeader project="企業破產風險預測" />
       <main className="shell">
-        <a className="backlink" href="/">← 回作品集</a>
+        <Link className="backlink" href="/">← 回作品集</Link>
         <h1>高 Accuracy，不代表抓得到高風險企業。</h1>
         <p className="lede">破產企業只占少數，模型即使幾乎全部預測為健康，準確率仍可能很好看。我以 6,819 筆企業財務資料建立比較流程，重點放在漏判、誤報與泛化風險，而不是只找最高分數。</p>
 
@@ -150,7 +151,7 @@ export default function BankruptcyRiskProject() {
         </section>
 
         <section className="band">
-          <a className="cta cta-ghost" href="/projects/convenience-store">便利商店產業與財務分析　查看專案 ↗</a>
+          <Link className="cta cta-ghost" href="/projects/convenience-store">便利商店產業與財務分析　查看專案 →</Link>
         </section>
       </main>
       <SiteFooter />

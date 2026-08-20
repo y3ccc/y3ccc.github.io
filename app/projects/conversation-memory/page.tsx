@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
-  title: "每次開新對話，都在考我",
+  title: "每次開新對話，都在考我｜馬彥宸作品集",
   description:
     "我的問題不是 AI 不夠聰明，是每次重開一個對話，它都在考我的記憶和我的提示詞功力。",
+  openGraph: {
+    title: "馬彥宸｜每次開新對話，都在考我",
+    description: "把「記住上次講到哪」的負擔從人身上移走。含 25 張可展開的伺服器地圖，以及 13 項已停用服務的死因。",
+    url: "/projects/conversation-memory/",
+    type: "article",
+    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜每次開新對話，都在考我" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "馬彥宸｜每次開新對話，都在考我",
+    description: "13 項服務被我關掉，死因全部留著。只看還活著的東西會誤判。",
+    images: ["/og-v5.png"],
+  },
 };
 
 const figures = [
@@ -165,7 +179,7 @@ export default function ConversationMemory() {
     <>
       <SiteHeader project="每次開新對話，都在考我" />
       <main className="shell">
-        <a className="backlink" href="/">← 回作品集</a>
+        <Link className="backlink" href="/">← 回作品集</Link>
 
         <h1>
           我的問題不是 AI 不夠聰明，

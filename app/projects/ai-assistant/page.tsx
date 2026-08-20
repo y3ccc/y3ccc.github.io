@@ -1,9 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "AI 協作生活助理｜馬彥宸作品集",
   description: "以 Discord／LINE 為入口，整合日常工具的 AI 協作生活助理專案。",
+  openGraph: {
+    title: "馬彥宸｜AI 協作生活助理",
+    description: "重點不是把工具堆在一起，而是確認它們真的讓生活變簡單。含去識別化的驗收紀錄與權限邊界處理。",
+    url: "/projects/ai-assistant/",
+    type: "article",
+    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜AI 協作生活助理" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "馬彥宸｜AI 協作生活助理",
+    description: "把零散的日常，收回同一個入口。",
+    images: ["/og-v5.png"],
+  },
 };
 
 const integrations = ["Google Calendar", "Gmail", "Obsidian", "GitHub Sync", "提醒", "法律判決 MCP"];
@@ -19,7 +33,7 @@ export default function AiAssistantProject() {
     <>
       <SiteHeader project="AI 協作生活助理" />
       <main className="shell">
-        <a className="backlink" href="/">← 回作品集</a>
+        <Link className="backlink" href="/">← 回作品集</Link>
         <h1>把零散的日常，收回同一個入口。</h1>
         <p className="lede">我用 Discord／LINE 作為對話入口，整合行事曆、Gmail、日記、記帳與個人知識庫。重點不是把工具堆在一起，而是確認它們真的讓生活變簡單。</p>
 
@@ -132,7 +146,7 @@ export default function AiAssistantProject() {
         <section className="band">
           <h2>好的 AI 應用，應該讓人少操心一點。</h2>
           <p>這個專案讓我確認，自己想做的不只是工具整合，而是從問題出發，判斷什麼值得導入、如何驗收，以及什麼時候該停下來重新想。</p>
-          <a className="cta" href="/projects/hermes-line-media/">查看 Hermes 產品改善案例 ↗</a>
+          <Link className="cta" href="/projects/hermes-line-media/">查看 Hermes 產品改善案例 →</Link>
         </section>
       </main>
       <SiteFooter />

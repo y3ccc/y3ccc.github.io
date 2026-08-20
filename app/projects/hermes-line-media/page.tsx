@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 const issueUrl = "https://github.com/NousResearch/hermes-agent/issues/57882";
@@ -7,6 +8,19 @@ const pullRequestUrl = "https://github.com/NousResearch/hermes-agent/pull/57884"
 export const metadata: Metadata = {
   title: "Hermes LINE 媒體改善｜馬彥宸作品集",
   description: "從LINE語音與檔案被略過，到問題重現、回歸測試與公開Issue／PR的產品改善案例。",
+  openGraph: {
+    title: "馬彥宸｜Hermes LINE 媒體改善",
+    description: "圖片能用，為什麼語音卻消失？公開 Issue #57882 與 PR #57884，任何人都能點開查證——包含它最終沒有被合併。",
+    url: "/projects/hermes-line-media/",
+    type: "article",
+    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜Hermes LINE 媒體改善" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "馬彥宸｜Hermes LINE 媒體改善",
+    description: "把模糊抱怨整理成可重現、可驗證、可交付的產品問題。",
+    images: ["/og-v5.png"],
+  },
 };
 
 const process = [
@@ -21,7 +35,7 @@ export default function HermesLineMediaProject() {
     <>
       <SiteHeader project="Hermes LINE 媒體改善" />
       <main className="shell">
-        <a className="backlink" href="/">← 回作品集</a>
+        <Link className="backlink" href="/">← 回作品集</Link>
         <h1>圖片能用，為什麼語音卻消失？</h1>
         <p className="lede">我在實際使用Hermes的LINE整合時，發現圖片可以正常處理，但語音、影片與一般檔案會被略過。這個案例不是展示我獨立寫了多少程式，而是展示如何把模糊抱怨整理成可重現、可驗證、可交付的產品問題。</p>
 
@@ -87,7 +101,7 @@ export default function HermesLineMediaProject() {
         <section className="band">
           <h2>產品問題的價值，來自可重現與可驗收。</h2>
           <p>我能帶來的不是「問AI拿一段程式」，而是把使用者遇到的問題縮小範圍、定義成功條件、確認修正沒有製造新問題，再把證據交給產品與工程團隊。</p>
-          <a className="cta" href="/projects/ai-assistant/">回到AI生活助理案例 ↗</a>
+          <Link className="cta" href="/projects/ai-assistant/">回到AI生活助理案例 →</Link>
         </section>
       </main>
       <SiteFooter />

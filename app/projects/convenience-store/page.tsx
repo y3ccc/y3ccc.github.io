@@ -1,9 +1,25 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+
+const deckUrl = "/reports/ma-yen-chen-convenience-store-deck.pdf";
 
 export const metadata: Metadata = {
   title: "便利商店產業與財務分析｜馬彥宸作品集",
   description: "疫情背景下，以全家與統一超商為對象的產業、策略與財務比較課程專題。",
+  openGraph: {
+    title: "馬彥宸｜便利商店產業及財務分析",
+    description: "5 人專題組長，26 頁簡報原檔可下載。競爭已從店數延伸到會員生態圈與 OMO 整合。",
+    url: "/projects/convenience-store/",
+    type: "article",
+    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜便利商店產業及財務分析" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "馬彥宸｜便利商店產業及財務分析",
+    description: "疫情之後，便利商店受到什麼影響？",
+    images: ["/og-v5.png"],
+  },
 };
 
 const lenses = [
@@ -23,7 +39,7 @@ export default function ConvenienceStoreProject() {
     <>
       <SiteHeader project="便利商店產業與財務分析" />
       <main className="shell">
-        <a className="backlink" href="/">← 回作品集</a>
+        <Link className="backlink" href="/">← 回作品集</Link>
         <span className="rowlabel">2023—2024</span>
         <h1>疫情之後，便利商店受到什麼影響？</h1>
         <p className="lede">當時處於疫情環境，我對最貼近日常民生的便利商店產生興趣：即使人們仍需要基本消費，門市、服務與財務表現是否也會受到影響？因此以全家與統一超商為對象，整理產業結構、企業策略與財務資料。</p>
@@ -106,12 +122,22 @@ export default function ConvenienceStoreProject() {
             <p>原始專題主要完成產業與企業比較，沒有建立完整的疫情前後對照，也沒有把展店、商品策略與總體環境等因素分離。因此較適合回答「產業和公司如何表現」，不能單憑營收變動斷言是疫情造成。</p>
             <h3>如果重新研究</h3>
             <p>我會加入疫情前後同店銷售、來客數、客單價、外送／支付使用率與門市展店資料，建立更清楚的比較基準。</p>
-            <p>原始 26 頁小組簡報含其他組員姓名，因此未直接公開；面試時可提供完整檔案。</p>
           </div>
         </section>
 
         <section className="band">
-          <a className="cta cta-ghost" href="/projects/ai-assistant">AI 協作生活助理　查看專案 ↗</a>
+          <div className="band-head">
+            <h2>原始簡報可以下載，但封面拿掉了</h2>
+          </div>
+          <p>
+            這是當時交出去的 26 頁小組簡報。公開版是 25 頁——
+            <strong>封面列了其他四位組員的姓名，那不是我能單方面決定公開的資料，所以整頁移除。</strong>
+            內容一頁未刪。
+          </p>
+          <a className="cta" href={deckUrl} target="_blank" rel="noreferrer">
+            下載原始簡報 25 頁 PDF ↗
+          </a>
+          <Link className="cta cta-ghost" href="/projects/ai-assistant">AI 協作生活助理 →</Link>
         </section>
       </main>
       <SiteFooter />

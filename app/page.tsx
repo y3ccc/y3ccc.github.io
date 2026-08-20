@@ -71,7 +71,7 @@ const entries = [
 ];
 
 const limits = [
-  "實作是 AI 協作產生的。我沒辦法宣稱自己能獨立寫出這些程式。",
+  "實作是 AI 協作產生的。我沒辦法宣稱自己能獨立寫出這些程式——我負責的是問題定義、工具取捨、驗收設計，以及結果責任。",
   "破產風險模型只做過一次 holdout，沒有外部驗證，不能推論因果。",
   "Hermes 那個 PR 最終沒有被合併——維護者已有涵蓋更廣的修正。",
 ];
@@ -98,7 +98,7 @@ export default function Home() {
                 <span className="figure-n">{f.n}</span>
                 <span className="figure-t">{f.t}</span>
                 <span className="figure-s">{f.s}</span>
-                <span className="figure-link">{f.label} ↗</span>
+                <span className="figure-link">{f.label} →</span>
               </Link>
             ))}
           </div>
