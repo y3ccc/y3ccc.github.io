@@ -82,7 +82,7 @@ export default function Home() {
       <SiteHeader />
       <main className="shell">
         <section className="hero">
-          <span className="role">應徵 AI 產品應用 / 產品企劃</span>
+          <span className="role">應徵 AI 應用 / 產業分析師</span>
           <h1>
             我做的不是寫出程式，
             <br />
