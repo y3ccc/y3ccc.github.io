@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "一次個股研究，以及它教我的事｜馬彥宸作品集",
@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description: "鴻海 2021–2025，含息報酬約 72%、年化約 16%，優於同期大盤。但這頁真正在講的是我漏看的那一層。",
     url: "/projects/equity-research/",
     type: "article",
-    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜一次個股研究" }],
+    images: [{ url: "/og/equity-research.png", width: 1200, height: 630, alt: "馬彥宸｜一次個股研究" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜一次個股研究，以及它教我的事",
     description: "一筆賺錢的投資，價值不在報酬率，在於它指出我的分析框架缺了哪一塊。",
-    images: ["/og-v5.png"],
+    images: ["/og/equity-research.png"],
   },
 };
 
@@ -80,6 +80,15 @@ export default function EquityResearch() {
           在於它精確地指出我的分析框架缺了哪一塊。
           標的是鴻海(2317)，論述是我自己推的，錯誤也是我自己找出來的。
         </p>
+
+        <CaseSummary
+          problem="一家持續獲利的公司，市值卻幾乎等於淨值。市場是給了合理價，還是沒有反映它一直在賺錢？"
+          decision="只用資產與獲利判斷，不預測產業。評估過籌碼面後，判斷它對三到四年的持有週期影響有限而排除。"
+          check="用真金白銀持有並分批加碼，以實際出場價與同期大盤含息報酬對照，不是紙上回測。"
+          result="含息報酬約 72%、年化約 16%，優於同期大盤。但我賣掉後它繼續漲——我的框架看不到產業那一層。"
+          evidence="已了結部位 · 含自我檢討"
+          level="open"
+        />
 
         <div className="figures">
           {figures.map((f) => (

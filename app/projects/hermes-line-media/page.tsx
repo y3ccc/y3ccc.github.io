@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 const issueUrl = "https://github.com/NousResearch/hermes-agent/issues/57882";
 const pullRequestUrl = "https://github.com/NousResearch/hermes-agent/pull/57884";
@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     description: "圖片能用，為什麼語音卻消失？公開 Issue #57882 與 PR #57884，任何人都能點開查證——包含它最終沒有被合併。",
     url: "/projects/hermes-line-media/",
     type: "article",
-    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜Hermes LINE 媒體改善" }],
+    images: [{ url: "/og/hermes-line-media.png", width: 1200, height: 630, alt: "馬彥宸｜Hermes LINE 媒體改善" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜Hermes LINE 媒體改善",
     description: "把模糊抱怨整理成可重現、可驗證、可交付的產品問題。",
-    images: ["/og-v5.png"],
+    images: ["/og/hermes-line-media.png"],
   },
 };
 
@@ -38,6 +38,15 @@ export default function HermesLineMediaProject() {
         <Link className="backlink" href="/">← 回作品集</Link>
         <h1>圖片能用，為什麼語音卻消失？</h1>
         <p className="lede">我在實際使用Hermes的LINE整合時，發現圖片可以正常處理，但語音、影片與一般檔案會被略過。這個案例不是展示我獨立寫了多少程式，而是展示如何把模糊抱怨整理成可重現、可驗證、可交付的產品問題。</p>
+
+        <CaseSummary
+          problem="LINE 進來的圖片正常，但語音、影片與一般檔案全部消失，沒有進入後續流程。"
+          decision="不擴大改動範圍。先把「不能用」縮小成「哪一種輸入失敗」，再定義不退化的驗收條件。"
+          check="語音要能進入 STT，而且原本可用的圖片流程不能被破壞——兩者同時成立才算修好。"
+          result="產出公開 Issue #57882 與 PR #57884。PR 最終未被合併，維護者已有涵蓋更廣的修正。"
+          evidence="第三方可查核"
+          level="third"
+        />
 
         <div className="figures">
           <div className="figure">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "AI 協作生活助理｜馬彥宸作品集",
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     description: "重點不是把工具堆在一起，而是確認它們真的讓生活變簡單。含去識別化的驗收紀錄與權限邊界處理。",
     url: "/projects/ai-assistant/",
     type: "article",
-    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜AI 協作生活助理" }],
+    images: [{ url: "/og/ai-assistant.png", width: 1200, height: 630, alt: "馬彥宸｜AI 協作生活助理" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜AI 協作生活助理",
     description: "把零散的日常，收回同一個入口。",
-    images: ["/og-v5.png"],
+    images: ["/og/ai-assistant.png"],
   },
 };
 
@@ -36,6 +36,15 @@ export default function AiAssistantProject() {
         <Link className="backlink" href="/">← 回作品集</Link>
         <h1>把零散的日常，收回同一個入口。</h1>
         <p className="lede">我用 Discord／LINE 作為對話入口，整合行事曆、Gmail、日記、記帳與個人知識庫。重點不是把工具堆在一起，而是確認它們真的讓生活變簡單。</p>
+
+        <CaseSummary
+          problem="行事曆、信箱、日記、記帳與知識庫各自一個 App，每件小事都要先想起該開哪個。"
+          decision="問題不是缺工具，是工具太分散。所以要問的不是「還能整合什麼」，而是「什麼該拿掉」。"
+          check="用真實訊息實測，逐項核對檔案有沒有寫入、內容與日期對不對、同步狀態正不正常。"
+          result="持續運作中。過程中辨識出 OAuth 權限不足並改以最小權限重新授權；效益抵不過維護成本的功能一律停用。"
+          evidence="自我驗收 · 持續運作中"
+          level="self"
+        />
 
         <div className="figures">
           <div className="figure">

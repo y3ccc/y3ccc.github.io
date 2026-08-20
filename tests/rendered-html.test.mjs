@@ -135,7 +135,10 @@ test("gives every case its own share metadata instead of inheriting the home pag
     const title = output.match(/property="og:title" content="([^"]+)"/)?.[1];
     assert.ok(title, `${slug} 缺少 og:title`);
     assert.notEqual(title, "馬彥宸｜AI 產品應用作品集", `${slug} 仍繼承首頁 og:title`);
-    assert.match(output, /og-v5\.png/);
+    // 每個案例要有自己的縮圖，不能共用首頁那張
+    assert.match(output, new RegExp(`/og/${slug}\\.png`), `${slug} 沒有專屬縮圖`);
+    assert.doesNotMatch(output, /og-v5\.png/, `${slug} 仍在用首頁縮圖`);
+    await access(new URL(`../public/og/${slug}.png`, import.meta.url));
   }
 });
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 const reportUrl = "/reports/ma-yen-chen-bankruptcy-risk-report.pdf";
 
@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description: "把複雜資料轉成風險決策依據：6,819 筆企業、93 項財務變數與防資料洩漏驗證。",
     url: "/projects/bankruptcy-risk/",
     type: "article",
-    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜企業破產風險預測" }],
+    images: [{ url: "/og/bankruptcy-risk.png", width: 1200, height: 630, alt: "馬彥宸｜企業破產風險預測" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜企業破產風險預測",
     description: "6,819 筆企業資料 × 風險判讀 × 防資料洩漏驗證",
-    images: ["/og-v5.png"],
+    images: ["/og/bankruptcy-risk.png"],
   },
 };
 
@@ -51,6 +51,15 @@ export default function BankruptcyRiskProject() {
         <Link className="backlink" href="/">← 回作品集</Link>
         <h1>高 Accuracy，不代表抓得到高風險企業。</h1>
         <p className="lede">破產企業只占少數，模型即使幾乎全部預測為健康，準確率仍可能很好看。我以 6,819 筆企業財務資料建立比較流程，重點放在漏判、誤報與泛化風險，而不是只找最高分數。</p>
+
+        <CaseSummary
+          problem="破產企業只占約 3%，模型幾乎全猜健康也有 95% 準確率，分數好看卻抓不到真正該查的公司。"
+          decision="不追求最高分。用 Recall／Precision／F1 一起判讀，並在開啟測試集前就鎖定選模規則。"
+          check="共同 untouched test；抽樣、標準化與特徵選擇全部限制在訓練 fold 內；測試集只開一次。"
+          result="Recall 59.85%、Precision 38.39%、F1 45.18%。附 9 頁技術報告，含限制與因果邊界。"
+          evidence="9 頁技術報告"
+          level="self"
+        />
 
         <div className="figures">
           <div className="figure">

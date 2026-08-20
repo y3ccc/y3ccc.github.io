@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "每次開新對話，都在考我｜馬彥宸作品集",
@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description: "把「記住上次講到哪」的負擔從人身上移走。含 25 張可展開的伺服器地圖，以及 13 項已停用服務的死因。",
     url: "/projects/conversation-memory/",
     type: "article",
-    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜每次開新對話，都在考我" }],
+    images: [{ url: "/og/conversation-memory.png", width: 1200, height: 630, alt: "馬彥宸｜每次開新對話，都在考我" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜每次開新對話，都在考我",
     description: "13 項服務被我關掉，死因全部留著。只看還活著的東西會誤判。",
-    images: ["/og-v5.png"],
+    images: ["/og/conversation-memory.png"],
   },
 };
 
@@ -191,6 +191,15 @@ export default function ConversationMemory() {
           結果又重新討論了一次。後來我發現，每次開新對話其實是在考兩件事——
           考我記不記得上次講到哪，考我提示詞下得夠不夠精準。
         </p>
+
+        <CaseSummary
+          problem="額度用完、隔幾天回來，已經不記得是哪個對話，結果又把同一件事重新討論一次。"
+          decision="問題不是 AI 會忘，是負擔被丟回給我。所以記憶不存「結論」，只存「怎麼查」。"
+          check="舊討論索引只能提醒「這個以前討論過」，要不要沿用由我決定——避免它拿過期方案來搪塞。"
+          result="行為確實變了。但搜尋單位仍是「對話」，而對話標題不等於內容，這個問題還沒解。"
+          evidence="仍有未解問題"
+          level="open"
+        />
 
         <div className="figures">
           {figures.map((f) => (

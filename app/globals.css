@@ -233,3 +233,41 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .demo-foot { padding: 18px 24px; background: var(--sunk); border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-3); }
 .demo-foot p { max-width: none; margin: 0 0 8px; }
 .demo-foot p:last-child { margin: 0; }
+
+/* ---------- 案例頁 30 秒摘要 ---------- */
+.summary {
+  border: 1px solid var(--rule); border-left: 3px solid var(--verified);
+  border-radius: 0 5px 5px 0; background: var(--panel);
+  margin: 26px 0 0; overflow: hidden;
+}
+.summary-head {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 12px 20px; background: var(--sunk); border-bottom: 1px solid var(--rule-soft);
+}
+.summary-head strong {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; letter-spacing: .1em; color: var(--verified);
+}
+.summary-head .tag { margin-left: auto; }
+.summary-rows { margin: 0; padding: 6px 20px 14px; }
+.summary-row {
+  display: grid; grid-template-columns: 78px 1fr; gap: 14px;
+  padding: 9px 0; border-bottom: 1px solid var(--rule-soft);
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-row dt {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--ink-3); padding-top: 2px;
+}
+.summary-row dd { margin: 0; font-size: 15px; line-height: 1.7; }
+@media (max-width: 560px) {
+  .summary-row { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* ---------- 首頁核心／其他分層 ---------- */
+.tier-label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; letter-spacing: .08em; color: var(--ink-3);
+  margin: 34px 0 12px; display: block;
+}
+.tier-label:first-of-type { margin-top: 0; }

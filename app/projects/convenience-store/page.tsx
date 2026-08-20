@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
 
 const deckUrl = "/reports/ma-yen-chen-convenience-store-deck.pdf";
 
@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description: "5 人專題組長，26 頁簡報原檔可下載。競爭已從店數延伸到會員生態圈與 OMO 整合。",
     url: "/projects/convenience-store/",
     type: "article",
-    images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜便利商店產業及財務分析" }],
+    images: [{ url: "/og/convenience-store.png", width: 1200, height: 630, alt: "馬彥宸｜便利商店產業及財務分析" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜便利商店產業及財務分析",
     description: "疫情之後，便利商店受到什麼影響？",
-    images: ["/og-v5.png"],
+    images: ["/og/convenience-store.png"],
   },
 };
 
@@ -44,6 +44,15 @@ export default function ConvenienceStoreProject() {
         <h1>疫情之後，便利商店受到什麼影響？</h1>
         <p className="lede">當時處於疫情環境，我對最貼近日常民生的便利商店產生興趣：即使人們仍需要基本消費，門市、服務與財務表現是否也會受到影響？因此以全家與統一超商為對象，整理產業結構、企業策略與財務資料。</p>
 
+        <CaseSummary
+          problem="疫情之後，最貼近日常民生的便利商店，門市、服務與財務表現是否也受到衝擊？"
+          decision="不只問有沒有衰退，而是看營運模式如何吸收變化——從產業結構走到企業策略，再回到財務數字。"
+          check="以公司官網、公開資訊與市場資料交叉比對；交件前查出組員引用資料與事實不符並重新查證。"
+          result="競爭已從店數延伸到會員生態圈與 OMO 整合；兩家毛利率穩定但營業利益率偏低。原始簡報可下載。"
+          evidence="課程專題 · 2023"
+          level="self"
+        />
+
         <div className="figures">
           <div className="figure">
             <span className="figure-n">5 人</span>
@@ -53,7 +62,7 @@ export default function ConvenienceStoreProject() {
           <div className="figure">
             <span className="figure-n">26 頁</span>
             <span className="figure-t">原始簡報</span>
-            <span className="figure-s">面試時可提供完整檔案。</span>
+            <span className="figure-s">公開版 25 頁可下載，封面因含組員姓名移除。</span>
           </div>
           <div className="figure">
             <span className="figure-n">公開資料</span>

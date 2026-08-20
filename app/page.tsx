@@ -28,6 +28,7 @@ const figures = [
 const entries = [
   {
     href: "/projects/hermes-line-media/",
+    core: true,
     title: "Hermes LINE 媒體改善",
     q: "圖片能用，為什麼語音卻消失？",
     role: "問題重現 · 驗收條件 · 回歸測試",
@@ -35,6 +36,7 @@ const entries = [
   },
   {
     href: "/projects/ai-assistant/",
+    core: false,
     title: "AI 協作生活助理",
     q: "把零散的日常，收回同一個入口。",
     role: "需求定義 · 工具取捨 · 測試驗收",
@@ -42,6 +44,7 @@ const entries = [
   },
   {
     href: "/projects/bankruptcy-risk/",
+    core: true,
     title: "企業破產風險預測",
     q: "高 Accuracy，不代表抓得到高風險企業。",
     role: "驗證設計 · 指標取捨 · 限制說明",
@@ -49,6 +52,7 @@ const entries = [
   },
   {
     href: "/projects/conversation-memory/",
+    core: false,
     title: "每次開新對話，都在考我",
     q: "我不想再靠記憶找回自己的進度。",
     role: "問題定義 · 判準設計 · 缺口認定",
@@ -56,6 +60,7 @@ const entries = [
   },
   {
     href: "/projects/equity-research/",
+    core: true,
     title: "一次個股研究，以及它教我的事",
     q: "我用接近淨值的價格，買一家一直在賺錢的公司。",
     role: "論述推導 · 取捨說明 · 事後檢討",
@@ -63,6 +68,7 @@ const entries = [
   },
   {
     href: "/projects/convenience-store/",
+    core: false,
     title: "便利商店產業及財務分析",
     q: "疫情之後，便利商店受到什麼影響？",
     role: "5 人組長 · 資料整合 · 簡報定稿",
@@ -108,8 +114,30 @@ export default function Home() {
           <div className="band-head">
             <h2>六個專案，各自附上可查核的證據</h2>
           </div>
+
+          <span className="tier-label">先看這三個 · 第三方可查核、方法完整、真金白銀驗證過</span>
           <div className="ledger">
-            {entries.map((e) => (
+            {entries.filter((e) => e.core).map((e) => (
+              <Link className="entry" href={e.href} key={e.href}>
+                <div className="entry-top">
+                  <span className="entry-title">{e.title}</span>
+                  <span className="rowlabel">{e.role}</span>
+                </div>
+                <p className="entry-q">{e.q}</p>
+                <div className="entry-meta">
+                  {e.tags.map(([label, cls]) => (
+                    <span className={`tag ${cls}`} key={label}>
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <span className="tier-label">其餘三個</span>
+          <div className="ledger">
+            {entries.filter((e) => !e.core).map((e) => (
               <Link className="entry" href={e.href} key={e.href}>
                 <div className="entry-top">
                   <span className="entry-title">{e.title}</span>
@@ -142,7 +170,10 @@ export default function Home() {
         <section className="band" id="contact">
           <h2>聯絡</h2>
           <p>新竹、桃園與雙北皆可，對遠端工作有意願。</p>
-          <a className="cta" href="mailto:andrew920322@gmail.com">
+          <a className="cta" href="/reports/ma-yen-chen-onepager.pdf" target="_blank" rel="noreferrer">
+            下載一頁履歷 PDF ↗
+          </a>
+          <a className="cta cta-ghost" href="mailto:andrew920322@gmail.com">
             andrew920322@gmail.com
           </a>
           <a className="cta cta-ghost" href="https://github.com/y3ccc" target="_blank" rel="noreferrer">
