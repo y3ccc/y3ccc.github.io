@@ -186,3 +186,50 @@ p { margin: 0 0 16px; max-width: var(--measure); }
   .topbar { padding-left: 18px; padding-right: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- 伺服器地圖 demo(去識別化展示) ---------- */
+.demo {
+  border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--panel); overflow: hidden; margin: 8px 0 0;
+}
+.demo-head {
+  padding: 20px 24px; background: var(--sunk);
+  border-bottom: 1px solid var(--rule);
+}
+.demo-head h3 { margin: 0 0 6px; font-size: 20px; }
+.demo-head p { margin: 0; font-size: 14px; color: var(--ink-3); max-width: none; }
+.demo-group { border-bottom: 1px solid var(--rule-soft); padding: 20px 24px 22px; }
+.demo-group:last-child { border-bottom: none; }
+.demo-group > header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.demo-group > header strong { font-family: "Noto Serif TC", Georgia, serif; font-size: 17px; }
+.demo-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); }
+.card {
+  border: 1px solid var(--rule); border-radius: 5px;
+  background: var(--paper); padding: 12px 14px; font-size: 14.5px;
+}
+.card > summary {
+  cursor: pointer; list-style: none; display: flex;
+  align-items: baseline; gap: 8px; flex-wrap: wrap;
+}
+.card > summary::-webkit-details-marker { display: none; }
+.card > summary::after { content: "▸"; margin-left: auto; color: var(--ink-3); font-size: 12px; }
+.card[open] > summary::after { content: "▾"; }
+.card:hover { border-color: var(--verified); }
+.card > summary:focus-visible { outline: 2px solid var(--verified); outline-offset: 3px; }
+.card-name { font-weight: 700; }
+.card-hook { color: var(--ink-3); font-size: 13px; width: 100%; }
+.card-body { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule-soft); font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+.card-body p { margin: 0 0 8px; max-width: none; }
+.card-body p:last-child { margin: 0; }
+.state { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; padding: 1px 7px; border-radius: 99px; border: 1px solid currentColor; }
+.state-on { color: var(--verified); background: var(--verified-bg); }
+.state-off { color: var(--dead); }
+.redacted {
+  display: block; margin-top: 8px; padding: 6px 10px;
+  background: var(--sunk); border-left: 2px solid var(--rule);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px; color: var(--ink-3); border-radius: 0 3px 3px 0;
+}
+.demo-foot { padding: 18px 24px; background: var(--sunk); border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-3); }
+.demo-foot p { max-width: none; margin: 0 0 8px; }
+.demo-foot p:last-child { margin: 0; }
