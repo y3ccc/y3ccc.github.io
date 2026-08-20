@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { Rhythm } from "../../components/Figures";
 
 export const metadata: Metadata = {
   title: "每次開新對話，都在考我｜馬彥宸作品集",
@@ -314,6 +315,21 @@ export default function ConversationMemory() {
               </p>
             </div>
           </div>
+        </section>
+
+        <section className="band">
+          <div className="band-head">
+            <h2>一天當中，它只在我不看的時候工作</h2>
+            <span className="rowlabel">14 件排程 · 我沒下令也會跑</span>
+          </div>
+          <Rhythm
+            bands={[
+              { from: 0, to: 8, k: "我在睡覺", s: "備份、異地備份、記憶漂移檢查、歸檔", c: 2 },
+              { from: 8, to: 12, k: "我起床", s: "健康報告、宣告與現實對帳", c: 1 },
+              { from: 12, to: 24, k: "沒有任何排程", s: "白天它不吵我", c: 0 },
+            ]}
+            caption="中午之後的空白是刻意留的，不是還沒排。工具在我工作的時候應該安靜——會吵人的自動化，最後都會被關掉。"
+          />
         </section>
 
         <section className="band">

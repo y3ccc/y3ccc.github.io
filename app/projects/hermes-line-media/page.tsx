@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { Scroll, Steps } from "../../components/Figures";
 
 const issueUrl = "https://github.com/NousResearch/hermes-agent/issues/57882";
 const pullRequestUrl = "https://github.com/NousResearch/hermes-agent/pull/57884";
@@ -23,11 +24,73 @@ export const metadata: Metadata = {
   },
 };
 
+const MEDIA = ["圖片", "語音", "影片", "檔案"];
+
+function MediaRouting() {
+  const box = (x: number, y: number, w: number, label: string, on?: boolean) => (
+    <g key={`${x}-${y}-${label}`}>
+      <rect className={on ? "flow-box-on" : "flow-box"} x={x} y={y} width={w} height="34" rx="4" />
+      <text x={x + w / 2} y={y + 22} className="flow-t" textAnchor="middle">{label}</text>
+    </g>
+  );
+
+  return (
+    <figure className="flow">
+      <Scroll>
+        <svg viewBox="0 0 720 262" role="img"
+             aria-label="修正前四種媒體全部被導向圖片快取，只有圖片可用；修正後依類型分流，語音進入語音轉文字">
+          <title>媒體分流：修正前後</title>
+          <defs>
+            <marker id="ma" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+              <path d="M0 0 L7 3.5 L0 7 z" fill="var(--ink-3)" />
+            </marker>
+          </defs>
+
+          {/* 修正前 */}
+          <text x="0" y="14" className="note">修正前</text>
+          {MEDIA.map((m, i) => box(i * 106, 22, 96, m))}
+          {MEDIA.map((_, i) => (
+            <path key={i} className="flow-arrow" d={`M${i * 106 + 48} 58 L${i * 106 + 48} 74 L212 74 L212 84`}
+                  markerEnd={i === 0 ? "url(#ma)" : undefined} />
+          ))}
+          {box(120, 84, 184, "一律進圖片快取")}
+          <path className="flow-arrow" d="M212 120 L212 134" markerEnd="url(#ma)" />
+          <g>
+            {box(0, 134, 96, "圖片 ✓", true)}
+            {MEDIA.slice(1).map((m, i) => (
+              <g key={m}>
+                <rect className="flow-box" x={(i + 1) * 106} y="134" width="96" height="34" rx="4"
+                      opacity="0.45" />
+                <text x={(i + 1) * 106 + 48} y="156" className="flow-s" textAnchor="middle">{m} ✗</text>
+              </g>
+            ))}
+          </g>
+          <text x="0" y="186" className="note">
+            三種輸入沒有報錯，只是安靜消失——這是最難被發現的失敗。
+          </text>
+
+          {/* 修正後 */}
+          <line x1="0" y1="200" x2="720" y2="200" className="grid" />
+          <text x="440" y="228" className="note">修正後</text>
+          {box(440, 236, 130, "依類型分流")}
+          <path className="flow-arrow" d="M574 253 L592 253" markerEnd="url(#ma)" />
+          {box(596, 236, 124, "語音 → STT", true)}
+          <text x="0" y="252" className="val">驗收條件：語音進得去，而且圖片不能退化</text>
+        </svg>
+      </Scroll>
+      <figcaption>
+        修正前四種輸入全部被送進同一條圖片快取路徑，只有圖片剛好能用。
+        重點不是「壞掉了」，而是<strong>其他三種安靜消失、不報錯</strong>——所以要先定義「哪一種輸入失敗」才有辦法修。
+      </figcaption>
+    </figure>
+  );
+}
+
 const process = [
-  { title: "確認不是操作問題", text: "圖片可正常處理，但語音、影片與一般檔案沒有進入後續流程，差異可穩定重現。" },
-  { title: "縮小影響範圍", text: "把輸入類型拆開測試，確認問題集中在非圖片媒體，而不是整個LINE入口失效。" },
-  { title: "AI協作提出修正", text: "由AI協助閱讀程式與提出最小修改；我確認修改範圍，避免不必要地改動其他流程。" },
-  { title: "用真實情境驗收", text: "重新測試語音進入STT流程，並確認原本可用的圖片功能沒有被破壞。" },
+  { t: "確認不是操作問題", s: "圖片可正常處理，但語音、影片與一般檔案沒有進入後續流程，差異可穩定重現。" },
+  { t: "縮小影響範圍", s: "把輸入類型拆開測試，確認問題集中在非圖片媒體，而不是整個 LINE 入口失效。" },
+  { t: "AI 協作提出修正", s: "由 AI 協助閱讀程式與提出最小修改；我確認修改範圍，避免不必要地改動其他流程。" },
+  { t: "用真實情境驗收", s: "重新測試語音進入 STT，並確認原本可用的圖片功能沒有被破壞。", on: true },
 ];
 
 export default function HermesLineMediaProject() {
@@ -62,11 +125,11 @@ export default function HermesLineMediaProject() {
         </div>
 
         <section className="band">
-          <div className="band-head"><h2>問題前後流程示意</h2><span className="rowlabel">去識別化流程示意</span></div>
-          <p>圖片可以正常處理，但語音、影片與一般檔案會被略過。</p>
-          <p>問題定位後</p>
-          <p>正確快取路徑</p>
-          <p>語音可進入 STT；原本可用的圖片流程仍正常。</p>
+          <div className="band-head">
+            <h2>同一個入口，四種輸入，只有一種活下來</h2>
+            <span className="rowlabel">去識別化示意</span>
+          </div>
+          <MediaRouting />
         </section>
 
         <section className="band">
@@ -81,14 +144,7 @@ export default function HermesLineMediaProject() {
 
         <section className="band">
           <div className="band-head"><h2>從差異開始，逐步縮小問題範圍。</h2><p>AI協助技術閱讀與程式修改；我負責問題定義、修改核准與實際驗收。</p></div>
-          <div className="ledger">
-            {process.map((step) => (
-              <article className="entry" key={step.title}>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </article>
-            ))}
-          </div>
+          <Steps steps={process} caption="每一步的產出都是下一步的輸入；最後一步才是驗收，不是修完就算。" />
         </section>
 
         <section className="band">

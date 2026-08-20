@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { Lines } from "../../components/Figures";
 
 const deckUrl = "/reports/ma-yen-chen-convenience-store-deck.pdf";
 
@@ -152,6 +153,27 @@ export default function ConvenienceStoreProject() {
               資料為原課程專題整理的市占率，非即時排名。「其他」是餘額，不是單一品牌，所以用中性色。
             </figcaption>
           </figure>
+        </section>
+
+        <section className="band">
+          <div className="band-head">
+            <h2>十年營收：差距沒有縮小，但成長速度是反過來的</h2>
+            <span className="rowlabel">原報告營收數列 · 2013 → 2022</span>
+          </div>
+          <p>
+            統一超商的規模大約是全家的三倍，而且十年下來差距沒有被追上。
+            但看年複合成長率，<strong>全家 6.0%、統一超商 4.2%</strong>——
+            跑得快的是後面那個，只是基期差太多，追不上。
+          </p>
+          <Lines
+            years={["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"]}
+            series={[
+              { k: "統一超商", v: [200.6, 200.4, 205.5, 215.4, 221.1, 244.9, 256.1, 258.5, 262.7, 290.4], c: 1 },
+              { k: "全家", v: [53.7, 56, 57.7, 60.5, 64.4, 71.7, 77.7, 85.3, 83.6, 90.7], c: 2 },
+            ]}
+            unit="十億元"
+            caption="2021 年兩家都出現下滑或走平，2022 年一起彈回；那一年統一超商年增 10.5%、全家 8.5%——這也解釋了同期市占率為什麼是統一超商在拿。"
+          />
         </section>
 
         <section className="band">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { Steps } from "../../components/Figures";
 
 export const metadata: Metadata = {
   title: "一次個股研究，以及它教我的事｜馬彥宸作品集",
@@ -105,17 +106,10 @@ export default function EquityResearch() {
             <h2>論述怎麼推出來的</h2>
             <span className="rowlabel">四步，全部只用公開財報</span>
           </div>
-          <div className="ledger">
-            {steps.map((s) => (
-              <article className="entry" key={s.label}>
-                <div className="entry-top">
-                  <span className="entry-title">{s.h}</span>
-                  <span className="rowlabel">{s.label}</span>
-                </div>
-                <p className="entry-q">{s.p}</p>
-              </article>
-            ))}
-          </div>
+          <Steps
+            steps={steps.map((st, i) => ({ t: `${st.label}　${st.h}`, s: st.p, on: i === 3 }))}
+            caption="四步都只用公開財報，沒有一步需要內線或預測。這也是它的極限：整條推論裡沒有任何一格是在看產業。"
+          />
         </section>
 
         <section className="band">

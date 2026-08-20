@@ -316,3 +316,5 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .flow-t { font-size: 13px; fill: var(--ink); font-weight: 700; }
 .flow-s { font-size: 11.5px; fill: var(--ink-3); }
 .flow-arrow { stroke: var(--ink-3); stroke-width: 1.2; fill: none; }
+
+.grid { stroke: var(--rule-soft); stroke-width: 1; }

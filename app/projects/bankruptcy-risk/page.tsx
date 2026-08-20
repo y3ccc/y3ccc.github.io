@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
+import { Metrics, Split, Steps } from "../../components/Figures";
 
 const reportUrl = "/reports/ma-yen-chen-bankruptcy-risk-report.pdf";
 
@@ -29,12 +30,6 @@ const validationSteps = [
   { title: "最後開啟一次", text: "候選以全部 train 重訓後，Test 僅作最終泛化評估。" },
 ];
 
-const metrics = [
-  { value: "59.85%", label: "Test Recall", note: "破產企業抓到多少" },
-  { value: "38.39%", label: "Test Precision", note: "風險警示中有多少是真的" },
-  { value: "45.18%", label: "Test F1", note: "Recall 與 Precision 的平衡" },
-  { value: "95.11%", label: "Test Accuracy", note: "受大量健康企業影響" },
-];
 
 const riskThemes = [
   { tag: "獲利", title: "獲利持續性", text: "Persistent EPS、Net Income／Assets 等指標反覆入選；應區分持續性獲利與一次性收益。" },
@@ -85,11 +80,17 @@ export default function BankruptcyRiskProject() {
         </div>
 
         <section className="band">
-          <div className="band-head"><h2>類別不平衡與指標取捨摘要</h2></div>
-          <p>健康企業　<strong>約 97%</strong></p>
-          <p>破產企業　<strong>約 3%</strong></p>
-          <p>全部猜健康，也可能接近 <strong>97%</strong> 準確率。</p>
-          <p>所以先問：真正破產的企業，模型抓到了多少？</p>
+          <div className="band-head">
+            <h2>要抓的東西，只有這麼寬</h2>
+            <span className="rowlabel">6,819 筆企業 · 約 30 : 1</span>
+          </div>
+          <Split
+            parts={[
+              { k: "健康企業", v: 97, c: 0 },
+              { k: "破產企業", v: 3, c: 3 },
+            ]}
+            caption="一個什麼都不做、全部猜「健康」的模型，準確率就有 97%。所以第一個要問的不是準確率，是：真正破產的那 3%，抓到了多少？"
+          />
         </section>
 
         <section className="band">
@@ -112,27 +113,24 @@ export default function BankruptcyRiskProject() {
 
         <section className="band" id="design">
           <div className="band-head"><h2>測試集只在最後，開啟一次。</h2><p>避免模型在訓練期間提前取得測試資料資訊。</p></div>
-          <div className="ledger">
-            {validationSteps.map((step) => (
-              <article className="entry" key={step.title}>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </article>
-            ))}
-          </div>
+          <Steps
+            steps={validationSteps.map((s, i) => ({ t: s.title, s: s.text, on: i === 3 }))}
+            caption="順序本身就是防線：測試集在第一步被切開之後，一直到最後一步才再被碰到。"
+          />
           <p>這表示 RUS／ADASYN、標準化與特徵選擇都不會先看 validation fold 或 Test；也不會看過 Test 分數後再回頭換模型。</p>
         </section>
 
         <section className="band">
           <div className="band-head"><h2>四個數字，必須一起看。</h2><p>完整資料版 Recall 優先規則，跨三種資料情境的 Test 平均。</p></div>
-          <div className="ledger">
-            {metrics.map((metric) => (
-              <article className="entry" key={metric.label}>
-                <span className="entry-title">{metric.value}　{metric.label}</span>
-                <p>{metric.note}</p>
-              </article>
-            ))}
-          </div>
+          <Metrics
+            rows={[
+              { k: "Recall", v: 59.85, note: "實際破產的企業，抓到了多少", c: 1 },
+              { k: "Precision", v: 38.39, note: "被標成高風險的，多少真的破產", c: 2 },
+              { k: "F1", v: 45.18, note: "前兩者的平衡", c: 3 },
+              { k: "Accuracy", v: 95.11, note: "被那 97% 健康企業灌出來的——這格最會騙人", c: 0, dim: true },
+            ]}
+            caption="放在同一把尺上就看得出來：最高的那一格是最沒有資訊量的一格。Accuracy 刻意畫淡，因為它在這個題目裡不該被拿來排名。"
+          />
           <p>RUS／ADASYN 通常能提高破產 Recall，但也可能降低 Precision。若初篩成本低，可偏重 Recall；若每一筆誤報都要投入昂貴盡職調查，就必須調整門檻並納入誤報成本。</p>
         </section>
 
