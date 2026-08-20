@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 
 const projectRoot = new URL("../", import.meta.url);
 
@@ -71,12 +73,11 @@ test("exports the two newer cases", async () => {
 test("never exposes host names, absolute paths or the personal phone number", async () => {
   const pages = await Promise.all([
     html(),
-    html("projects/conversation-memory"),
-    html("projects/equity-research"),
-    html("projects/convenience-store"),
+    ...["hermes-line-media", "ai-assistant", "bankruptcy-risk", "conversation-memory",
+        "equity-research", "convenience-store"].map((s) => html(`projects/${s}`)),
   ]);
   for (const page of pages) {
-    assert.doesNotMatch(page, /taile01317|\.ts\.net/);
+    assert.doesNotMatch(page, /\.ts\.net/); // 不在這裡寫出 tailnet 名稱本身
     assert.doesNotMatch(page, /\/mnt\/data|\/home\/y3c/);
     assert.doesNotMatch(page, /0900-\d{3}-\d{3}/);
   }
@@ -96,12 +97,19 @@ test("keeps the analysis cases and their downloadable evidence", async () => {
 test("publishes the group deck without the cover page that names other members", async () => {
   const store = await html("projects/convenience-store");
   assert.match(store, /封面列了其他四位組員的姓名/);
-  const deck = await readFile(
-    new URL("../public/reports/ma-yen-chen-convenience-store-deck.pdf", import.meta.url),
-  );
-  for (const name of ["簡婞宇", "李庭瑜", "許志維", "王可禕"]) {
-    assert.ok(!deck.includes(Buffer.from(name, "utf8")), `${name} 不得出現在公開簡報中`);
-  }
+
+  const deckPath = new URL("../public/reports/ma-yen-chen-convenience-store-deck.pdf", import.meta.url);
+
+  // 這個 repo 是公開的，所以測試裡不能列出那四個人的名字——
+  // 先前的版本就是這樣把姓名從 PDF 搬進了原始碼。
+  // 改成兩個不需要指名的檢查：封面那一頁不在檔案裡，而且抽出來的文字不含署名區塊。
+  const pageCount = (await readFile(deckPath, "latin1")).match(/\/Type\s*\/Page[^s]/g)?.length ?? 0;
+  assert.equal(pageCount, 25, "公開版必須是 25 頁；26 頁代表封面沒有被移除");
+
+  // PDF 內的中文是 glyph index，直接搜位元組永遠找不到，必須抽文字。
+  const text = execFileSync("pdftotext", [fileURLToPath(deckPath), "-"], { encoding: "utf8" });
+  assert.doesNotMatch(text, /組員/, "抽出的文字含「組員」，代表署名頁還在");
+  assert.match(text, /超商/, "抽不到內容文字，表示這個檢查本身失效了");
 });
 
 test("ships robots.txt and a sitemap covering every case", async () => {

@@ -62,6 +62,13 @@ for (const theme of THEMES) {
             bad.push(`${el.tagName}.${(el.className || "").toString().split(" ")[0]} 右緣 ${Math.round(r.right)}`);
           }
         }
+        // 被排除在上面檢查外的容器，必須真的捲得動——否則就是「該捲卻被裁掉」
+        for (const el of document.querySelectorAll(".chart-scroll, .flow-scroll, .scroller, .dtable")) {
+          const ox = getComputedStyle(el).overflowX;
+          if (el.scrollWidth > el.clientWidth + 1 && !["auto", "scroll"].includes(ox)) {
+            bad.push(`${el.className} 內容 ${el.scrollWidth}>${el.clientWidth} 但 overflow-x=${ox}，捲不動`);
+          }
+        }
         return [...new Set(bad)].slice(0, 4);
       });
       if (overflow.length) problems.push(`${theme}/${vk}/${name}: ${overflow.join(" | ")}`);
@@ -77,5 +84,6 @@ await browser.close();
 server.close();
 
 console.log(`截圖 ${PAGES.length * VIEWS.length * THEMES.length} 張 → ${OUT}`);
+if (problems.length) process.exitCode = 1;
 console.log(problems.length ? "\n問題：\n" + problems.map((p) => "  ⚠️ " + p).join("\n")
                             : "\n✅ 無橫向溢出、無 console 錯誤");

@@ -329,7 +329,9 @@ p { margin: 0 0 16px; max-width: var(--measure); }
 .evlink:hover { opacity: .8; }
 
 /* ---------- 資料表 ---------- */
-.dtable { border: 1px solid var(--rule); border-radius: 5px; overflow: hidden; background: var(--panel); margin: 22px 0 0; }
+/* overflow-x 必須是 auto：這裡曾經寫 overflow:hidden，把 .scroller 的捲動蓋掉，
+   手機上「本益比」整欄被裁掉且捲不到 */
+.dtable { border: 1px solid var(--rule); border-radius: 5px; overflow-x: auto; background: var(--panel); margin: 22px 0 0; }
 .dtable table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 420px; }
 .dtable th {
   text-align: right; padding: 11px 18px; background: var(--sunk);
@@ -359,8 +361,8 @@ p { margin: 0 0 16px; max-width: var(--measure); }
   padding: 14px 20px; border-bottom: 1px solid var(--rule-soft); align-items: start;
 }
 .vlog-step .ok { color: var(--verified); font-weight: 700; }
-.vlog-step dt { font-weight: 700; font-size: 15px; }
-.vlog-step dd { margin: 0; font-size: 14.5px; color: var(--ink-2); line-height: 1.7; }
+.vlog-step .vlog-k { font-weight: 700; font-size: 15px; }
+.vlog-step .vlog-v { font-size: 14.5px; color: var(--ink-2); line-height: 1.7; }
 .vlog-art { padding: 16px 20px; background: var(--sunk); }
 .vlog-art pre {
   margin: 10px 0 0; padding: 14px 16px; background: var(--panel);

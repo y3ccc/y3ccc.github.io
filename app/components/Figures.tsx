@@ -152,7 +152,7 @@ export function Steps({
   return (
     <figure className="flow">
       <Scroll>
-        <svg viewBox={`0 0 720 ${H}`} role="img" aria-label={steps.map((s) => s.t).join(" → ")}>
+        <svg viewBox={`0 0 720 ${H}`} role="img" aria-label={steps.map((s) => `${s.t}：${s.s}`).join("　→　")}>
           <defs>
             <marker id="sa" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
               <path d="M0 0 L7 3.5 L0 7 z" fill="var(--ink-3)" />

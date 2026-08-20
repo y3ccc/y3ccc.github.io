@@ -145,21 +145,21 @@ export default function AiAssistantProject() {
               </p>
             </div>
 
-            <dl className="vlog-step">
+            <div className="vlog-step">
               <span className="ok">✓</span>
-              <dt>筆記寫入</dt>
-              <dd>打開檔案本身核對：日期、心得、狀態三個欄位都在，內容與我輸入的一致。</dd>
-            </dl>
+              <span className="vlog-k">筆記寫入</span>
+              <div className="vlog-v">打開檔案本身核對：日期、心得、狀態三個欄位都在，內容與我輸入的一致。</div>
+            </div>
 
-            <dl className="vlog-step">
+            <div className="vlog-step">
               <span className="ok">✓</span>
-              <dt>行事曆事件</dt>
-              <dd>
+              <span className="vlog-k">行事曆事件</span>
+              <div className="vlog-v">
                 <strong>第一次失敗。</strong>查出來是 OAuth 權限不足——當時的 token 只有 Gmail 唯讀。
                 我沒有讓它自己擴權，而是回頭核准 Gmail ＋ Calendar 的最小授權，
                 再重新寫入、並讀回核對標題與時間。
-              </dd>
-            </dl>
+              </div>
+            </div>
 
             <div className="vlog-art">
               <span className="rowlabel">實際產出的檔案</span>

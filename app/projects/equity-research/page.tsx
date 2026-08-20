@@ -107,7 +107,7 @@ export default function EquityResearch() {
             <span className="rowlabel">四步，全部只用公開財報</span>
           </div>
           <Steps
-            steps={steps.map((st, i) => ({ t: `${st.label}　${st.h}`, s: st.p, on: i === 3 }))}
+            steps={steps.map((st) => ({ t: `${st.label}　${st.h}`, s: st.p }))}
             caption="四步都只用公開財報，沒有一步需要內線或預測。這也是它的極限：整條推論裡沒有任何一格是在看產業。"
           />
         </section>

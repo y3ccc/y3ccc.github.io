@@ -24,7 +24,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run lint
       - run: npm run build:pages
+      # 這些測試是為了守數字一致性（卡片數、頁數、報告頁數各錯過一次）；
+      # 不接進 CI 的話它們擋不住任何一次部署。build 之後跑，因為它們讀 out/。
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends poppler-utils
+      - run: npm test
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

@@ -174,7 +174,7 @@ export default function ConvenienceStoreProject() {
               ))}
             </div>
             <figcaption>
-              資料為原課程專題整理的市占率，非即時排名。「其他」是餘額，不是單一品牌，所以用中性色。
+              資料為原課程專題整理的市占率，非即時排名。「其他」是餘額，不是單一品牌，所以用中性色。2022 那組原報告加總為 100.2%，是各項四捨五入造成的，這裡照原數字呈現、沒有替它調平。
             </figcaption>
           </figure>
         </section>
@@ -208,7 +208,7 @@ export default function ConvenienceStoreProject() {
           <p>
             這是整份報告裡我事後覺得最值得追的一組數字。
             十年營收成長約 45%，但<strong>年均股價五年間從 315 元掉到 270 元</strong>，
-            本益比始終在 29–32 之間盤整——市場沒有因為它變大而給它更高的評價。
+            本益比始終在 28.7–32.1 之間來回——市場沒有因為它變大而給它更高的評價。
           </p>
           <div className="dtable scroller">
             <table>

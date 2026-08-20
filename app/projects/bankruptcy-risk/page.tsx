@@ -65,7 +65,7 @@ export default function BankruptcyRiskProject() {
           <div className="figure">
             <span className="figure-n">93 項</span>
             <span className="figure-t">候選財務變數</span>
-            <span className="figure-s">健康企業約 97%；破產企業約 3%</span>
+            <span className="figure-s">扣除欄名含 flag 者後的候選欄位</span>
           </div>
           <div className="figure">
             <span className="figure-n">360 組</span>
