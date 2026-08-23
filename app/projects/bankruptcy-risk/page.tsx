@@ -51,8 +51,8 @@ export default function BankruptcyRiskProject() {
           problem="破產企業只占約 3%，模型幾乎全猜健康也有 95% 準確率，分數好看卻抓不到真正該查的公司。"
           decision="不追求最高分。用 Recall／Precision／F1 一起判讀，並在開啟測試集前就鎖定選模規則。"
           check="共同 untouched test；抽樣、標準化與特徵選擇全部限制在訓練 fold 內；測試集只開一次。"
-          result="Recall 59.85%、Precision 38.39%、F1 45.18%。附 9 頁技術報告，含限制與因果邊界。"
-          evidence="9 頁技術報告"
+          result="Recall 59.85%、Precision 38.39%、F1 45.18%。附 12 頁原始課程報告，含限制與因果邊界。"
+          evidence="12 頁原始課程報告"
           level="self"
         />
 
@@ -159,7 +159,7 @@ export default function BankruptcyRiskProject() {
             <h3>如果深入研究</h3>
             <p>優先加入異期／外部驗證、機率校準與誤判成本，再延伸為產業分層模型與盡職調查問題清單。</p>
           </div>
-          <a className="cta" href={reportUrl} target="_blank" rel="noreferrer">查看 9 頁完整技術報告 PDF ↗</a>
+          <a className="cta" href={reportUrl} target="_blank" rel="noreferrer">查看 12 頁原始課程報告 PDF ↗</a>
         </section>
 
         <section className="band">

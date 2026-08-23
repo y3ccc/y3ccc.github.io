@@ -37,18 +37,18 @@ test("leads the home page with the three figures, each linking to its case", asy
 });
 
 // 這一組守的是這個站踩過三次的坑：頁面上寫的數量，跟實際檔案／實際渲染對不上。
-// 卡片數 25 vs 29、簡報 26 vs 25 頁、技術報告 7 vs 9 頁，都是這樣漏掉的。
+// 卡片數 25 vs 29、簡報 26 vs 25 頁、技術報告頁數，都是這樣漏掉的。
 test("every count stated on a page matches what is actually there", async () => {
   const pdfPages = async (name) =>
     (await readFile(new URL(`../public/reports/${name}`, import.meta.url), "latin1"))
       .match(/\/Type\s*\/Page[^s]/g)?.length ?? 0;
 
-  assert.equal(await pdfPages("ma-yen-chen-bankruptcy-risk-report.pdf"), 9);
+  assert.equal(await pdfPages("ma-yen-chen-bankruptcy-risk-report.pdf"), 12);
   assert.equal(await pdfPages("ma-yen-chen-convenience-store-deck.pdf"), 25);
   assert.equal(await pdfPages("ma-yen-chen-onepager.pdf"), 1);
 
   const risk = await html("projects/bankruptcy-risk");
-  assert.match(risk, /9 頁完整技術報告/, "技術報告頁數與 PDF 對不上");
+  assert.match(risk, /12 頁原始課程報告/, "技術報告頁數與 PDF 對不上");
 
   const store = await html("projects/convenience-store");
   assert.match(store, /下載原始簡報 25 頁/, "簡報頁數與 PDF 對不上");
