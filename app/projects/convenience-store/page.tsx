@@ -60,7 +60,7 @@ export default function ConvenienceStoreProject() {
 
         <CaseSummary
           problem="疫情之後，最貼近日常民生的便利商店，門市、服務與財務表現是否也受到衝擊？"
-          decision="不只問有沒有衰退，而是看營運模式如何吸收變化——從產業結構走到企業策略，再回到財務數字。"
+          decision="從產業結構、企業策略與財務數字三個層次，檢查營運模式如何吸收疫情期間的變化。"
           check="以公司官網、公開資訊與市場資料交叉比對；定稿前把引用的財務數字逐筆回到來源核對，發現一筆對不上並重新查證。"
           result="競爭已從店數延伸到會員生態圈與 OMO 整合；兩家毛利率穩定但營業利益率偏低。原始簡報可下載。"
           evidence="課程專題 · 2023"
@@ -87,12 +87,12 @@ export default function ConvenienceStoreProject() {
 
         <section className="band">
           <div className="band-head">
-            <h2>我要問的不是「有沒有衰退」，是它靠什麼吸收衝擊</h2>
+            <h2>從三個層次檢查疫情期間的變化</h2>
             <span className="rowlabel">研究設計 · 資料以公司官網與公開資訊為主</span>
           </div>
           <p>
             便利商店是高頻、低客單價、門市極密集的產業。疫情會改變來客與消費時間，
-            但同一段期間它還同時受到展店、鮮食、會員經營與支付生態圈影響——
+            同一段期間也受到展店、鮮食、會員經營與支付生態圈影響，
             <strong>把營收變動直接歸給疫情，是把好幾件事混在一起。</strong>
           </p>
           <p>所以我把題目拆成三層，一層一層往下問：</p>
@@ -127,7 +127,7 @@ export default function ConvenienceStoreProject() {
             <span className="rowlabel">原報告市占率資料 · 2021 → 2022</span>
           </div>
           <p>
-            這不是一個「誰是第一」的市場，是一個<strong>已經高度集中、而且集中度還在上升</strong>的市場。
+            這個市場已經<strong>高度集中，而且集中度仍在上升</strong>。
             統一超商一年多拿 1.4 個百分點，全家守住，被稀釋的是後段班與其他品牌。
           </p>
 
@@ -186,8 +186,7 @@ export default function ConvenienceStoreProject() {
           </div>
           <p>
             統一超商的規模大約是全家的三倍，而且十年下來差距沒有被追上。
-            但看年複合成長率，<strong>全家 6.0%、統一超商 4.2%</strong>——
-            跑得快的是後面那個，只是基期差太多，追不上。
+            但看年複合成長率，<strong>全家 6.0%、統一超商 4.2%</strong>。全家的成長率較高，但基期差距仍大。
           </p>
           <Lines
             years={["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"]}
@@ -196,7 +195,7 @@ export default function ConvenienceStoreProject() {
               { k: "全家", v: [53.7, 56, 57.7, 60.5, 64.4, 71.7, 77.7, 85.3, 83.6, 90.7], c: 2 },
             ]}
             unit="十億元"
-            caption="2021 年兩家都出現下滑或走平，2022 年一起彈回；那一年統一超商年增 10.5%、全家 8.5%——這也解釋了同期市占率為什麼是統一超商在拿。"
+            caption="2021 年兩家都出現下滑或走平，2022 年一起彈回。當年統一超商年增 10.5%、全家 8.5%，同期市占率也是統一超商增加。"
           />
         </section>
 
@@ -208,7 +207,7 @@ export default function ConvenienceStoreProject() {
           <p>
             這是整份報告裡我事後覺得最值得追的一組數字。
             十年營收成長約 45%，但<strong>年均股價五年間從 315 元掉到 270 元</strong>，
-            本益比始終在 28.7–32.1 之間來回——市場沒有因為它變大而給它更高的評價。
+            本益比始終在 28.7–32.1 之間來回，市場沒有因為營收規模擴大而給出更高評價。
           </p>
           <div className="dtable scroller">
             <table>
@@ -230,7 +229,7 @@ export default function ConvenienceStoreProject() {
           </div>
           <p className="figure-s" style={{ marginTop: 14 }}>
             當時的報告沒有追問這件事，我是後來才注意到的。
-            一家營收持續成長、EPS 大致持平的公司，市場評價五年沒有提升——
+            一家營收持續成長、EPS 大致持平的公司，市場評價五年沒有提升。
             這個落差本身就是一個值得研究的題目，而我當時錯過了。
           </p>
         </section>
@@ -246,12 +245,12 @@ export default function ConvenienceStoreProject() {
           <div className="ledger">
             <article className="entry">
               <div className="entry-top">
-                <span className="entry-title">競爭已經不在門市裡了</span>
+                <span className="entry-title">競爭延伸到門市以外</span>
                 <span className="rowlabel">策略</span>
               </div>
               <p className="entry-q">
-                會員 App、點數、支付與 OMO 才是提高黏著度的手段，而且它們同時在累積消費資料。
-                <strong>比店數只會得到一個過期的答案。</strong>
+                會員 App、點數、支付與 OMO 都能提高黏著度，也會累積消費資料。
+                因此只比較店數，無法完整說明兩家公司的競爭差異。
               </p>
             </article>
             <article className="entry">
@@ -261,7 +260,7 @@ export default function ConvenienceStoreProject() {
               </div>
               <p className="entry-q">
                 門市租賃讓使用權資產與租賃負債都偏高；毛利率相對穩定，但營業利益率低。
-                <strong>規模與營運效率才是這個產業真正的勝負點。</strong>
+                <strong>規模與營運效率是這個產業的重要差異。</strong>
               </p>
             </article>
           </div>
@@ -273,13 +272,11 @@ export default function ConvenienceStoreProject() {
             <span className="rowlabel">5 人小組 · 我負責定稿</span>
           </div>
           <p>
-            工作分配、資料蒐集、比較架構、簡報整合、上台報告——這些都做了，
-            但它們不太能說明什麼，因為每個組長都會寫這幾項。
+            我負責工作分配、資料蒐集、比較架構、簡報整合與上台報告。
           </p>
           <p>
             比較能說明的是定稿那一步。<strong>交件前我把報告裡引用的財務數字逐筆回到來源核對，
-            結果有一筆對不上。</strong>當時時間已經很緊，最省事的做法是照著交出去——
-            那是一份課堂報告，不見得會有人去查那個數字。
+            結果有一筆對不上。</strong>當時已接近交件時間，但我仍回頭查來源。
           </p>
           <p>
             我還是回頭查了來源、改掉數字，然後把圖表與敘述一起改到一致才送出。
@@ -287,8 +284,8 @@ export default function ConvenienceStoreProject() {
           </p>
           <div className="honest">
             <p>
-              我不記得確切是哪一筆了——大概在 EPS 或現金股利那一段，但我不會為了讓故事好聽就編一個。
-              重點也不在那個數字，而在<strong>「沒人會查」不是我用來省事的理由</strong>。
+              我不記得確切是哪一筆，只記得大約在 EPS 或現金股利那一段，因此不補寫無法確認的細節。
+              我保留這段，是因為它反映我在定稿時會回到來源核對。
               這個習慣後來變成我做每個專案的預設。
             </p>
           </div>
@@ -308,8 +305,8 @@ export default function ConvenienceStoreProject() {
             <h2>原始簡報可以下載，但封面拿掉了</h2>
           </div>
           <p>
-            這是當時交出去的 26 頁小組簡報。公開版是 25 頁——
-            <strong>封面列了其他四位組員的姓名，那不是我能單方面決定公開的資料，所以整頁移除。</strong>
+            這是當時交出去的 26 頁小組簡報。公開版為 25 頁；
+            <strong>封面列有其他四位組員姓名，未取得公開同意，因此移除整頁。</strong>
             內容一頁未刪。
           </p>
           <a className="cta" href={deckUrl} target="_blank" rel="noreferrer">

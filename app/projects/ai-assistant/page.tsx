@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "以 Discord／LINE 為入口，整合日常工具的 AI 協作生活助理專案。",
   openGraph: {
     title: "馬彥宸｜AI 協作生活助理",
-    description: "重點不是把工具堆在一起，而是確認它們真的讓生活變簡單。含去識別化的驗收紀錄與權限邊界處理。",
+    description: "用 Discord／LINE 整合日常工具，並記錄去識別化驗收與 OAuth 權限處理。",
     url: "/projects/ai-assistant/",
     type: "article",
     images: [{ url: "/og/ai-assistant.png", width: 1200, height: 630, alt: "馬彥宸｜AI 協作生活助理" }],
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜AI 協作生活助理",
-    description: "把零散的日常，收回同一個入口。",
+    description: "用 Discord／LINE 處理行事曆、郵件、日記與記帳。",
     images: ["/og/ai-assistant.png"],
   },
 };
@@ -33,12 +33,12 @@ export default function AiAssistantProject() {
       <SiteHeader project="AI 協作生活助理" />
       <main className="shell">
         <Link className="backlink" href="/">← 回作品集</Link>
-        <h1>把零散的日常，收回同一個入口。</h1>
-        <p className="lede">我用 Discord／LINE 作為對話入口，整合行事曆、Gmail、日記、記帳與個人知識庫。重點不是把工具堆在一起，而是確認它們真的讓生活變簡單。</p>
+        <h1>用一個對話入口，處理分散的日常工具。</h1>
+        <p className="lede">我用 Discord／LINE 作為對話入口，整合行事曆、Gmail、日記、記帳與個人知識庫。每項功能都以實際使用頻率、維護成本與驗收結果決定是否保留。</p>
 
         <CaseSummary
           problem="行事曆、信箱、日記、記帳與知識庫各自一個 App，每件小事都要先想起該開哪個。"
-          decision="問題不是缺工具，是工具太分散。所以要問的不是「還能整合什麼」，而是「什麼該拿掉」。"
+          decision="先整合常用流程，再依使用頻率、維護成本與資料風險刪減功能。"
           check="用真實訊息實測，逐項核對檔案有沒有寫入、內容與日期對不對、同步狀態正不正常。"
           result="持續運作中。過程中辨識出 OAuth 權限不足並改以最小權限重新授權；效益抵不過維護成本的功能一律停用。"
           evidence="自我驗收 · 持續運作中"
@@ -64,7 +64,7 @@ export default function AiAssistantProject() {
         </div>
 
         <section className="band" id="system">
-          <div className="band-head"><h2>我不是缺少工具，是工具太分散。</h2></div>
+          <div className="band-head"><h2>原本的工具分散在不同入口</h2></div>
           <p>行事曆、郵件、日記、消費紀錄與知識庫各自有自己的 App。當 AI agent 需要長時間運作，又遇到電腦休眠、服務衝突與過重工具，問題就從「想自動化」變成「要維護更多東西」。</p>
           <p>所以我把問題改寫成：<strong>什麼值得整合，什麼應該拿掉？</strong></p>
         </section>
@@ -115,7 +115,7 @@ export default function AiAssistantProject() {
             </div>
             <figcaption>
               操作變簡單了，但<strong>驗證沒有被簡化掉</strong>。
-              它回報「已完成」不算數——我回 Calendar 和筆記本身去看，日期與內容對得上才算。
+              助理回報「已完成」後，我仍會回到 Calendar 和筆記核對日期與內容。
               整合入口不等於接管判斷，這條界線是刻意留的。
             </figcaption>
           </figure>
@@ -123,12 +123,12 @@ export default function AiAssistantProject() {
 
         <section className="band" id="evidence">
           <div className="band-head">
-            <h2>不是遇到失敗就停下，而是修到能被驗證。</h2>
+            <h2>驗收紀錄包含成功，也保留失敗</h2>
             <span className="rowlabel">2026.08.17｜獨立展示資料｜未讀取私人內容</span>
           </div>
           <p>
             這是一次完整的驗收紀錄：一句話丟進去，然後<strong>逐項回原本的服務核對</strong>。
-            其中一項第一次是失敗的——那才是這份紀錄的重點。
+            其中一項第一次測試失敗，後續排查與重測也保留在紀錄中。
           </p>
 
           <div className="vlog">
@@ -155,8 +155,8 @@ export default function AiAssistantProject() {
               <span className="ok">✓</span>
               <span className="vlog-k">行事曆事件</span>
               <div className="vlog-v">
-                <strong>第一次失敗。</strong>查出來是 OAuth 權限不足——當時的 token 只有 Gmail 唯讀。
-                我沒有讓它自己擴權，而是回頭核准 Gmail ＋ Calendar 的最小授權，
+                <strong>第一次失敗。</strong>查出來是 OAuth 權限不足，當時的 token 只有 Gmail 唯讀。
+                我回頭核准 Gmail ＋ Calendar 所需的最小授權，
                 再重新寫入、並讀回核對標題與時間。
               </div>
             </div>
@@ -180,8 +180,7 @@ export default function AiAssistantProject() {
           </div>
 
           <p style={{ marginTop: 18 }}>
-            我留這份紀錄不是為了證明它會動，而是為了說明
-            <strong>失敗發生的時候我做了什麼</strong>——查原因、界定權限範圍、由人核准、再驗一次。
+            這份紀錄保留了<strong>失敗發生時的處理過程</strong>：查原因、界定權限範圍、由人核准，再驗一次。
             AI 沒有擅自擴大憑證權限，這條界線是我守的。
           </p>
         </section>
@@ -203,18 +202,17 @@ export default function AiAssistantProject() {
         <section className="band">
           <div className="band-head"><h2>我負責把問題變成可驗收的流程。</h2></div>
           <p>
-            程式與設定由 AI 協助產生。下面四件事沒有交出去——
-            <strong>而且不是我說了算，這一頁上面每一件都有對應的證據</strong>：
+            程式與設定由 AI 協助產生；需求、權限、驗收與功能取捨由我處理，頁面上也附了對應紀錄：
           </p>
           <div className="ledger">
             {[
-              ["把問題改寫掉", "原本想的是「哪些工具可以自動化」，改成「什麼該拿掉」——這個轉向決定了後面所有取捨。",
+              ["調整問題範圍", "原本想整理哪些工具可以自動化，後來改成先找出常用流程，再刪掉維護成本過高的功能。",
                "#system", "看那一段"],
               ["決定資料寫去哪", "入口收斂成一個，但最終確認留在原本的服務，不由助理接管。",
                "#system", "看流程圖"],
               ["用真實情境驗收", "行事曆那次第一步就失敗；我查出是權限不足，核准最小授權後重驗一次。",
                "#evidence", "看驗收紀錄"],
-              ["決定什麼該死", "Letta、n8n 不是不好，是當時需求撐不起維護成本。",
+              ["停止低效益功能", "Letta、n8n 的維護成本高於當時的使用效益，因此停止使用。",
                "#tradeoff", "看取捨"],
             ].map(([t, s, href, cta]) => (
               <a className="entry" href={href} key={t}>
@@ -229,7 +227,7 @@ export default function AiAssistantProject() {
         </section>
 
         <section className="band" id="tradeoff">
-          <div className="band-head"><h2>功能不是越多越好，留下來才算有價值。</h2><p>以實際使用頻率、維護成本與資料風險作為判斷。</p></div>
+          <div className="band-head"><h2>用實際使用情況決定功能去留</h2><p>判斷依據包括使用頻率、維護成本與資料風險。</p></div>
           <div className="cols">
             <div className="col col-keep"><strong>保留</strong>
               <p>對話入口與知識庫同步。Discord／LINE、Calendar、Gmail 與 Obsidian 到現在都還在用，
@@ -245,7 +243,7 @@ export default function AiAssistantProject() {
 
         <section className="band">
           <h2>好的 AI 應用，應該讓人少操心一點。</h2>
-          <p>這個專案讓我確認，自己想做的不只是工具整合，而是從問題出發，判斷什麼值得導入、如何驗收，以及什麼時候該停下來重新想。</p>
+          <p>這個專案讓我練習從需求出發，判斷哪些功能值得導入、如何驗收，以及何時應停止維護。</p>
           <Link className="cta" href="/projects/hermes-line-media/">查看 Hermes 產品改善案例 →</Link>
         </section>
       </main>

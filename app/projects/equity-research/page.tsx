@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "我用接近淨值的價格買一家一直在賺錢的公司。論述成立，但我漏看了產業那一層。",
   openGraph: {
     title: "馬彥宸｜一次個股研究，以及它教我的事",
-    description: "鴻海 2021–2025，含息報酬約 72%、年化約 16%，優於同期大盤。但這頁真正在講的是我漏看的那一層。",
+    description: "鴻海 2021–2025，含息報酬約 72%、年化約 16%，並檢討原分析忽略的產業因素。",
     url: "/projects/equity-research/",
     type: "article",
     images: [{ url: "/og/equity-research.png", width: 1200, height: 630, alt: "馬彥宸｜一次個股研究" }],
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "馬彥宸｜一次個股研究，以及它教我的事",
-    description: "一筆賺錢的投資，價值不在報酬率，在於它指出我的分析框架缺了哪一塊。",
+    description: "一筆已出場的個股研究，包含進場論述、報酬估算與事後檢討。",
     images: ["/og/equity-research.png"],
   },
 };
@@ -41,7 +41,7 @@ const figures = [
   {
     n: "1 層",
     t: "我沒看到的東西",
-    s: "產業。方向我判斷對了，斜率我完全低估。",
+    s: "產業。我低估了 AI 伺服器供應鏈帶來的重新評價。",
   },
 ];
 
@@ -64,7 +64,7 @@ const steps = [
   {
     label: "判斷",
     h: "市場沒有反映它一直在賺錢",
-    p: "我要的不是它變成什麼，而是它繼續做它已經在做的事。",
+    p: "我的假設很單純：公司維持原有獲利能力，淨值就會繼續累積。",
   },
 ];
 
@@ -77,16 +77,15 @@ export default function EquityResearch() {
         <span className="rowlabel">電子產業 · 2021 – 2025 · 已了結部位</span>
         <h1>我用接近淨值的價格，<br />買一家一直在賺錢的公司。</h1>
         <p className="lede">
-          這是一筆賺錢的投資，但它真正的價值不在報酬率——
-          在於它精確地指出我的分析框架缺了哪一塊。
+          這筆投資最後獲利出場，也讓我看見原本分析框架的缺口。
           標的是鴻海(2317)，論述是我自己推的，錯誤也是我自己找出來的。
         </p>
 
         <CaseSummary
           problem="一家持續獲利的公司，市值卻幾乎等於淨值。市場是給了合理價，還是沒有反映它一直在賺錢？"
           decision="只用資產與獲利判斷，不預測產業。評估過籌碼面後，判斷它對三到四年的持有週期影響有限而排除。"
-          check="用真金白銀持有並分批加碼，以實際出場價與同期大盤含息報酬對照，不是紙上回測。"
-          result="含息報酬約 72%、年化約 16%，優於同期大盤。但我賣掉後它繼續漲——我的框架看不到產業那一層。"
+          check="實際持有並分批加碼，以出場價與同期大盤含息報酬對照。"
+          result="含息報酬約 72%、年化約 16%，優於同期大盤。賣出後股價繼續上漲，也反映原本分析少了產業因素。"
           evidence="已了結部位 · 含自我檢討"
           level="open"
         />
@@ -126,7 +125,7 @@ export default function EquityResearch() {
           </p>
           <p>
             這個取捨我到現在仍認為對我的週期是合理的。
-            但它有前提——<strong>那個前提只適用於我自己的資金與我自己的期限。</strong>
+            但這個前提只適用於<strong>我自己的資金與持有期限</strong>。
             服務不同持有週期的人，籌碼面就不是可以省略的東西。
           </p>
         </section>
@@ -136,18 +135,16 @@ export default function EquityResearch() {
             <h2>我怎麼出場</h2>
           </div>
           <p>
-            2025 年 3 月，我判斷它「會長期上漲，但不會暴漲」，
-            所以把資金換到我認為斜率更高的地方。
+            2025 年 3 月，我仍看好公司長期表現，但認為其他標的可能有更高的預期報酬，因此轉換資金。
           </p>
           <p>
-            出場的理由不是看壞它，是<strong>機會成本</strong>——
-            同一筆錢放在哪裡效率比較高。這個決定本身我認為沒有錯。
+            當時主要考量是<strong>機會成本</strong>：同一筆資金放在哪裡可能有較高效率。這個取捨本身仍符合我當時的判斷。
           </p>
         </section>
 
         <section className="band">
           <div className="honest">
-            <h2>但我錯在哪</h2>
+            <h2>事後檢討</h2>
             <p>
               我賣掉之後它繼續漲。而我事後才想清楚原因：
             </p>
@@ -159,15 +156,15 @@ export default function EquityResearch() {
                 所以我沒有看到它正在從純代工，被重新評價為 AI 伺服器供應鏈的一環。
               </li>
               <li>
-                方向我判斷對了，<strong>斜率我完全低估</strong>。
+                我低估了產業變化帶來的市場重新評價幅度。
               </li>
               <li>
-                而且我的出場沒有規則——我是憑「感覺斜率不夠」下的判斷，不是憑一套判準。
+                我的出場缺少明確規則，主要依靠主觀的機會成本判斷。
               </li>
             </ul>
             <p>
               我有進場紀律，沒有出場紀律；我有估值直覺，沒有產業框架。
-              這兩個缺口是這筆投資教我的，不是課本教我的。
+              這次經驗讓我確認，後續研究需要補上這兩個缺口。
             </p>
           </div>
         </section>
@@ -177,13 +174,13 @@ export default function EquityResearch() {
             <h2>這件事跟我想做的工作有什麼關係</h2>
           </div>
           <p>
-            我不是把這頁放上來證明我會選股。我放它是因為它示範了三件事：
+            我保留這份紀錄，是想說明自己的研究與檢討方式：
           </p>
           <div className="ledger">
             <article className="entry">
               <div className="entry-top">
                 <span className="entry-title">我能自己建立一個可檢驗的論述</span>
-                <span className="rowlabel">而不是跟著別人的結論走</span>
+                <span className="rowlabel">從公開財報推導</span>
               </div>
               <p className="entry-q">
                 進場理由是從公開財報推導出來的，每一步都說得出根據。
@@ -195,7 +192,7 @@ export default function EquityResearch() {
                 <span className="rowlabel">以及排除的前提</span>
               </div>
               <p className="entry-q">
-                籌碼面不是我不懂，是我判斷它對我的週期影響有限——而我知道這個前提換個人就不成立。
+                我判斷籌碼面對三到四年的持有週期影響有限，因此當時沒有納入；換成不同持有期限，這個前提可能不成立。
               </p>
             </article>
             <article className="entry">
@@ -204,7 +201,7 @@ export default function EquityResearch() {
                 <span className="rowlabel">在賺錢的情況下</span>
               </div>
               <p className="entry-q">
-                這筆是賺的。人在賺錢的時候最不想檢討，而這正是檢討最有價值的時候。
+                即使這筆投資獲利，我仍回頭檢查當時忽略的因素與出場依據。
               </p>
             </article>
           </div>

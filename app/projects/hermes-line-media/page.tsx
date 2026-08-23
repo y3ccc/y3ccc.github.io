@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "從LINE語音與檔案被略過，到問題重現、回歸測試與公開Issue／PR的產品改善案例。",
   openGraph: {
     title: "馬彥宸｜Hermes LINE 媒體改善",
-    description: "圖片能用，為什麼語音卻消失？公開 Issue #57882 與 PR #57884，任何人都能點開查證——包含它最終沒有被合併。",
+    description: "圖片能用，為什麼語音卻消失？公開 Issue #57882 與 PR #57884，也照實記錄 PR 未被合併的結果。",
     url: "/projects/hermes-line-media/",
     type: "article",
     images: [{ url: "/og/hermes-line-media.png", width: 1200, height: 630, alt: "馬彥宸｜Hermes LINE 媒體改善" }],
@@ -64,7 +64,7 @@ function MediaRouting() {
             </g>
           ))}
           <text x="0" y="182" className="note">
-            三種輸入沒有報錯，只是安靜消失——這是最難被發現的失敗。
+            三種輸入沒有報錯，只是沒有進入後續流程，因此不容易發現。
           </text>
 
           {/* ── 修正後：同樣結構，才看得出差在哪 ── */}
@@ -88,13 +88,13 @@ function MediaRouting() {
             ),
           )}
           <text x="0" y="400" className="val">
-            驗收條件：語音進得去，而且圖片不能退化——兩者同時成立才算修好。
+            驗收條件：語音能進入 STT，原有的圖片功能也要維持正常。
           </text>
         </svg>
       </Scroll>
       <figcaption>
         修正前四種輸入全部被送進同一條圖片快取路徑，只有圖片剛好能用。
-        重點不是「壞掉了」，而是<strong>其他三種安靜消失、不報錯</strong>——所以要先定義「哪一種輸入失敗」才有辦法修。
+        四種輸入走進同一條圖片快取路徑，結果只有圖片正常。其他三種沒有報錯，也沒有進入後續流程；先分開測試各種輸入，才能縮小問題範圍。
       </figcaption>
     </figure>
   );
@@ -114,12 +114,12 @@ export default function HermesLineMediaProject() {
       <main className="shell">
         <Link className="backlink" href="/">← 回作品集</Link>
         <h1>圖片能用，為什麼語音卻消失？</h1>
-        <p className="lede">我在實際使用Hermes的LINE整合時，發現圖片可以正常處理，但語音、影片與一般檔案會被略過。這個案例不是展示我獨立寫了多少程式，而是展示如何把模糊抱怨整理成可重現、可驗證、可交付的產品問題。</p>
+        <p className="lede">我在實際使用 Hermes 的 LINE 整合時，發現圖片可以正常處理，但語音、影片與一般檔案會被略過。我把這個現象拆成可重現的測試，訂出驗收條件，再整理成公開 Issue 與 PR。</p>
 
         <CaseSummary
           problem="LINE 進來的圖片正常，但語音、影片與一般檔案全部消失，沒有進入後續流程。"
           decision="不擴大改動範圍。先把「不能用」縮小成「哪一種輸入失敗」，再定義不退化的驗收條件。"
-          check="語音要能進入 STT，而且原本可用的圖片流程不能被破壞——兩者同時成立才算修好。"
+          check="語音要能進入 STT，原本可用的圖片流程也必須維持正常。"
           result="產出公開 Issue #57882 與 PR #57884。PR 最終未被合併，維護者已有涵蓋更廣的修正。"
           evidence="第三方可查核"
           level="third"
@@ -148,7 +148,7 @@ export default function HermesLineMediaProject() {
 
         <section className="band">
           <div className="band-head"><h2>「不能用」太模糊，先找出哪一種輸入失敗。</h2></div>
-          <p>真正影響使用體驗的不是錯誤訊息本身，而是使用者傳入語音後沒有得到預期處理，也無法知道內容去了哪裡。</p>
+          <p>使用者傳入語音後沒有得到預期處理，也不知道內容去了哪裡。由於畫面沒有報錯，這種問題更容易被忽略。</p>
           <ul>
             <li>預期：語音、影片與檔案應被保存並送往對應處理流程。</li>
             <li>實際：圖片正常，其他媒體沒有正確被記錄或處理。</li>
@@ -158,11 +158,11 @@ export default function HermesLineMediaProject() {
 
         <section className="band">
           <div className="band-head"><h2>從差異開始，逐步縮小問題範圍。</h2><p>AI協助技術閱讀與程式修改；我負責問題定義、修改核准與實際驗收。</p></div>
-          <Steps steps={process} caption="每一步的產出都是下一步的輸入；最後一步才是驗收，不是修完就算。" />
+          <Steps steps={process} caption="先確認現象、縮小範圍，再修改並用語音與圖片一起做回歸測試。" />
         </section>
 
         <section className="band">
-          <div className="band-head"><h2>誠實標示AI協作，也清楚說明我負責什麼。</h2><p>不把AI產生的程式碼包裝成獨立工程開發。</p></div>
+          <div className="band-head"><h2>這個案例怎麼分工</h2><p>技術實作有 AI 協助，以下分別列出我與 AI 的工作。</p></div>
           <div className="cols">
             <div className="col col-keep"><strong>我做的</strong>
               <p>發現異常、重現差異、定義預期結果、確認修改範圍、執行語音與圖片的回歸測試，
@@ -175,15 +175,15 @@ export default function HermesLineMediaProject() {
 
         <section className="band">
           <div className="band-head"><h2>修正沒有被合併，問題仍然是有效的。</h2></div>
-          <p>Issue與PR皆已關閉。PR不是因為問題不存在而被否定，而是維護者已透過範圍更廣的既有修正處理同一類問題。因此這個案例的成果不是「我的程式被採用」，而是問題被清楚描述、公開查核，並完成實際修正驗證。</p>
+          <p>Issue 與 PR 皆已關閉。維護者已有範圍更廣的修正，因此沒有合併這份 PR。公開紀錄仍保留了問題描述、修正內容與測試結果。</p>
           <p><a className="evlink" href={issueUrl} target="_blank" rel="noreferrer">Issue #57882　LINE adapter drops inbound voice/video/file messages ↗</a></p>
           <p><a className="evlink" href={pullRequestUrl} target="_blank" rel="noreferrer">PR #57884　Route audio/video/file payloads to the proper cache path ↗</a></p>
           <p><strong>語音可進入STT；圖片功能未受影響</strong></p>
         </section>
 
         <section className="band">
-          <h2>產品問題的價值，來自可重現與可驗收。</h2>
-          <p>我能帶來的不是「問AI拿一段程式」，而是把使用者遇到的問題縮小範圍、定義成功條件、確認修正沒有製造新問題，再把證據交給產品與工程團隊。</p>
+          <h2>這次我學到的處理方式</h2>
+          <p>遇到模糊的使用問題時，我會先縮小範圍、定義成功條件，並確認修正沒有影響原有功能，最後留下可供查核的紀錄。</p>
           <Link className="cta" href="/projects/ai-assistant/">回到AI生活助理案例 →</Link>
         </section>
       </main>

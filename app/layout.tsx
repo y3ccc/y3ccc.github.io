@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
       title: "馬彥宸｜AI 產品應用作品集",
-      description: "我做的不是寫出程式，是確認它真的有用。",
+      description: "把問題拆清楚，再用實際結果驗收。",
       url: "/",
       type: "website",
       locale: "zh_TW",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     twitter: {
       card: "summary_large_image",
       title: "馬彥宸｜AI 產品應用作品集",
-      description: "我做的不是寫出程式，是確認它真的有用。",
+      description: "把問題拆清楚，再用實際結果驗收。",
       images: ["/og-v5.png"],
     },
 };

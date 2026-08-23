@@ -15,7 +15,7 @@ test("exports the portfolio home with the current positioning", async () => {
   const output = await html();
   assert.match(output, /<title>馬彥宸｜AI 產品應用作品集<\/title>/i);
   assert.match(output, /應徵 AI 應用 \/ 產業分析師/);
-  assert.match(output, /我做的不是寫出程式/);
+  assert.match(output, /把問題拆清楚/);
   assert.match(output, /AI 協作生活助理/);
   assert.match(output, /Hermes LINE 媒體改善/);
   assert.doesNotMatch(output, /codex-preview|Your site is taking shape|SkeletonPreview/);
@@ -63,8 +63,8 @@ test("every count stated on a page matches what is actually there", async () => 
 
 test("keeps the limitations scoped to the work, not to the person", async () => {
   const output = await html();
-  assert.match(output, /我不能宣稱的事/);
-  assert.match(output, /問題定義、工具取捨、驗收設計，以及結果責任/);
+  assert.match(output, /案例限制/);
+  assert.match(output, /問題定義、工具取捨、驗收設計與結果確認/);
   // 這兩句在 2026-08-20 移除：一句無法量測，一句把系統設計寫成個人缺陷
   assert.doesNotMatch(output, /沒有量過實際省多少時間/);
   assert.doesNotMatch(output, /可能只是最近事情比較少/);
@@ -75,12 +75,12 @@ test("exports the Hermes public-evidence case", async () => {
   assert.match(output, /Issue #57882/);
   assert.match(output, /PR #57884/);
   assert.match(output, /語音可進入STT/);
-  assert.match(output, /不把AI產生的程式碼包裝成獨立工程開發/);
+  assert.match(output, /技術實作有 AI 協助/);
 });
 
 test("exports the AI assistant case", async () => {
   const output = await html("projects/ai-assistant");
-  assert.match(output, /把零散的日常/);
+  assert.match(output, /用一個對話入口/);
   assert.match(output, /最小權限/);
   assert.match(output, /真實使用案例/);
   await access(new URL("../public/evidence/assistant-demo-note.md", import.meta.url));
@@ -124,7 +124,7 @@ test("keeps the analysis cases and their downloadable evidence", async () => {
 
 test("publishes the group deck without the cover page that names other members", async () => {
   const store = await html("projects/convenience-store");
-  assert.match(store, /封面列了其他四位組員的姓名/);
+  assert.match(store, /封面列有其他四位組員姓名，未取得公開同意/);
 
   const deckPath = new URL("../public/reports/ma-yen-chen-convenience-store-deck.pdf", import.meta.url);
 

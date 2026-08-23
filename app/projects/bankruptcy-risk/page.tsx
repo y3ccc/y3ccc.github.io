@@ -45,7 +45,7 @@ export default function BankruptcyRiskProject() {
       <main className="shell">
         <Link className="backlink" href="/">← 回作品集</Link>
         <h1>高 Accuracy，不代表抓得到高風險企業。</h1>
-        <p className="lede">破產企業只占少數，模型即使幾乎全部預測為健康，準確率仍可能很好看。我以 6,819 筆企業財務資料建立比較流程，重點放在漏判、誤報與泛化風險，而不是只找最高分數。</p>
+        <p className="lede">破產企業只占少數，模型即使幾乎全部預測為健康，準確率仍可能很好看。我以 6,819 筆企業財務資料建立比較流程，同時檢查漏判、誤報與泛化風險。</p>
 
         <CaseSummary
           problem="破產企業只占約 3%，模型幾乎全猜健康也有 95% 準確率，分數好看卻抓不到真正該查的公司。"
@@ -89,13 +89,13 @@ export default function BankruptcyRiskProject() {
               { k: "健康企業", v: 97, c: 0 },
               { k: "破產企業", v: 3, c: 3 },
             ]}
-            note="破產企業只有這麼寬——全部猜「健康」，準確率照樣好看。"
-            caption="一個什麼都不做、全部猜「健康」的模型，準確率就有 97%。所以第一個要問的不是準確率，是：真正破產的那 3%，抓到了多少？"
+            note="破產企業只占這一小段；全部猜「健康」，準確率仍然很好看。"
+            caption="若模型全部猜「健康」，準確率就有 97%，卻完全抓不到破產企業。因此還要一起檢查 Recall、Precision 與 F1。"
           />
         </section>
 
         <section className="band">
-          <div className="band-head"><h2>模型不是替人下結論，而是決定先查什麼。</h2></div>
+          <div className="band-head"><h2>模型用來安排優先查核順序</h2></div>
           <p>若用途是企業風險初篩，漏掉真正高風險企業的代價通常較高，因此先關注 Recall；但提高 Recall 可能製造大量誤報，所以還要用 Precision 與 F1 檢查後續人工審查成本。</p>
           <ul>
             <li><strong>Recall：</strong>實際破產企業抓到了多少。</li>
@@ -132,7 +132,7 @@ export default function BankruptcyRiskProject() {
               { k: "Recall", v: 59.85, note: "實際破產的企業，抓到了多少", c: 1 },
               { k: "Precision", v: 38.39, note: "被標成高風險的，多少真的破產", c: 2 },
               { k: "F1", v: 45.18, note: "前兩者的平衡", c: 3 },
-              { k: "Accuracy", v: 95.11, note: "被那 97% 健康企業灌出來的——這格最會騙人", c: 0, dim: true },
+              { k: "Accuracy", v: 95.11, note: "健康企業占 97%，因此這個數字容易高估模型效果", c: 0, dim: true },
             ]}
             caption="放在同一把尺上就看得出來：最高的那一格是最沒有資訊量的一格。Accuracy 刻意畫淡，因為它在這個題目裡不該被拿來排名。"
           />

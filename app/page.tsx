@@ -5,7 +5,7 @@ const figures = [
   {
     n: "6,819",
     t: "筆企業財務資料",
-    s: "93 項變數、360 組候選。重點不是分數高，是不讓自己作弊。",
+    s: "93 項變數、360 組候選。測試集先留好，選模時不偷看答案。",
     to: "/projects/bankruptcy-risk/",
     label: "企業破產風險預測",
   },
@@ -38,7 +38,7 @@ const entries = [
     href: "/projects/ai-assistant/",
     core: false,
     title: "AI 協作生活助理",
-    q: "把零散的日常，收回同一個入口。",
+    q: "用 Discord 和 LINE 處理行事曆、郵件、日記與記帳。",
     role: "需求定義 · 工具取捨 · 測試驗收",
     tags: [["自我驗收", "tag-self"], ["持續運作中", "tag-self"]],
   },
@@ -77,14 +77,14 @@ const entries = [
 ];
 
 const tiers: [boolean, string][] = [
-  [true, "先看這三個 · 第三方可查核、方法完整、真金白銀驗證過"],
+  [true, "建議先看 · 有公開紀錄、完整方法或實際使用結果"],
   [false, "其餘三個"],
 ];
 
 const limits = [
-  "實作是 AI 協作產生的。我沒辦法宣稱自己能獨立寫出這些程式——我負責的是問題定義、工具取捨、驗收設計，以及結果責任。",
+  "實作由 AI 協助完成，我無法宣稱自己能獨立寫出這些程式。我負責問題定義、工具取捨、驗收設計與結果確認。",
   "破產風險模型只做過一次 holdout，沒有外部驗證，不能推論因果。",
-  "Hermes 那個 PR 最終沒有被合併——維護者已有涵蓋更廣的修正。",
+  "Hermes 的 PR 最終沒有被合併，因為維護者已有涵蓋更廣的修正。",
 ];
 
 export default function Home() {
@@ -95,12 +95,12 @@ export default function Home() {
         <section className="hero">
           <span className="role">應徵 AI 應用 / 產業分析師</span>
           <h1>
-            我做的不是寫出程式，
+            把問題拆清楚，
             <br />
-            是確認它真的有用。
+            再用實際結果驗收。
           </h1>
           <p className="lede">
-            財金背景。實作透過 AI 協作完成，我負責定義問題、決定取捨、驗收結果。
+            我有財金背景，實作由 AI 協助完成；我負責定義問題、決定取捨並確認結果。
           </p>
 
           <div className="figures">
@@ -147,7 +147,7 @@ export default function Home() {
 
         <section className="band" id="limits">
           <div className="honest">
-            <h2>我不能宣稱的事</h2>
+            <h2>案例限制</h2>
             <ul>
               {limits.map((l) => (
                 <li key={l}>{l}</li>
