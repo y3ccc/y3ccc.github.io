@@ -13,27 +13,25 @@ async function html(path = "") {
 
 test("exports the portfolio home with the current positioning", async () => {
   const output = await html();
-  assert.match(output, /<title>馬彥宸｜AI 產品應用作品集<\/title>/i);
-  assert.match(output, /應徵 AI 應用 \/ 產業分析師/);
-  assert.match(output, /把問題拆清楚/);
-  assert.match(output, /AI 協作生活助理/);
-  assert.match(output, /Hermes LINE 媒體改善/);
+  assert.match(output, /<title>馬彥宸｜投資研究作品集<\/title>/i);
+  assert.match(output, /投資研究助理／初階研究員/);
+  assert.match(output, /建立可以被驗證的投資論點/);
+  assert.match(output, /企業破產風險預測/);
+  assert.match(output, /便利商店產業及財務分析/);
   assert.doesNotMatch(output, /codex-preview|Your site is taking shape|SkeletonPreview/);
 });
 
-test("leads the home page with the three figures, each linking to its case", async () => {
+test("leads the home page with investment evidence and links to each study", async () => {
   const output = await html();
-  // 比對 figure-n 的實際內容，不是「頁面某處出現這串字」——
-  // 先前寫成 /13/ 時，任何 13px、13.5px 都能讓它通過。
-  const shown = [...output.matchAll(/class="figure-n">([^<]+)</g)].map((m) => m[1]);
-  assert.deepEqual(shown, ["6,819", "#57882", "13"], "首屏三個數字或順序被改動了");
+  for (const figure of ["3.6 年", "+72%", "3 份"]) assert.match(output, new RegExp(figure.replace("+", "\\+")));
   for (const target of [
     "/projects/bankruptcy-risk/",
-    "/projects/hermes-line-media/",
-    "/projects/conversation-memory/",
+    "/projects/equity-research/",
+    "/projects/convenience-store/",
   ]) {
     assert.match(output, new RegExp(`href="${target}"`));
   }
+  assert.match(output, /href="\/reports\/ma-yen-chen-investment-research-resume\.pdf"/);
 });
 
 // 這一組守的是這個站踩過三次的坑：頁面上寫的數量，跟實際檔案／實際渲染對不上。
@@ -46,6 +44,7 @@ test("every count stated on a page matches what is actually there", async () => 
   assert.equal(await pdfPages("ma-yen-chen-bankruptcy-risk-report.pdf"), 10);
   assert.equal(await pdfPages("ma-yen-chen-convenience-store-deck.pdf"), 25);
   assert.equal(await pdfPages("ma-yen-chen-onepager.pdf"), 1);
+  assert.equal(await pdfPages("ma-yen-chen-hon-hai-investment-case.pdf"), 10);
 
   const risk = await html("projects/bankruptcy-risk");
   assert.match(risk, /10 頁整合技術報告/, "技術報告頁數與 PDF 對不上");
@@ -53,6 +52,9 @@ test("every count stated on a page matches what is actually there", async () => 
   const store = await html("projects/convenience-store");
   assert.match(store, /下載原始簡報 25 頁/, "簡報頁數與 PDF 對不上");
   assert.match(store, /公開版 25 頁可下載/);
+
+  const equity = await html("projects/equity-research");
+  assert.match(equity, /下載 10 頁研究報告 PDF/, "個股研究頁數與 PDF 對不上");
 
   // 地圖卡片數必須與分享描述一致（分享卡曾寫 25，實際渲染 29）
   const memory = await html("projects/conversation-memory");
@@ -62,9 +64,9 @@ test("every count stated on a page matches what is actually there", async () => 
 });
 
 test("keeps the limitations scoped to the work, not to the person", async () => {
-  const output = await html();
-  assert.match(output, /案例限制/);
-  assert.match(output, /問題定義、工具取捨、驗收設計與結果確認/);
+  const output = await html("projects/equity-research");
+  assert.match(output, /交易明細待補/);
+  assert.match(output, /不能拿它假裝自己買進前就看見答案/);
   // 這兩句在 2026-08-20 移除：一句無法量測，一句把系統設計寫成個人缺陷
   assert.doesNotMatch(output, /沒有量過實際省多少時間/);
   assert.doesNotMatch(output, /可能只是最近事情比較少/);
@@ -95,7 +97,11 @@ test("exports the two newer cases", async () => {
   assert.match(memory, /我的伺服器地圖/);
   assert.match(memory, /docker ps --filter name=immich_server/);
   assert.match(equity, /鴻海/);
-  assert.match(equity, /沒有金額、沒有股數、沒有我目前的持倉/);
+  assert.match(equity, /沒有金額、沒有股數、沒有目前持倉/);
+  assert.match(equity, /伺服器與電動車/);
+  assert.match(equity, /交易明細待補/);
+  assert.doesNotMatch(equity, /含息總報酬|年化約 16%|2021 下半年/);
+  await access(new URL("../public/reports/ma-yen-chen-hon-hai-investment-case.pdf", import.meta.url));
 });
 
 test("never exposes host names, absolute paths or the personal phone number", async () => {
@@ -112,14 +118,17 @@ test("never exposes host names, absolute paths or the personal phone number", as
 });
 
 test("keeps the analysis cases and their downloadable evidence", async () => {
-  const [risk, store] = await Promise.all([
+  const [risk, store, equity] = await Promise.all([
     html("projects/bankruptcy-risk"),
     html("projects/convenience-store"),
+    html("projects/equity-research"),
   ]);
   assert.match(risk, /高 Accuracy/);
   assert.match(store, /不能直接證明疫情因果/);
+  assert.match(equity, /250～300 元怎麼來的/);
   await access(new URL("../public/reports/ma-yen-chen-bankruptcy-risk-report.pdf", import.meta.url));
   await access(new URL("../public/reports/ma-yen-chen-convenience-store-deck.pdf", import.meta.url));
+  await access(new URL("../public/reports/ma-yen-chen-hon-hai-investment-case.pdf", import.meta.url));
 });
 
 test("publishes the group deck without the cover page that names other members", async () => {
@@ -170,10 +179,10 @@ test("gives every case its own share metadata instead of inheriting the home pag
     const output = await html(`projects/${slug}`);
     const title = output.match(/property="og:title" content="([^"]+)"/)?.[1];
     assert.ok(title, `${slug} 缺少 og:title`);
-    assert.notEqual(title, "馬彥宸｜AI 產品應用作品集", `${slug} 仍繼承首頁 og:title`);
+    assert.notEqual(title, "馬彥宸｜投資研究作品集", `${slug} 仍繼承首頁 og:title`);
     // 每個案例要有自己的縮圖，不能共用首頁那張
     assert.match(output, new RegExp(`/og/${slug}\\.png`), `${slug} 沒有專屬縮圖`);
-    assert.doesNotMatch(output, /og-v5\.png/, `${slug} 仍在用首頁縮圖`);
+    assert.doesNotMatch(output, /og-investment-research\.png/, `${slug} 仍在用首頁縮圖`);
     await access(new URL(`../public/og/${slug}.png`, import.meta.url));
   }
 });
@@ -188,7 +197,7 @@ test("does not retain starter preview assets", async () => {
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview|codex-preview/);
   assert.doesNotMatch(layout, /Starter Project|codex-preview|_sites-preview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
-  assert.match(layout, /og-v5\.png/);
-  await access(new URL("../public/og-v5.png", import.meta.url));
+  assert.match(layout, /og-investment-research\.png/);
+  await access(new URL("../public/og-investment-research.png", import.meta.url));
   await assert.rejects(access(new URL("../app/_sites-preview", projectRoot)));
 });

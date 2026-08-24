@@ -3,25 +3,25 @@ import "./globals.css";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://y3ccc.github.io"),
-    title: "馬彥宸｜AI 產品應用作品集",
-    description: "六個附上可查核證據的案例：公開 Issue 與 PR、模型限制說明、服務停用判斷與個股研究檢討。",
+    title: "馬彥宸｜投資研究作品集",
+    description: "投資研究助理／初階研究員作品集，收錄個股研究、財務風險分析與產業分析。",
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",
     },
     openGraph: {
-      title: "馬彥宸｜AI 產品應用作品集",
-      description: "把問題拆清楚，再用實際結果驗收。",
+      title: "馬彥宸｜投資研究作品集",
+      description: "從財報與產業變化，建立可以被驗證的投資論點。",
       url: "/",
       type: "website",
       locale: "zh_TW",
-      images: [{ url: "/og-v5.png", width: 1200, height: 630, alt: "馬彥宸｜應徵 AI 應用 / 產業分析師。6,819 筆企業財務資料、公開 Issue 與 PR、13 個服務被我關掉。" }],
+      images: [{ url: "/og-investment-research.png", width: 1200, height: 630, alt: "馬彥宸投資研究作品集首頁，收錄鴻海個股研究、企業破產風險與便利商店產業分析。" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "馬彥宸｜AI 產品應用作品集",
-      description: "把問題拆清楚，再用實際結果驗收。",
-      images: ["/og-v5.png"],
+      title: "馬彥宸｜投資研究作品集",
+      description: "從財報與產業變化，建立可以被驗證的投資論點。",
+      images: ["/og-investment-research.png"],
     },
 };
 

@@ -1,92 +1,113 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CaseSummary, SiteFooter, SiteHeader } from "../../components/SiteChrome";
-import { Steps } from "../../components/Figures";
+import { Lines, Steps } from "../../components/Figures";
+
+const reportUrl = "/reports/ma-yen-chen-hon-hai-investment-case.pdf";
 
 export const metadata: Metadata = {
-  title: "一次個股研究，以及它教我的事｜馬彥宸作品集",
+  title: "鴻海投資決策研究｜馬彥宸作品集",
   description:
-    "我用接近淨值的價格買一家一直在賺錢的公司。論述成立，但我漏看了產業那一層。",
+    "重建一筆 2021–2025 年的鴻海投資：安全邊際、伺服器與電動車轉型、估值重評，以及一次受情緒影響後的修正。",
   openGraph: {
-    title: "馬彥宸｜一次個股研究，以及它教我的事",
-    description: "鴻海 2021–2025，含息報酬約 72%、年化約 16%，並檢討原分析忽略的產業因素。",
+    title: "馬彥宸｜鴻海投資決策研究",
+    description: "用當時可得資料重建投資論點，再以後續財報檢查哪些判斷成立、哪些仍缺證據。",
     url: "/projects/equity-research/",
     type: "article",
-    images: [{ url: "/og/equity-research.png", width: 1200, height: 630, alt: "馬彥宸｜一次個股研究" }],
+    images: [{ url: "/og/equity-research.png", width: 1200, height: 630, alt: "馬彥宸｜鴻海投資決策研究" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "馬彥宸｜一次個股研究，以及它教我的事",
-    description: "一筆已出場的個股研究，包含進場論述、報酬估算與事後檢討。",
+    title: "馬彥宸｜鴻海投資決策研究",
+    description: "投資案例研究：原始論點、產業轉型、估值情境、行為修正與資料限制。",
     images: ["/og/equity-research.png"],
   },
 };
 
 const figures = [
   {
-    n: "+72%",
-    t: "含息總報酬",
-    s: "年化約 16%。同期大盤含息年化約 11.5%。",
+    n: "2021 H1",
+    t: "開始建立部位",
+    s: "第一筆買在 120 多元；精確日期與逐筆成交仍待券商明細確認。",
   },
   {
-    n: "3.6 年",
-    t: "持有期間",
-    s: "2021 下半年進場，2025 年 3 月出場。分批加碼。",
+    n: "7.9%",
+    t: "EPS 年複合成長",
+    s: "2021 年 10.05 元，2025 年 13.61 元。這是事後驗證，不是買進時已知答案。",
   },
   {
-    n: "15.9 元",
-    t: "三次現金股利",
-    s: "配息本身就是我進場論述的核心，不是附帶收益。",
+    n: "250–300",
+    t: "原始長期情境",
+    s: "假設轉型成功、EPS 成長至 12.5–15 元，市場再給約 20 倍本益比。",
   },
   {
-    n: "1 層",
-    t: "我沒看到的東西",
-    s: "產業。我低估了 AI 伺服器供應鏈帶來的重新評價。",
+    n: "1 週",
+    t: "認錯後買回",
+    s: "曾因帳面虧損出清；檢查基本面沒有改變後，一週內重新建倉。",
   },
 ];
 
-const steps = [
+const thesisSteps = [
   {
-    label: "觀察",
-    h: "市值幾乎等於淨值",
-    p: "進場時 P/B 約為 1。一家持續獲利的公司，市場給的價格只等於它的帳面價值。",
+    t: "下檔　接近淨值",
+    s: "2020 年底每股淨值 93.58 元；公司仍持續獲利，股價沒有給太多成長溢價。",
   },
   {
-    label: "結構",
-    h: "賺的錢一半配出去，一半留下來",
-    p: "配息率約五成，其餘留存回淨值。也就是說淨值會逐年墊高。",
+    t: "累積　股息與保留盈餘",
+    s: "獲利約一半配給股東，其餘留在公司。原始想法是股東價值會隨時間增加。",
   },
   {
-    label: "推論",
-    h: "股價不動的話，它會自己變便宜",
-    p: "淨值持續累積而股價不變，P/B 只會往 1 以下走。我買在一個安全邊際會自己擴大的位置。",
+    t: "基礎　伺服器",
+    s: "雲端與伺服器已有製造規模，可支撐現金流，也有機會成為第二個成長來源。",
   },
   {
-    label: "判斷",
-    h: "市場沒有反映它一直在賺錢",
-    p: "我的假設很單純：公司維持原有獲利能力，淨值就會繼續累積。",
+    t: "上限　電動車",
+    s: "MIH 平台與早期合作案讓我認為，市場仍用『蘋果代工廠』標籤看待一家公司正在做的轉型。",
+  },
+];
+
+const decisionSteps = [
+  {
+    t: "2021　第一筆買在 120 多元",
+    s: "看重淨值、配息、伺服器與電動車；之後在下跌時加碼。",
+  },
+  {
+    t: "約 2022–2023　多次跌回 100 元附近",
+    s: "帳面獲利曾轉成虧損；出清事件可能發生於 2023 年，但日期仍待驗證。",
+  },
+  {
+    t: "一次出清　一週後買回",
+    s: "賣出原因是受不了帳面虧損，不是原始論點失效。確認後承認錯誤並重新建倉。",
+  },
+  {
+    t: "2024　股價進入 150–200 元區間",
+    s: "低估修復、大盤多頭與 AI 伺服器預期共同推動；沒有在高點出場。",
+  },
+  {
+    t: "2025/03　約 168 元出場",
+    s: "公司基本面沒有轉壞；我選擇把資金轉向自己認為長期上限更高的 Tesla。",
   },
 ];
 
 export default function EquityResearch() {
   return (
     <>
-      <SiteHeader project="個股研究" />
+      <SiteHeader project="投資案例研究" />
       <main className="shell">
         <Link className="backlink" href="/">← 回作品集</Link>
-        <span className="rowlabel">電子產業 · 2021 – 2025 · 已了結部位</span>
-        <h1>我用接近淨值的價格，<br />買一家一直在賺錢的公司。</h1>
+        <span className="rowlabel">鴻海（2317）· 2021–2025 · 已了結部位</span>
+        <h1>我買鴻海時，<br />看的是伺服器跟電動車。</h1>
         <p className="lede">
-          這筆投資最後獲利出場，也讓我看見原本分析框架的缺口。
-          標的是鴻海(2317)，論述是我自己推的，錯誤也是我自己找出來的。
+          這是我第一次賺到自己認知內的錢。我沒有賣在高點，中間還有一次被帳面虧損逼到出清。
+          過了一週，我發現公司根本沒變，是我自己耐不住，於是買回來繼續等。
         </p>
 
         <CaseSummary
-          problem="一家持續獲利的公司，市值卻幾乎等於淨值。市場是給了合理價，還是沒有反映它一直在賺錢？"
-          decision="只用資產與獲利判斷，不預測產業。評估過籌碼面後，判斷它對三到四年的持有週期影響有限而排除。"
-          check="實際持有並分批加碼，以出場價與同期大盤含息報酬對照。"
-          result="含息報酬約 72%、年化約 16%，優於同期大盤。賣出後股價繼續上漲，也反映原本分析少了產業因素。"
-          evidence="已了結部位 · 含自我檢討"
+          problem="一家持續獲利、股價接近淨值的大型公司，市場是否仍被過去的代工標籤與股價區間綁住？"
+          decision="我先看淨值、配息與保留盈餘，再看伺服器能不能維持獲利、電動車能不能把公司的上限拉高。"
+          check="2021 年能知道的事和後來結果分開寫。2022–2025 財報只能用來回頭檢查，不能當成買進前就知道的答案。"
+          result="最後約 168 元賣出，改投 Tesla。我沒有抓到高點，但這筆交易讓我知道，自己可以靠研究等到結果，也可以在犯錯後改回來。"
+          evidence="公開財報可查 · 交易明細待補"
           level="open"
         />
 
@@ -102,129 +123,144 @@ export default function EquityResearch() {
 
         <section className="band">
           <div className="band-head">
-            <h2>論述怎麼推出來的</h2>
-            <span className="rowlabel">四步，全部只用公開財報</span>
+            <h2>2021 年的原始論點</h2>
+            <span className="rowlabel">下檔先算清楚，再看轉型上限</span>
           </div>
           <Steps
-            steps={steps.map((st) => ({ t: `${st.label}　${st.h}`, s: st.p }))}
-            caption="四步都只用公開財報，沒有一步需要內線或預測。這也是它的極限：整條推論裡沒有任何一格是在看產業。"
+            steps={thesisSteps}
+            caption="淨值與配息有財報可查；伺服器與電動車是我當時對未來的判斷。"
           />
-        </section>
-
-        <section className="band">
-          <div className="band-head">
-            <h2>我當時刻意排除了什麼</h2>
-          </div>
           <p>
-            我研究過籌碼面。這檔外資持股比重高、籌碼集中於少數法人，
-            短期價格對法人資金流動相當敏感。
+            我當時沒有假設 EPS 每年固定增加 10 元。我的想法是，公司每年賺到的錢，一部分配成現金股利，未配出的部分留在公司；只要獲利沒有長期衰退，股東價值就會繼續累積。
           </p>
           <p>
-            但我的持有週期是三到四年，我判斷籌碼面的影響會隨期間拉長而衰減，
-            所以<strong>有意識地不把它納入決策依據</strong>。
-          </p>
-          <p>
-            這個取捨我到現在仍認為對我的週期是合理的。
-            但這個前提只適用於<strong>我自己的資金與持有期限</strong>。
-            服務不同持有週期的人，籌碼面就不是可以省略的東西。
+            現在回頭看，我當年說「這筆不會虧」說得太滿。保留盈餘如果投資失敗、認列減損，或只是讓資本報酬率越來越低，股東拿到的價值就不會照我想的累積。
           </p>
         </section>
 
         <section className="band">
           <div className="band-head">
-            <h2>我怎麼出場</h2>
+            <h2>市場還把它當成蘋果代工廠</h2>
+            <span className="rowlabel">伺服器守住基礎，電動車打開上限</span>
+          </div>
+          <div className="ledger">
+            <article className="entry">
+              <div className="entry-top">
+                <span className="entry-title">我買進時就有看伺服器</span>
+                <span className="rowlabel">既有業務</span>
+              </div>
+              <p className="entry-q">
+                鴻海當時已經有雲端網路與伺服器製造基礎。2021 年全年伺服器營收後來做到兆元，不過這是年底後才知道的結果，我不能拿它假裝自己買進前就看見答案。
+              </p>
+            </article>
+            <article className="entry">
+              <div className="entry-top">
+                <span className="entry-title">電動車當時還沒賺到錢，但把上限拉開了</span>
+                <span className="rowlabel">轉型業務</span>
+              </div>
+              <p className="entry-q">
+                2020 年 MIH 平台公開後，聯盟短期內已有兩百多家企業響應；2021 年上半年又出現 Fisker 與日本電產合作。這些合作可能失敗，但至少看得出公司已經在找手機組裝以外的生意。
+              </p>
+            </article>
+          </div>
+          <p style={{ marginTop: 22 }}>
+            我當時覺得鴻海早就不只是在替蘋果代工。不過，2021 年報顯示 98% 產品仍屬 3C 電子；公司正在轉，但還遠遠沒有轉完。
+          </p>
+        </section>
+
+        <section className="band">
+          <div className="band-head">
+            <h2>250～300 元怎麼來的</h2>
+            <span className="rowlabel">轉型成功情境，不是當下合理價</span>
           </div>
           <p>
-            2025 年 3 月，我仍看好公司長期表現，但認為其他標的可能有更高的預期報酬，因此轉換資金。
+            我在 2021 年就把目標放在 250 元、上看 300 元，只是當時沒有把試算留下來。現在照當年的想法重算：EPS 要成長到 12.5～15 元，市場也要願意把本益比從成熟代工約 10 倍提高到大型科技公司約 20 倍，才會得到 250～300 元。
+          </p>
+          <div className="dtable">
+            <table>
+              <thead>
+                <tr><th>情境</th><th>EPS</th><th>本益比</th><th>對應價值</th><th>成立條件</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>成熟代工</td><td>10 元</td><td>10–12 倍</td><td>100–120 元</td><td>獲利穩定，沒有明顯重評</td></tr>
+                <tr><td>轉型進行</td><td>11–13 元</td><td>15–18 倍</td><td>165–234 元</td><td>伺服器成長，獲利率改善</td></tr>
+                <tr><td>轉型成功</td><td>12.5–15 元</td><td>20 倍</td><td>250–300 元</td><td>EPS 成長與平台估值同時成立</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="figure-s" style={{ marginTop: 14 }}>
+            市值大不會自動得到高本益比。2021 年底大型公司本益比從約 10 倍到 28 倍都有；成長、資本報酬率與風險才是市場是否重評的原因。
+          </p>
+        </section>
+
+        <section className="band">
+          <div className="band-head">
+            <h2>後來的獲利有沒有跟上</h2>
+            <span className="rowlabel">方向成立，速度並不平均</span>
+          </div>
+          <Lines
+            years={["2020", "2021", "2022", "2023", "2024", "2025"]}
+            series={[{ k: "EPS", v: [7.34, 10.05, 10.21, 10.25, 11.01, 13.61], c: 2 }]}
+            unit="元"
+            caption="2021–2025 年 EPS 年複合成長率約 7.9%。2021–2023 幾乎持平，2024–2025 才明顯加速。來源：鴻海年度財報。"
+          />
+          <p>
+            後來 EPS 真的走到 13.61 元，乘以 20 倍就是約 272 元，跟我當初想的區間對得上。不過，這只能說方向有走到，不能把 2025 年的答案倒回去當成 2021 年的證據。
+          </p>
+        </section>
+
+        <section className="band">
+          <div className="band-head">
+            <h2>我沒有一路抱到底</h2>
+            <span className="rowlabel">交易日期以券商明細為準</span>
+          </div>
+          <Steps steps={decisionSteps} />
+          <p>
+            重新建倉後，券商顯示的持股均價約為 107 元，之後也曾在更低價格少量買進。這個 107 元不包含前一次出清的已實現虧損，所以不能拿它直接計算整段投資報酬。
+          </p>
+        </section>
+
+        <section className="band">
+          <div className="band-head">
+            <h2>2024 年上漲的歸因</h2>
+          </div>
+          <p>
+            2024 年 1 月 17 日至 3 月 28 日，鴻海收盤價從 98.6 元漲至 155.5 元，約上漲 57.7%；同期加權指數約上漲 17.4%。大盤多頭提供了環境，但鴻海明顯跑得更快。
           </p>
           <p>
-            當時主要考量是<strong>機會成本</strong>：同一筆資金放在哪裡可能有較高效率。這個取捨本身仍符合我當時的判斷。
+            這段漲幅裡面有低估修復、大盤上漲，也有 AI 伺服器帶來的新預期。公司在 2024 年 3 月 14 日上調全年展望，隔日股價由 121 元收至 132 元，所以不能只用「大型權值股一定會補漲」解釋全部漲幅。
           </p>
         </section>
 
         <section className="band">
           <div className="honest">
-            <h2>事後檢討</h2>
-            <p>
-              我賣掉之後它繼續漲。而我事後才想清楚原因：
-            </p>
+            <h2>還不能下結論的地方</h2>
             <ul>
-              <li>
-                我的框架<strong>只看資產與獲利，不看產業</strong>。
-              </li>
-              <li>
-                所以我沒有看到它正在從純代工，被重新評價為 AI 伺服器供應鏈的一環。
-              </li>
-              <li>
-                我低估了產業變化帶來的市場重新評價幅度。
-              </li>
-              <li>
-                我的出場缺少明確規則，主要依靠主觀的機會成本判斷。
-              </li>
+              <li>這是一次做對，不代表我已經能穩定複製。</li>
+              <li>250～300 元是依原始想法重建的轉型成功情境，不是 2021 年留下的完整模型。</li>
+              <li>第一次買進、出清與買回的日期及價格仍待券商明細確認。</li>
+              <li>107 元是重新建倉後的持股均價，不能代表全期間經濟成本。</li>
+              <li>沒有金額、沒有股數、沒有目前持倉；本文也不構成投資建議。</li>
             </ul>
-            <p>
-              我有進場紀律，沒有出場紀律；我有估值直覺，沒有產業框架。
-              這次經驗讓我確認，後續研究需要補上這兩個缺口。
-            </p>
           </div>
         </section>
 
         <section className="band">
           <div className="band-head">
-            <h2>這件事跟我想做的工作有什麼關係</h2>
+            <h2>資料來源與完整報告</h2>
           </div>
           <p>
-            我保留這份紀錄，是想說明自己的研究與檢討方式：
+            財務數字以鴻海年報與法說資料為主，股價與本益比採臺灣證券交易所資料。個人交易過程來自 2026 年回憶重建，未確認處均明確標示。
           </p>
-          <div className="ledger">
-            <article className="entry">
-              <div className="entry-top">
-                <span className="entry-title">我能自己建立一個可檢驗的論述</span>
-                <span className="rowlabel">從公開財報推導</span>
-              </div>
-              <p className="entry-q">
-                進場理由是從公開財報推導出來的，每一步都說得出根據。
-              </p>
-            </article>
-            <article className="entry">
-              <div className="entry-top">
-                <span className="entry-title">我會標示自己刻意排除了什麼</span>
-                <span className="rowlabel">以及排除的前提</span>
-              </div>
-              <p className="entry-q">
-                我判斷籌碼面對三到四年的持有週期影響有限，因此當時沒有納入；換成不同持有期限，這個前提可能不成立。
-              </p>
-            </article>
-            <article className="entry">
-              <div className="entry-top">
-                <span className="entry-title">我會回頭拆自己的判斷</span>
-                <span className="rowlabel">在賺錢的情況下</span>
-              </div>
-              <p className="entry-q">
-                即使這筆投資獲利，我仍回頭檢查當時忽略的因素與出場依據。
-              </p>
-            </article>
-          </div>
-          <p style={{ marginTop: 22 }}>
-            我現在仍持續自學產業分析，補的就是這筆投資指出來的那一層。
-          </p>
-        </section>
-
-        <section className="band">
-          <div className="band-head">
-            <h2>這頁沒有寫什麼</h2>
-          </div>
-          <p>
-            沒有金額、沒有股數、沒有我目前的持倉。這是一份研究方法的紀錄，
-            不是投資績效展示，也不構成任何投資建議。
-          </p>
-          <p className="figure-s">
-            報酬為近似值：分批投入的資金，精確報酬應以 XIRR(資金加權)計算。
-            大盤基準採同期加權指數含息估算。
-          </p>
-          <Link className="cta" href="/projects/bankruptcy-risk/">
-            看我怎麼處理財務資料 →
-          </Link>
+          <a className="cta" href={reportUrl} target="_blank" rel="noreferrer">
+            下載 10 頁研究報告 PDF ↗
+          </a>
+          <a className="cta cta-ghost" href="https://www.honhai.com/s3/reports/shareholders-meetings/2022/Annual%20Report.pdf" target="_blank" rel="noreferrer">
+            鴻海 2021 年報 ↗
+          </a>
+          <a className="cta cta-ghost" href="https://www.twse.com.tw/exchangeReport/FMNPTK?response=html&stockNo=2317" target="_blank" rel="noreferrer">
+            證交所年度股價 ↗
+          </a>
         </section>
       </main>
       <SiteFooter />

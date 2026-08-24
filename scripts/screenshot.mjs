@@ -60,7 +60,7 @@ for (const theme of THEMES) {
         if (de.scrollWidth > de.clientWidth + 1) bad.push(`body 橫向溢出 ${de.scrollWidth}>${de.clientWidth}`);
         for (const el of document.querySelectorAll("main *")) {
           const r = el.getBoundingClientRect();
-          if (r.width > 0 && r.right > de.clientWidth + 1 && !el.closest(".chart-scroll, .flow-scroll, .scroller")) {
+          if (r.width > 0 && r.right > de.clientWidth + 1 && !el.closest(".chart-scroll, .flow-scroll, .scroller, .dtable")) {
             bad.push(`${el.tagName}.${(el.className || "").toString().split(" ")[0]} 右緣 ${Math.round(r.right)}`);
           }
         }

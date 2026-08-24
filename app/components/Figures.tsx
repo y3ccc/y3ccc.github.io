@@ -101,7 +101,9 @@ export function Lines({
   caption?: string;
 }) {
   const W = 720, H = 260, L = 52, R = 118, T = 22, B = 40;
-  const max = Math.ceil(Math.max(...series.flatMap((s) => s.v)) / 50) * 50;
+  const rawMax = Math.max(...series.flatMap((s) => s.v));
+  const step = rawMax <= 20 ? 5 : 50;
+  const max = Math.ceil(rawMax / step) * step;
   const px = (i: number) => L + (i / (years.length - 1)) * (W - L - R);
   const py = (v: number) => T + (1 - v / max) * (H - T - B);
   return (
