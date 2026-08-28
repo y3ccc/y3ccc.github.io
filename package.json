@@ -11,9 +11,7 @@
     "build:pages": "next build",
     "deck": "python3 scripts/build_portfolio_deck.py",
     "honhai-report": "npm run build:pages && node scripts/build_honhai_report_v2.mjs",
-    "honhai-report:v2-preview": "npm run build:pages && node scripts/build_honhai_report_v2_preview.mjs",
-    "bankruptcy-report": "node scripts/build_bankruptcy_report_v2_preview.mjs",
-    "bankruptcy-report:v2-preview": "node scripts/build_bankruptcy_report_v2_preview.mjs",
+    "bankruptcy-report": "node scripts/build_bankruptcy_report.mjs",
     "start": "next dev",
     "test": "npm run build:pages && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern out --ignore-pattern .next --ignore-pattern dist --ignore-pattern .vinext"

@@ -23,15 +23,26 @@ test("exports the portfolio home with the current positioning", async () => {
 
 test("leads the home page with investment evidence and links to each study", async () => {
   const output = await html();
-  for (const figure of ["3.6 年", "+72%", "3 份"]) assert.match(output, new RegExp(figure.replace("+", "\\+")));
+  for (const figure of ["4 年", "10 頁", "3 份"]) assert.match(output, new RegExp(figure));
+  // 首頁不得再出現未經交割明細核對的報酬率（2026-08-28）
+  assert.doesNotMatch(output, /\+72%|含息近似報酬|年化約/);
   for (const target of [
     "/projects/bankruptcy-risk/",
-    "/projects/equity-research/",
+    "/reports/honhai/",
     "/projects/convenience-store/",
   ]) {
     assert.match(output, new RegExp(`href="${target}"`));
   }
   assert.match(output, /href="\/reports\/ma-yen-chen-investment-research-resume\.pdf"/);
+});
+
+test("routes Hon Hai through a single entry point", async () => {
+  // 2026-08-28：舊案例頁 /projects/equity-research 已下架，鴻海只留 /reports/honhai 一個入口。
+  for (const page of [await html(), await html("industry-analysis-preview")]) {
+    assert.match(page, /href="\/reports\/honhai\/"/);
+    assert.doesNotMatch(page, /projects\/equity-research/);
+    assert.doesNotMatch(page, /查看原有案例頁/);
+  }
 });
 
 // 這一組守的是這個站踩過三次的坑：頁面上寫的數量，跟實際檔案／實際渲染對不上。
@@ -53,9 +64,6 @@ test("every count stated on a page matches what is actually there", async () => 
   assert.match(store, /下載原始簡報 25 頁/, "簡報頁數與 PDF 對不上");
   assert.match(store, /公開版 25 頁可下載/);
 
-  const equity = await html("projects/equity-research");
-  assert.match(equity, /下載 10 頁研究報告 PDF/, "個股研究頁數與 PDF 對不上");
-
   // 地圖卡片數必須與分享描述一致（分享卡曾寫 25，實際渲染 29）
   const memory = await html("projects/conversation-memory");
   const cards = (memory.match(/<details class="card"/g) ?? []).length;
@@ -64,9 +72,11 @@ test("every count stated on a page matches what is actually there", async () => 
 });
 
 test("keeps the limitations scoped to the work, not to the person", async () => {
-  const output = await html("projects/equity-research");
-  assert.match(output, /交易明細待補/);
-  assert.match(output, /不能拿它假裝自己買進前就看見答案/);
+  const output = await html("reports/honhai");
+  assert.match(output, /沒有逐筆明細，就不能公布精確 XIRR/);
+  assert.match(output, /不是假裝上半年買進時已經知道答案/);
+  assert.match(output, /目前仍不能宣稱/);
+  assert.match(output, /精確總報酬與年化報酬/);
   // 這兩句在 2026-08-20 移除：一句無法量測，一句把系統設計寫成個人缺陷
   assert.doesNotMatch(output, /沒有量過實際省多少時間/);
   assert.doesNotMatch(output, /可能只是最近事情比較少/);
@@ -92,14 +102,13 @@ test("exports the AI assistant case", async () => {
 test("exports the two newer cases", async () => {
   const [memory, equity] = await Promise.all([
     html("projects/conversation-memory"),
-    html("projects/equity-research"),
+    html("reports/honhai"),
   ]);
   assert.match(memory, /我的伺服器地圖/);
   assert.match(memory, /docker ps --filter name=immich_server/);
   assert.match(equity, /鴻海/);
-  assert.match(equity, /沒有金額、沒有股數、沒有目前持倉/);
   assert.match(equity, /伺服器與電動車/);
-  assert.match(equity, /交易明細待補/);
+  assert.match(equity, /交易日期仍待券商明細確認/);
   assert.doesNotMatch(equity, /含息總報酬|年化約 16%|2021 下半年/);
   await access(new URL("../public/reports/ma-yen-chen-hon-hai-investment-case.pdf", import.meta.url));
 });
@@ -108,7 +117,8 @@ test("never exposes host names, absolute paths or the personal phone number", as
   const pages = await Promise.all([
     html(),
     ...["hermes-line-media", "ai-assistant", "bankruptcy-risk", "conversation-memory",
-        "equity-research", "convenience-store"].map((s) => html(`projects/${s}`)),
+        "convenience-store"].map((s) => html(`projects/${s}`)),
+    html("reports/honhai"),
   ]);
   for (const page of pages) {
     assert.doesNotMatch(page, /\.ts\.net/); // 不在這裡寫出 tailnet 名稱本身
@@ -121,11 +131,11 @@ test("keeps the analysis cases and their downloadable evidence", async () => {
   const [risk, store, equity] = await Promise.all([
     html("projects/bankruptcy-risk"),
     html("projects/convenience-store"),
-    html("projects/equity-research"),
+    html("reports/honhai"),
   ]);
   assert.match(risk, /高 Accuracy/);
   assert.match(store, /不能直接證明疫情因果/);
-  assert.match(equity, /250～300 元怎麼來的/);
+  assert.match(equity, /250～300 元是重建情境/);
   await access(new URL("../public/reports/ma-yen-chen-bankruptcy-risk-report.pdf", import.meta.url));
   await access(new URL("../public/reports/ma-yen-chen-convenience-store-deck.pdf", import.meta.url));
   await access(new URL("../public/reports/ma-yen-chen-hon-hai-investment-case.pdf", import.meta.url));
@@ -160,7 +170,6 @@ test("ships robots.txt and a sitemap covering every case", async () => {
     "ai-assistant",
     "bankruptcy-risk",
     "conversation-memory",
-    "equity-research",
     "convenience-store",
   ]) {
     assert.match(sitemap, new RegExp(`/projects/${slug}/`));
@@ -173,7 +182,6 @@ test("gives every case its own share metadata instead of inheriting the home pag
     "ai-assistant",
     "bankruptcy-risk",
     "conversation-memory",
-    "equity-research",
     "convenience-store",
   ]) {
     const output = await html(`projects/${slug}`);

@@ -42,3 +42,6 @@ next-env.d.ts
 /work/
 tsconfig.tsbuildinfo
 .shots
+/build/
+/output/
+/tmp/

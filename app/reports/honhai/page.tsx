@@ -46,7 +46,7 @@ export default function HonHaiReport() {
       </header>
       <section className={styles.verdict}>
         <div className={styles.rating}><span>2021 重建判斷</span><strong>明顯低估</strong><small>回溯案例，不是現在的投資建議</small></div>
-        <dl><div><dt>第一筆買進</dt><dd>120 多元</dd></div><div><dt>重建倉均價</dt><dd>約 107 元*</dd></div><div><dt>原始目標</dt><dd>250–300 元</dd></div><div><dt>最終出場</dt><dd>約 168 元</dd></div></dl>
+        <dl><div><dt>第一筆買進</dt><dd>120 多元</dd></div><div><dt>重建倉買回價</dt><dd>約 107 元*</dd></div><div><dt>原始目標</dt><dd>250–300 元</dd></div><div><dt>最終出場</dt><dd>約 168 元</dd></div></dl>
       </section>
       <div className={styles.columns}>
         <div className={styles.mainColumn}>
@@ -62,25 +62,25 @@ export default function HonHaiReport() {
         </aside>
       </div>
       <section className={styles.firstPageBottom}><div><span>研究問題 01</span><b>為什麼低估？</b><p>淨值與穩定獲利提供下檔，市場仍沿用舊代工區間。</p></div><div><span>研究問題 02</span><b>什麼能重評？</b><p>伺服器成長、資本報酬改善，以及電動車開始量產。</p></div><div><span>研究問題 03</span><b>為什麼出場？</b><p>基本面未轉壞；我把資金轉往自己認為上限更高的標的。</p></div></section>
-      <Source>* 重新建倉後券商顯示均價，不能直接視為全期間成本。</Source>
+      <Source>* 重新建倉的買回價，不能直接視為全期間成本。</Source>
     </Page>
 
     <Page page={2}>
       <Header eyebrow="ORIGINAL THESIS" title="先看下檔，再看公司能變成什麼" />
-      <section className={styles.introBand}><strong>2021 年的安全邊際</strong><p>我當時把安全邊際建立在三件事上：股價接近淨值、公司持續獲利、股東仍能收到現金股利。這不代表三年後一定不會虧，但長期永久損失的風險看起來低於市場定價。</p></section>
+      <section className={styles.introBand}><strong>2021 年的安全邊際</strong><p>約 120 元的買價相對每股淨值約 94 元，多付約 26 元。2021 全年 EPS 後來公布為 10.05 元；若這個獲利水準維持三年，累積 30.15 元，就足以覆蓋差額。這是持有安全墊，250～300 元則是我當時預期的長期上行情境。</p></section>
       <div className={styles.fourCards}>
         <div><span>資產</span><b>BVPS 93.58 元</b><p>2020 年底每股淨值接近當時股價，市場沒有給多少成長溢價。</p></div>
         <div><span>獲利</span><b>EPS 7.34 元</b><p>公司不是靠題材存活；即使成長有限，本業仍有獲利。</p></div>
         <div><span>分配</span><b>現金股利 4 元</b><p>部分盈餘回到股東，未分配部分留在公司繼續運用。</p></div>
         <div><span>轉型</span><b>伺服器＋電動車</b><p>伺服器提供基礎，電動車讓長期情境不必停在舊代工估值。</p></div>
       </div>
-      <section className={styles.valueBridge}><div><span>起點</span><strong>淨值 100</strong></div><i>＋</i><div><span>十年累積保留</span><strong>約 50</strong></div><i>＋</i><div><span>十年累積股利</span><strong>約 50</strong></div><i>＝</i><div className={styles.bridgeTotal}><span>名目股東價值</span><strong>約 200</strong></div></section>
+      <section className={styles.valueBridge}><div><span>第一筆買價</span><strong>約 120</strong></div><i>−</i><div><span>2021 H1 淨值</span><strong>94.02</strong></div><i>＝</i><div><span>買價差額</span><strong>25.98</strong></div><i>＜</i><div className={styles.bridgeTotal}><span>10.05 × 3 年</span><strong>30.15</strong></div></section>
       <div className={styles.twoColumns}>
-        <section><h2>這個直覺有什麼用</h2><p>我當時用「每年賺 10 元、配一半」理解股東價值如何累積。這讓我願意等，而不是每天猜隔天漲跌。</p><p>它不是現值模型，也沒有處理折現率、資本成本或景氣循環，因此不能直接拿來當目標價。</p></section>
+        <section><h2>安全墊和目標價是兩件事</h2><p>三年累積盈餘回答的是「為什麼敢等」；250～300 元回答的是「轉型成功後可能值多少」。我當時有預期上行情境，但沒有預設多久會走到。</p><p>10.05 元是 2021 全年公布後的驗證基準，不是假裝上半年買進時已經知道答案。</p></section>
         <section className={styles.warning}><h2>保留盈餘不會自動變成股價</h2><ul><li>再投資報酬低於資本成本，淨值增加也可能沒有價值。</li><li>減損、虧損或錯誤併購會吃掉累積成果。</li><li>若 EPS 沒跟著淨值成長，ROE 會下降。</li></ul></section>
       </div>
       <section className={styles.evidenceTable}><div className={styles.sectionTitle}><h2>原始論點要靠什麼驗證</h2><span>不是股價上漲就算對</span></div><table><thead><tr><th>論點</th><th>持續追蹤</th><th>失效訊號</th></tr></thead><tbody><tr><td>資產提供下檔</td><td>BVPS、減損、負債與現金流</td><td>帳面資產無法產生報酬</td></tr><tr><td>獲利可以累積</td><td>EPS、ROE、自由現金流</td><td>淨值增加但 EPS 停滯</td></tr><tr><td>股利回到股東</td><td>配發率與配息來源</td><td>借款配息或本業現金流惡化</td></tr><tr><td>轉型提高上限</td><td>產品比重、客戶、量產與毛利</td><td>合作長期停在公告階段</td></tr></tbody></table></section>
-      <Source><b>來源：</b>鴻海 2021 年報。2020 年底 BVPS 93.58 元、2020 EPS 7.34 元、現金股利 4 元。</Source>
+      <Source><b>來源：</b>鴻海 2021 上半年財報及 2021 年報。2021 H1 每股淨值約 94.02 元；2021 全年 EPS 10.05 元。</Source>
     </Page>
 
     <Page page={3}>
@@ -135,7 +135,7 @@ export default function HonHaiReport() {
         <div><span>01</span><time>2021 上半年</time><h2>開始買進</h2><p>第一筆買在 120 多元，之後下跌時有小幅加碼。原始論點是淨值、獲利、伺服器與電動車。</p></div>
         <div><span>02</span><time>持有期間</time><h2>多次回到虧損</h2><p>股價曾多次跌回 100 元以下，帳面獲利也數次變成虧損。</p></div>
         <div className={styles.errorStep}><span>03</span><time>日期待確認</time><h2>因情緒全部出清</h2><p>基本面沒變，是我不想面對帳面虧損。這是一次行為錯誤。</p></div>
-        <div><span>04</span><time>約一週後</time><h2>認錯買回</h2><p>公司沒有變，是我失去耐性。重新建倉後券商顯示均價約 107 元。</p></div>
+        <div><span>04</span><time>約一週後</time><h2>認錯買回</h2><p>公司沒有變，是我失去耐性。重新建倉時以約 107 元一次買回。</p></div>
         <div><span>05</span><time>2024</time><h2>低估修復</h2><p>價格回到 150～160 元，後來超過 200 元；我仍以 250～300 元為長期上行情境。</p></div>
         <div><span>06</span><time>2025/03</time><h2>約 168 元出場</h2><p>基本面沒有轉壞。我認為 Tesla 的未來上限更大，因此重新配置資金。</p></div>
       </section>

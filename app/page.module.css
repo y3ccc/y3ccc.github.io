@@ -279,6 +279,20 @@
   text-decoration: none;
 }
 
+.studyLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.archiveLink {
+  color: #676961;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .researchGallery {
   min-height: 740px;
   position: relative;
@@ -475,7 +489,8 @@
 
 @media (hover: hover) {
   .nav a:hover,
-  .textLink:hover {
+  .textLink:hover,
+  .archiveLink:hover {
     color: var(--blue);
   }
 
