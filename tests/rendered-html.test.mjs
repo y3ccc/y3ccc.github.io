@@ -109,6 +109,8 @@ test("exports the two newer cases", async () => {
   assert.match(equity, /鴻海/);
   assert.match(equity, /伺服器與電動車/);
   assert.match(equity, /回憶重建，待券商明細/);
+  // 2026-08-28：鴻海 PDF 的下載連結原本在已下架的 /projects/equity-research，一度變成孤兒檔
+  assert.match(equity, /href="\/reports\/ma-yen-chen-hon-hai-investment-case\.pdf"/, "鴻海報告頁沒有 PDF 下載連結");
   assert.doesNotMatch(equity, /含息總報酬|年化約 16%|2021 下半年/);
   await access(new URL("../public/reports/ma-yen-chen-hon-hai-investment-case.pdf", import.meta.url));
 });
