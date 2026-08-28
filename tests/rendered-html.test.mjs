@@ -108,7 +108,7 @@ test("exports the two newer cases", async () => {
   assert.match(memory, /docker ps --filter name=immich_server/);
   assert.match(equity, /鴻海/);
   assert.match(equity, /伺服器與電動車/);
-  assert.match(equity, /交易日期仍待券商明細確認/);
+  assert.match(equity, /回憶重建，待券商明細/);
   assert.doesNotMatch(equity, /含息總報酬|年化約 16%|2021 下半年/);
   await access(new URL("../public/reports/ma-yen-chen-hon-hai-investment-case.pdf", import.meta.url));
 });

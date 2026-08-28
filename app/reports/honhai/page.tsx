@@ -27,12 +27,12 @@ function Page({ page, children, className = "" }: { page: number; children: Reac
 }
 
 function EpsChart() {
-  const points = eps.map((value, index) => `${42 + index * 86},${170 - value * 8.6}`).join(" ");
+  const points = eps.map((value, index) => `${42 + index * 86},${175 - (value - 7) * 20}`).join(" ");
   return <div className={styles.chartWrap}>
     <svg viewBox="0 0 500 205" role="img" aria-label="2020 至 2025 年 EPS 走勢">
-      {[5, 10, 15].map((value) => <g key={value}><line x1="38" x2="478" y1={170 - value * 8.6} y2={170 - value * 8.6} className={styles.gridLine}/><text x="30" y={174 - value * 8.6} textAnchor="end">{value}</text></g>)}
+      {[8, 10, 12, 14].map((value) => <g key={value}><line x1="38" x2="478" y1={175 - (value - 7) * 20} y2={175 - (value - 7) * 20} className={styles.gridLine}/><text x="30" y={179 - (value - 7) * 20} textAnchor="end">{value}</text></g>)}
       <polyline points={points} className={styles.epsLine}/>
-      {eps.map((value, index) => <g key={years[index]}><circle cx={42 + index * 86} cy={170 - value * 8.6} r="4"/><text x={42 + index * 86} y={158 - value * 8.6} textAnchor="middle" className={styles.valueLabel}>{value.toFixed(2)}</text><text x={42 + index * 86} y="190" textAnchor="middle">{years[index]}</text></g>)}
+      {eps.map((value, index) => <g key={years[index]}><circle cx={42 + index * 86} cy={175 - (value - 7) * 20} r="4"/><text x={42 + index * 86} y={163 - (value - 7) * 20} textAnchor="middle" className={styles.valueLabel}>{value.toFixed(2)}</text><text x={42 + index * 86} y="190" textAnchor="middle">{years[index]}</text></g>)}
     </svg>
   </div>;
 }
@@ -56,8 +56,8 @@ export default function HonHaiReport() {
           <section><div className={styles.sectionTitle}><h2>2021 年市場可能漏看的事</h2><span>預期差</span></div><table><thead><tr><th>市場常見看法</th><th>我的判斷</th><th>驗證指標</th></tr></thead><tbody><tr><td>成熟的蘋果代工廠</td><td>伺服器已是第二個獲利基礎</td><td>雲端網路營收與產品比重</td></tr><tr><td>股價長期只值舊區間</td><td>停止配股後，保留盈餘會累積淨值</td><td>EPS、ROE、每股淨值</td></tr><tr><td>電動車只是題材</td><td>尚未賺錢，但能提高估值上限</td><td>量產、客戶、毛利</td></tr></tbody></table></section>
         </div>
         <aside className={styles.sideColumn}>
-          <section className={styles.panel}><h3>財務快照</h3><div className={styles.epsGrid}>{years.map((year, i) => <div key={year}><span>{year}</span><strong>{eps[i].toFixed(2)}</strong></div>)}</div><p className={styles.caption}>EPS／元。2021–2025 年複合成長率約 7.9%。</p></section>
-          <section className={styles.panel}><h3>判斷的限制</h3><ul><li>107 元沒有算入前次出清虧損。</li><li>交易日期仍待券商明細確認。</li><li>250～300 元是重建情境。</li><li>電動車在 2021 年尚未貢獻獲利。</li></ul></section>
+          <section className={styles.panel}><h3>財務快照</h3><div className={styles.epsGrid}>{years.map((year, i) => <div key={year}><span>{year}</span><strong>{eps[i].toFixed(2)}</strong></div>)}</div><p className={styles.caption}>EPS／元；年份後的 A 代表實際值（Actual），非預估。2021–2025 年複合成長率約 7.9%。</p></section>
+          <section className={styles.panel}><h3>判斷的限制</h3><ul><li>250～300 元是重建情境。</li><li>電動車在 2021 年尚未貢獻獲利。</li></ul></section>
           <section className={styles.panel}><h3>資料狀態</h3><p><b>公司財務：</b>年報可查</p><p><b>股價資料：</b>證交所可查</p><p><b>個人交易：</b>回憶重建，待券商明細</p></section>
         </aside>
       </div>
@@ -74,7 +74,7 @@ export default function HonHaiReport() {
         <div><span>分配</span><b>現金股利 4 元</b><p>部分盈餘回到股東，未分配部分留在公司繼續運用。</p></div>
         <div><span>轉型</span><b>伺服器＋電動車</b><p>伺服器提供基礎，電動車讓長期情境不必停在舊代工估值。</p></div>
       </div>
-      <section className={styles.valueBridge}><div><span>第一筆買價</span><strong>約 120</strong></div><i>−</i><div><span>2021 H1 淨值</span><strong>94.02</strong></div><i>＝</i><div><span>買價差額</span><strong>25.98</strong></div><i>＜</i><div className={styles.bridgeTotal}><span>10.05 × 3 年</span><strong>30.15</strong></div></section>
+      <section className={styles.valueBridge}><div><span>第一筆買價</span><strong>約 120</strong></div><i>−</i><div><span>2021 H1 淨值</span><strong>94.02</strong></div><i>＝</i><div><span>買價差額</span><strong>約 26</strong></div><i>＜</i><div className={styles.bridgeTotal}><span>10.05 × 3 年</span><strong>30.15</strong></div></section>
       <div className={styles.twoColumns}>
         <section><h2>安全墊和目標價是兩件事</h2><p>三年累積盈餘回答的是「為什麼敢等」；250～300 元回答的是「轉型成功後可能值多少」。我當時有預期上行情境，但沒有預設多久會走到。</p><p>10.05 元是 2021 全年公布後的驗證基準，不是假裝上半年買進時已經知道答案。</p></section>
         <section className={styles.warning}><h2>保留盈餘不會自動變成股價</h2><ul><li>再投資報酬低於資本成本，淨值增加也可能沒有價值。</li><li>減損、虧損或錯誤併購會吃掉累積成果。</li><li>若 EPS 沒跟著淨值成長，ROE 會下降。</li></ul></section>
@@ -197,7 +197,7 @@ export default function HonHaiReport() {
         <ol><li>鴻海精密工業股份有限公司，2021 年年報。</li><li>鴻海科技集團，MIH 開放電動車平台發表，2020/10。</li><li>鴻海科技集團，Fisker 合作公告，2021/02。</li><li>鴻海科技集團，日本電產合作公告，2021/03。</li><li>鴻海科技集團，2022–2025 年度財報與財務概況。</li><li>鴻海科技集團，2024/03/14 法說與 AI 伺服器展望。</li><li>臺灣證券交易所，2317 歷史行情、個股本益比與加權指數資料。</li></ol>
       </section>
       <section className={styles.evidenceLayers}><div><span>第一層</span><b>公司與證交所資料</b><p>財務、股價、公告，可由第三方查核。</p></div><div><span>第二層</span><b>分析與估值重建</b><p>公式透明，但假設仍需讀者判斷。</p></div><div><span>第三層</span><b>個人交易回憶</b><p>尚未取得明細的部分直接標示待確認。</p></div></section>
-      <section className={styles.closing}><div><strong>馬彥宸</strong><span>AI 應用 × 產業分析 × 財金背景</span></div><p>本報告於 2026 年依回憶與公開資料重建，不含投資金額、股數或目前持倉，也不構成投資建議。</p></section>
+      <section className={styles.closing}><div><strong>馬彥宸</strong><span>產業分析 × 投資研究 × 財金背景</span></div><p>本報告於 2026 年依回憶與公開資料重建，不含投資金額、股數或目前持倉，也不構成投資建議。</p></section>
     </Page>
   </main>;
 }
