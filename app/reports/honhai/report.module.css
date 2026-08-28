@@ -2,7 +2,7 @@
   --navy:#102c4c; --blue:#1f5f8b; --teal:#1d756f; --ink:#17202a; --muted:#66727c;
   --line:#cfd7dc; --paper:#fff; --wash:#f2f5f6; --amber:#fff5df; --red:#9b4438;
   background:#d9dee1; color:var(--ink); font-family:Arial,"Noto Sans TC","PingFang TC",sans-serif;
-  font-size:10.4pt; line-height:1.48; padding:24px 0;
+  font-size:10.4pt; line-height:1.48; padding:24px 0; text-wrap:pretty;
 }
 .page { background:var(--paper); box-sizing:border-box; display:flex; flex-direction:column; height:297mm; margin:0 auto 24px; overflow:hidden; padding:12mm 13mm 9mm; width:210mm; }
 .masthead,.pageHeader { align-items:flex-start; border-bottom:3px solid var(--navy); display:flex; justify-content:space-between; padding-bottom:5mm; }
@@ -66,6 +66,6 @@
 .limits { background:var(--amber); border-left:3px solid #c68320; padding:4mm; }.limits h2 { color:#825210; font-size:11.2pt; }.limits>div { display:grid; gap:1mm 5mm; grid-template-columns:1fr 1fr; }.limits p { font-size:8.5pt; margin:0; }.limits p:before { content:"— "; }.references { margin-top:5mm; }.references h2 { font-size:11.2pt; }.references ol { columns:2; column-gap:8mm; margin:0; padding-left:5mm; }.references li { break-inside:avoid; font-size:8.2pt; margin-bottom:1.5mm; }.closing { align-items:center; border-top:1px solid var(--line); display:grid; gap:8mm; grid-template-columns:55mm 1fr; margin-top:6mm; padding-top:4mm; }.closing div { display:flex; flex-direction:column; }.closing strong { color:var(--navy); font-size:13pt; }.closing span,.closing p { color:var(--muted); font-size:8pt; margin:0; }
 .evidenceLayers { display:grid; gap:3mm; grid-template-columns:repeat(3,1fr); margin-top:5mm; }.evidenceLayers div { border-top:2px solid var(--teal); padding:2mm; }.evidenceLayers span { color:var(--teal); font-size:7.4pt; }.evidenceLayers b { color:var(--navy); display:block; font-size:8.9pt; }.evidenceLayers p { font-size:7.4pt; margin:1mm 0 0; }
 
-.download { background:var(--navy); color:#fff; font-size:8.5pt; font-weight:700; margin-top:1.5mm; padding:1.6mm 3mm; text-decoration:none; }.download:hover { background:var(--blue); }
-@media print { .report { background:#fff; padding:0; }.page { break-after:page; margin:0; }.page:last-child { break-after:auto; }.download { display:none; } }
+.webBar { align-items:center; background:var(--navy); box-sizing:border-box; color:#fff; display:flex; gap:16px; justify-content:space-between; margin:0 auto 16px; max-width:210mm; padding:14px 18px; position:sticky; top:0; width:210mm; z-index:5; }.webBar strong { display:block; font-size:15px; }.webBar span { color:#b9c6d4; font-size:12px; }.webBar a { background:var(--teal); color:#fff; flex:none; font-size:14px; font-weight:700; padding:10px 22px; text-decoration:none; }.webBar a:hover { background:#25918a; }@media (max-width:800px) { .webBar { max-width:100%; width:100%; } }
+@media print { .report { background:#fff; padding:0; }.page { break-after:page; margin:0; }.page:last-child { break-after:auto; }.webBar { display:none; } }
 @page { margin:0; size:A4; }

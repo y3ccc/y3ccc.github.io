@@ -39,10 +39,14 @@ function EpsChart() {
 
 export default function HonHaiReport() {
   return <main className={styles.report}>
+    <div className={styles.webBar}>
+      <div><strong>鴻海（2317）投資決策研究</strong><span>10 頁 · 回溯案例研究</span></div>
+      <a href="/reports/ma-yen-chen-hon-hai-investment-case.pdf" target="_blank" rel="noreferrer">下載 PDF</a>
+    </div>
     <Page page={1}>
       <header className={styles.masthead}>
         <div><span className={styles.eyebrow}>RETROSPECTIVE EQUITY RESEARCH · 2021 DECISION</span><h1>鴻海精密（2317）</h1><p>市場還在用蘋果代工廠定價，我買的是伺服器基礎與電動車上限</p></div>
-        <div className={styles.author}><strong>馬彥宸</strong><span>產業分析作品</span><span>2026-08-23 重建</span><a className={styles.download} href="/reports/ma-yen-chen-hon-hai-investment-case.pdf" target="_blank" rel="noreferrer">下載 10 頁 PDF ↓</a></div>
+        <div className={styles.author}><strong>馬彥宸</strong><span>產業分析作品</span><span>2026-08-23 重建</span></div>
       </header>
       <section className={styles.verdict}>
         <div className={styles.rating}><span>2021 重建判斷</span><strong>明顯低估</strong><small>回溯案例，不是現在的投資建議</small></div>
